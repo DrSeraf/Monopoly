@@ -6,7 +6,7 @@ using UnityEngine;
 public class MonopolyBoard : MonoBehaviour
 {
     // Список узлов на игровом поле
-    [SerializeField] List<MonopolyNode> route = new List<MonopolyNode>();
+    public  List<MonopolyNode> route = new List<MonopolyNode>();
 
     // Метод, который вызывается при изменении значений в инспекторе Unity
     private void OnValidate()

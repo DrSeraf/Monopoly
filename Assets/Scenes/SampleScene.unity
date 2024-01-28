@@ -1535,6 +1535,11 @@ MonoBehaviour:
   propertyImage: {fileID: 0}
   isMortgaged: 0
   mortgageValue: 0
+  owner:
+    playerType: 0
+    name: 
+    myToken: {fileID: 0}
+    myMonopolyNodes: []
   ownerBar: {fileID: 0}
   ownerText: {fileID: 0}
 --- !u!4 &661194917
@@ -1744,6 +1749,11 @@ MonoBehaviour:
   propertyImage: {fileID: 0}
   isMortgaged: 0
   mortgageValue: 0
+  owner:
+    playerType: 0
+    name: 
+    myToken: {fileID: 0}
+    myMonopolyNodes: []
   ownerBar: {fileID: 0}
   ownerText: {fileID: 0}
 --- !u!4 &691138586
@@ -3254,6 +3264,11 @@ MonoBehaviour:
   propertyImage: {fileID: 0}
   isMortgaged: 0
   mortgageValue: 0
+  owner:
+    playerType: 0
+    name: 
+    myToken: {fileID: 0}
+    myMonopolyNodes: []
   ownerBar: {fileID: 0}
   ownerText: {fileID: 0}
 --- !u!1001 &1088557033
@@ -3872,6 +3887,11 @@ MonoBehaviour:
   propertyImage: {fileID: 0}
   isMortgaged: 0
   mortgageValue: 0
+  owner:
+    playerType: 0
+    name: 
+    myToken: {fileID: 0}
+    myMonopolyNodes: []
   ownerBar: {fileID: 0}
   ownerText: {fileID: 0}
 --- !u!4 &1270560124
@@ -6420,6 +6440,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1221053998}
     m_Modifications:
+    - target: {fileID: 1442148705984432370, guid: 538acca5f88a7234ba3cb7e0a956c163, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1947593044284750359, guid: 538acca5f88a7234ba3cb7e0a956c163, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -6471,6 +6495,10 @@ PrefabInstance:
     - target: {fileID: 4586474242295026172, guid: 538acca5f88a7234ba3cb7e0a956c163, type: 3}
       propertyPath: baseRent
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4586474242295026172, guid: 538acca5f88a7234ba3cb7e0a956c163, type: 3}
+      propertyPath: owner.name
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 4586474242295026172, guid: 538acca5f88a7234ba3cb7e0a956c163, type: 3}
       propertyPath: calculateRentAuto

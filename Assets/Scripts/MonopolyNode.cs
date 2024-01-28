@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using Unity.Properties;
+using System.Xml.Serialization;
 
 // Перечисление для типов узлов в игре монополии
 public enum MonopolyNodeType
@@ -52,6 +53,7 @@ public class MonopolyNode : MonoBehaviour
 
     // Владелец узла
     [Header("Property Owner")]
+    public Player owner;
     [SerializeField] GameObject ownerBar;
     [SerializeField] TMP_Text ownerText;
 
@@ -107,14 +109,23 @@ public class MonopolyNode : MonoBehaviour
             priceText.text = "$ " + price;
         }
         //Update the owner
+        OnOwnerUpdated();
+        UnMortgageProperty();
+        //isMortgaged = false;
     }
 
     // Метод для залога свойства
     public int MortgageProperty()
     {
         isMortgaged = true;
-        mortgageImage.SetActive(true);
-        propertyImage.SetActive(false);
+        if (mortgageImage != null)
+        {
+            mortgageImage.SetActive(true);
+        }
+        if (propertyImage != null)
+        {
+            propertyImage.SetActive(false);
+        }
         return mortgageValue;
     }
 
@@ -122,8 +133,15 @@ public class MonopolyNode : MonoBehaviour
     public void UnMortgageProperty()
     {
         isMortgaged = false;
-        mortgageImage.SetActive(false);
-        propertyImage.SetActive(true);
+        if(mortgageImage != null) 
+        {
+            mortgageImage.SetActive(false);
+        }
+        if (propertyImage != null)
+        {
+            propertyImage.SetActive(true);
+        }
+        
     }
 
     // Метод для обновления владельца
@@ -135,10 +153,10 @@ public class MonopolyNode : MonoBehaviour
     {
         if(ownerBar != null)
         {
-            if(ownerText.text != "")
+            if(owner.name != "")
             {
                 ownerBar.SetActive(true);
-                //ownerText.text = owner.name;
+                ownerText.text = owner.name;
             }
             else
             {
@@ -147,4 +165,32 @@ public class MonopolyNode : MonoBehaviour
             }
         }
     }
+
+
+    public void PlayerLandenOnNode(Player currentPlayer)
+    {
+        bool playerIsHuman = currentPlayer.playerType == Player.PlayerType.Human;
+
+
+
+        if (!playerIsHuman) 
+        {
+            Invoke("ContinueGame", 2f);
+        }
+        else 
+        {
+            //show UI
+        }
+    }
+
+    void ContinueGame()
+    {
+        //If the last roll was not a double 
+        //roll agaid
+
+        //not a double roll
+        //switch player
+        GameManager.instance.SwitchPlayer();
+    }
+
 }

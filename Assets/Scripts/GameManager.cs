@@ -26,6 +26,8 @@ public class GameManager : MonoBehaviour
     int[] rolledDice;
     bool rolledADouble;
     int doubleRollCount;
+    //Pass over goal to get money
+    public int GetGoMoney => goMoney;
 
 
     private void Awake()
@@ -36,6 +38,15 @@ public class GameManager : MonoBehaviour
     private void Start()
     {
         Initialize();
+        if (playerList[currentPlayer].playerType == Player.PlayerType.AI)
+        {
+            RollDice();
+        }
+        else
+        {
+            //show UI for human inputs
+        }
+        
     }
 
     void Initialize()
@@ -62,6 +73,7 @@ public class GameManager : MonoBehaviour
         //Any roll dice and store them
         rolledDice[0] = Random.Range(1,7);
         rolledDice[1] = Random.Range(1, 7);
+        Debug.Log("Rolled dice are: " + rolledDice[0] + " & " + rolledDice[1]);
         //Check for double 
         rolledADouble = rolledDice[0] == rolledDice[1];
         //throw 3 times in a row -> jail end turn 
@@ -71,16 +83,39 @@ public class GameManager : MonoBehaviour
         //can we leave jail
 
         //move anyhove if allowed
-
+        StartCoroutine(DelayBeforeMove(rolledDice[0] + rolledDice[1]));
         //show or hide UI
     }
 
-    IEnumerator DelayBeforeMove()
+    IEnumerator DelayBeforeMove(int rolledDice)
     {
         yield return new WaitForSeconds(2f);
         //if we are allowed to move do so
-
+        gameBoard.MovePlayerToken(rolledDice, playerList[currentPlayer]);
         //else we switch
     }
 
+    public void SwitchPlayer()
+    {
+        currentPlayer++;
+        //Rolled double?
+
+        //Overflow check
+        if(currentPlayer >= playerList.Count) 
+        {
+            currentPlayer = 0;
+        }
+
+        //check if in jail
+
+        //is player AI
+        if (playerList[currentPlayer].playerType == Player.PlayerType.AI)
+        {
+            RollDice();
+        }
+
+
+        //if human - show UI
+
+    }
 }

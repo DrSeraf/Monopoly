@@ -43,4 +43,51 @@ public class MonopolyBoard : MonoBehaviour
         }
     }
 
+    public void MovePlayerToken(int steps, Player player)
+    {
+        StartCoroutine(MovePlayerInSteps(steps, player));
+    }
+
+    IEnumerator MovePlayerInSteps(int steps, Player player) 
+    {
+        int stepsLeft = steps;
+        GameObject tokenToMove = player.MyToken;
+        int indexOnBoard = route.IndexOf(player.MyCurrentMonopolyNode);
+        bool moveOverGoal = false;
+        while(stepsLeft  > 0) 
+        {
+            indexOnBoard++;
+            //is this over go?
+            if(indexOnBoard > route.Count-1) 
+            {
+                indexOnBoard = 0;
+                moveOverGoal = true;
+            }
+            //Get start and end position
+            Vector3 startPos = tokenToMove.transform.position;
+            Vector3 endPos = route[indexOnBoard].transform.position;
+            //Perform the move
+            while(MoveToNextNode(tokenToMove, endPos, 20))
+            {
+                yield return null;
+            }
+
+            stepsLeft--;
+        }
+        //Get go money
+        if(moveOverGoal) 
+        {
+            //Collect money on the player
+            player.CollectMoney(GameManager.instance.GetGoMoney);
+        }
+        //Set new node on the current player
+        player.SetMyCurrentNode(route[indexOnBoard]);
+    }
+
+
+    bool MoveToNextNode(GameObject tokenToMove, Vector3 endPos, float speed)
+    {
+        return endPos != (tokenToMove.transform.position = Vector3.MoveTowards(tokenToMove.transform.position, endPos, speed * Time.deltaTime)) ;
+    }
+
 }

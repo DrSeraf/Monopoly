@@ -40,4 +40,25 @@ public class Player
         myInfo.SetPlayerNameAndCash(name, money);
         myToken = token;
     }
+
+    public void SetMyCurrentNode(MonopolyNode newNode)//Turn is over
+    {
+        currentNode = newNode;
+        //Player landed on node so lets
+        newNode.PlayerLandenOnNode(this);
+
+        //if its AI player
+
+            //Check if can bild houses
+
+            //Check for anmortgage properties
+
+            //Check if he could trade for missing properties
+    }
+
+    public void CollectMoney(int amount)
+    {
+        money += amount;
+        myInfo.SetCashName(money);
+    }
 }

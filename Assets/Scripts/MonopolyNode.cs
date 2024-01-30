@@ -62,6 +62,10 @@ public class MonopolyNode : MonoBehaviour
     private Player owner;
 
     public Player Owner => owner;
+    public void SetOwner(Player newOwner)
+    {
+        owner = newOwner;
+    }
 
 
     // Метод, который вызывается при изменении значений в инспекторе Unity
@@ -168,7 +172,7 @@ public class MonopolyNode : MonoBehaviour
     {
         if(ownerBar != null)
         {
-            if(owner.name != "")
+            if(owner != null)
             {
                 ownerBar.SetActive(true);
                 ownerText.text = owner.name;
@@ -195,11 +199,12 @@ public class MonopolyNode : MonoBehaviour
                 if(!playerIsHuman)//AI
                 {
                     //If it owned && if we are not owner && is not mortgaged
-                    if (owner.name != "" && owner != currentPlayer && !isMortgaged)
+                    if (owner != null && owner != currentPlayer && !isMortgaged)
                     {
                         //Pay rent to somebody
 
                         //Calculate current rent
+                        Debug.Log("Player might pay rent && owner is: " + owner.name);
                         int rentToPay = CalculatePropertyRent();
 
                         //Pay the rent to the owner
@@ -207,10 +212,11 @@ public class MonopolyNode : MonoBehaviour
                         //Show a message about what happend
 
                     }
-                    else if (owner.name == "")//&& if can afford
+                    else if (owner == null && currentPlayer.CanAffordNode(price))
                     {
                         //Buy the node
-
+                        Debug.Log("Player could buy");
+                        currentPlayer.BuyProperty(this);
                         //Show a message about what happend
                     }
                     else
@@ -221,7 +227,7 @@ public class MonopolyNode : MonoBehaviour
                 else //Human
                 {
                     //If it owned && if we are not owner && is not mortgaged
-                    if (owner.name != "" && owner != currentPlayer && !isMortgaged)
+                    if (owner != null && owner != currentPlayer && !isMortgaged)
                     {
                         //Pay rent to somebody
 
@@ -232,8 +238,9 @@ public class MonopolyNode : MonoBehaviour
                         //Show a message about what happend
 
                     }
-                    else if (owner.name == "")
+                    else if (owner == null)
                     {
+
                         //Show buy interface for the property
                     }
                     else

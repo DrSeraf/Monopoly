@@ -152,6 +152,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   monopolyNodeType: 1
+  propertyColorField: {fileID: 0}
   name: Utilitie
   nameText: {fileID: 6652786189111093134}
   price: 0
@@ -164,11 +165,6 @@ MonoBehaviour:
   propertyImage: {fileID: 8415793508537492226}
   isMortgaged: 0
   mortgageValue: 0
-  owner:
-    playerType: 0
-    name: 
-    myToken: {fileID: 0}
-    myMonopolyNodes: []
   ownerBar: {fileID: 6287834800633162128}
   ownerText: {fileID: 1547241708904122608}
 --- !u!1 &5318522493646024787

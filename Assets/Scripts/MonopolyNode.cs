@@ -28,7 +28,7 @@ public class MonopolyNode : MonoBehaviour
     // Тип узла
     public MonopolyNodeType monopolyNodeType;
 
-    [SerializeField] Image propertyColorField;
+    public Image propertyColorField;
 
     // Имя узла
     [Header("Property Name")]
@@ -45,7 +45,7 @@ public class MonopolyNode : MonoBehaviour
     [SerializeField] bool calculateRentAuto;
     [SerializeField] int currentRent;
     [SerializeField] internal int baseRent;
-    [SerializeField] internal int[] rentWithHouse;
+    [SerializeField] internal List<int> rentWithHouse = new List<int>();
     int numberOfHouses;
 
     // Залог узла
@@ -87,22 +87,27 @@ public class MonopolyNode : MonoBehaviour
             // Расчет цены и арендной платы для типа Property
             if (monopolyNodeType == MonopolyNodeType.Property)
             {
-                if(baseRent > 0)
+                if (baseRent > 0)
                 {
                     price = 3 * (baseRent * 10);
 
                     // Расчет стоимости залога
-                    mortgageValue = price/2;
+                    mortgageValue = price / 2;
 
                     // Расчет арендной платы с домом
-                    rentWithHouse = new int[]
-                    {
-                        baseRent * 5, 
-                        baseRent * 5 * 3,
-                        baseRent * 5 * 9,
-                        baseRent * 5 * 16,
-                        baseRent * 5 * 25,
-                    };
+                    rentWithHouse.Clear();
+                    rentWithHouse.Add(baseRent * 5);
+                    rentWithHouse.Add(baseRent * 5 * 3);
+                    rentWithHouse.Add(baseRent * 5 * 9);
+                    rentWithHouse.Add(baseRent * 5 * 16);
+                    rentWithHouse.Add(baseRent * 5 * 25);
+                }
+                else if(baseRent <= 0)
+                {
+                    price = 0;
+                    baseRent = 0;
+                    rentWithHouse.Clear();
+                    mortgageValue = 0;
                 }
             }
 
@@ -217,6 +222,7 @@ public class MonopolyNode : MonoBehaviour
                         //Buy the node
                         Debug.Log("Player could buy");
                         currentPlayer.BuyProperty(this);
+                        OnOwnerUpdated();
                         //Show a message about what happend
                     }
                     else

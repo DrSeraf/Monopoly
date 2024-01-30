@@ -17,7 +17,7 @@ public class MonopolyBoard : MonoBehaviour
         public List<MonopolyNode> nodesInSetList = new List<MonopolyNode>();   
     }
 
-    [SerializeField] List<NodeSet> nodeSetList = new List<NodeSet>();
+    public List<NodeSet> nodeSetList = new List<NodeSet>();
 
     private void Awake()
     {
@@ -35,16 +35,6 @@ public class MonopolyBoard : MonoBehaviour
         {
             route.Add(node.GetComponent<MonopolyNode>());
         }
-
-        //Update all node colors
-        for (int i = 0; i < nodeSetList.Count; i++)
-        {
-            for (int j = 0; j < nodeSetList[i].nodesInSetList.Count; j++)
-            {
-                nodeSetList[i].nodesInSetList[j].UpdateColofield(nodeSetList[i].setColor);
-            }
-        }
-
     }
 
     // Метод, который рисует линии между узлами на игровом поле

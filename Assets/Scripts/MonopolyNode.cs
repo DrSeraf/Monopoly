@@ -5,6 +5,7 @@ using UnityEngine;
 using TMPro;
 using Unity.Properties;
 using System.Xml.Serialization;
+using UnityEngine.UI;
 
 // Перечисление для типов узлов в игре монополии
 public enum MonopolyNodeType
@@ -26,6 +27,8 @@ public class MonopolyNode : MonoBehaviour
 {
     // Тип узла
     public MonopolyNodeType monopolyNodeType;
+
+    [SerializeField] Image propertyColorField;
 
     // Имя узла
     [Header("Property Name")]
@@ -113,6 +116,15 @@ public class MonopolyNode : MonoBehaviour
         OnOwnerUpdated();
         UnMortgageProperty();
         //isMortgaged = false;
+    }
+
+    public void UpdateColofield(Color color)
+    {
+        if (propertyColorField != null)
+        {
+            propertyColorField.color = color;
+        }
+        
     }
 
     // Метод для залога свойства

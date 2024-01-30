@@ -963,6 +963,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   monopolyNodeType: 0
+  propertyColorField: {fileID: 3353860733974995354}
   name: Whatever Road
   nameText: {fileID: 2865429947566926613}
   price: 0

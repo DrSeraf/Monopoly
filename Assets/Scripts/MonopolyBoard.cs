@@ -8,6 +8,15 @@ public class MonopolyBoard : MonoBehaviour
     // Список узлов на игровом поле
     public  List<MonopolyNode> route = new List<MonopolyNode>();
 
+    [System.Serializable]
+    public class NodeSet
+    {
+        public Color setColor = Color.white;
+        public List<MonopolyNode> nodesInSetList = new List<MonopolyNode>();   
+    }
+
+    [SerializeField] List<NodeSet> nodeSetList = new List<NodeSet>(); 
+
     // Метод, который вызывается при изменении значений в инспекторе Unity
     private void OnValidate()
     {
@@ -19,6 +28,16 @@ public class MonopolyBoard : MonoBehaviour
         {
             route.Add(node.GetComponent<MonopolyNode>());
         }
+
+        //Update all node colors
+        for (int i = 0; i < nodeSetList.Count; i++)
+        {
+            for (int j = 0; j < nodeSetList[i].nodesInSetList.Count; j++)
+            {
+                nodeSetList[i].nodesInSetList[j].UpdateColofield(nodeSetList[i].setColor);
+            }
+        }
+
     }
 
     // Метод, который рисует линии между узлами на игровом поле
@@ -89,5 +108,8 @@ public class MonopolyBoard : MonoBehaviour
     {
         return endPos != (tokenToMove.transform.position = Vector3.MoveTowards(tokenToMove.transform.position, endPos, speed * Time.deltaTime)) ;
     }
+
+
+
 
 }

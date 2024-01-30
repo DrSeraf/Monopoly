@@ -43,6 +43,7 @@ public class MonopolyNode : MonoBehaviour
     [SerializeField] int currentRent;
     [SerializeField] internal int baseRent;
     [SerializeField] internal int[] rentWithHouse;
+    int numberOfHouses;
 
     // Залог узла
     [Header("Property Mortgage")]
@@ -185,6 +186,7 @@ public class MonopolyNode : MonoBehaviour
                         //Pay rent to somebody
 
                         //Calculate current rent
+                        int rentToPay = CalculatePropertyRent();
 
                         //Pay the rent to the owner
 
@@ -281,6 +283,57 @@ public class MonopolyNode : MonoBehaviour
         //not a double roll
         //switch player
         GameManager.instance.SwitchPlayer();
+    }
+
+    int CalculatePropertyRent()
+    {
+        switch(numberOfHouses)
+        {
+            case 0:
+                //Check if owner hs the full set of nodes
+                bool allSame = true;
+
+                if(allSame)
+                {
+                    currentRent = baseRent * 2;
+                }
+                else
+                {
+                    currentRent = baseRent;
+                }
+                break;
+
+            case 1:
+
+                currentRent = rentWithHouse[0];
+
+            break;
+
+            case 2:
+
+                currentRent = rentWithHouse[1];
+
+            break;
+
+            case 3:
+
+                currentRent = rentWithHouse[2];
+
+            break;
+
+            case 4:
+
+                currentRent = rentWithHouse[3];
+
+            break;
+
+            case 5://Hotel
+
+                currentRent = rentWithHouse[4];
+
+            break;
+        }
+        return currentRent;
     }
 
 }

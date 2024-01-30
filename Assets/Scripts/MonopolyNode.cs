@@ -171,8 +171,49 @@ public class MonopolyNode : MonoBehaviour
     {
         bool playerIsHuman = currentPlayer.playerType == Player.PlayerType.Human;
 
+        //Check for node type and act
+
+        switch(monopolyNodeType)
+        {
+            case MonopolyNodeType.Property:
+
+            break;
+
+            case MonopolyNodeType.Utility:
+
+            break;
+
+            case MonopolyNodeType.RailRoad:
+
+            break;
+
+            case MonopolyNodeType.Tax:
+
+            break;
+
+            case MonopolyNodeType.FreeParking:
+
+            break;
+
+            case MonopolyNodeType.GoToJail:
+
+            break;
+
+            case MonopolyNodeType.Chance:
+
+            break;
+
+            case MonopolyNodeType.CommunityChest:
+
+            break;
+
+        }
 
 
+
+
+
+        //Continue
         if (!playerIsHuman) 
         {
             Invoke("ContinueGame", 2f);

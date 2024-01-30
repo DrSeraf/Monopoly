@@ -1,10 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Linq;
 
 // Класс MonopolyBoard, который представляет собой игровое поле в игре монополии
 public class MonopolyBoard : MonoBehaviour
 {
+    public static MonopolyBoard Instance;
     // Список узлов на игровом поле
     public  List<MonopolyNode> route = new List<MonopolyNode>();
 
@@ -15,7 +17,12 @@ public class MonopolyBoard : MonoBehaviour
         public List<MonopolyNode> nodesInSetList = new List<MonopolyNode>();   
     }
 
-    [SerializeField] List<NodeSet> nodeSetList = new List<NodeSet>(); 
+    [SerializeField] List<NodeSet> nodeSetList = new List<NodeSet>();
+
+    private void Awake()
+    {
+        Instance = this;
+    }
 
     // Метод, который вызывается при изменении значений в инспекторе Unity
     private void OnValidate()
@@ -110,6 +117,23 @@ public class MonopolyBoard : MonoBehaviour
     }
 
 
+    public (List<MonopolyNode> list, bool allSame) PlayerHasAllNodesOfSet(MonopolyNode node)
+    {
+            bool allSame = false;
 
+        foreach (var nodeSet in nodeSetList)
+        {
+            if(nodeSet.nodesInSetList.Contains(node)) 
+            {
+                    
+                //Linq
+                allSame = nodeSet.nodesInSetList.All(_node => _node.Owner == node.Owner);
+                return (nodeSet.nodesInSetList,  allSame);
+                
+            }
+        }
+        return (null, allSame);
+
+    }
 
 }

@@ -57,9 +57,12 @@ public class MonopolyNode : MonoBehaviour
 
     // Владелец узла
     [Header("Property Owner")]
-    public Player owner;
     [SerializeField] GameObject ownerBar;
     [SerializeField] TMP_Text ownerText;
+    private Player owner;
+
+    public Player Owner => owner;
+
 
     // Метод, который вызывается при изменении значений в инспекторе Unity
     private void OnValidate()
@@ -69,7 +72,11 @@ public class MonopolyNode : MonoBehaviour
         {
             nameText.text = name;
         }
-
+        // Обновление текста цены
+        if (priceText != null)
+        {
+            priceText.text = "$ " + price;
+        }
         // Расчет цены и арендной платы
         if (calculateRentAuto)
         {
@@ -107,11 +114,6 @@ public class MonopolyNode : MonoBehaviour
             }
         }
 
-        // Обновление текста цены
-        if (priceText != null)
-        {
-            priceText.text = "$ " + price;
-        }
         //Update the owner
         OnOwnerUpdated();
         UnMortgageProperty();
@@ -303,7 +305,7 @@ public class MonopolyNode : MonoBehaviour
         {
             case 0:
                 //Check if owner hs the full set of nodes
-                bool allSame = true;
+                var (list, allSame) = MonopolyBoard.Instance.PlayerHasAllNodesOfSet(this);
 
                 if(allSame)
                 {

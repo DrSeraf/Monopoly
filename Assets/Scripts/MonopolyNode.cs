@@ -177,6 +177,55 @@ public class MonopolyNode : MonoBehaviour
         {
             case MonopolyNodeType.Property:
 
+                if(!playerIsHuman)//AI
+                {
+                    //If it owned && if we are not owner && is not mortgaged
+                    if (owner.name != "" && owner != currentPlayer && !isMortgaged)
+                    {
+                        //Pay rent to somebody
+
+                        //Calculate current rent
+
+                        //Pay the rent to the owner
+
+                        //Show a message about what happend
+
+                    }
+                    else if (owner.name == "")//&& if can afford
+                    {
+                        //Buy the node
+
+                        //Show a message about what happend
+                    }
+                    else
+                    {
+                        //Is unowned and we cant afford it
+                    }
+                }
+                else //Human
+                {
+                    //If it owned && if we are not owner && is not mortgaged
+                    if (owner.name != "" && owner != currentPlayer && !isMortgaged)
+                    {
+                        //Pay rent to somebody
+
+                        //Calculate current rent
+
+                        //Pay the rent to the owner
+
+                        //Show a message about what happend
+
+                    }
+                    else if (owner.name == "")
+                    {
+                        //Show buy interface for the property
+                    }
+                    else
+                    {
+                        //Is unowned and we cant afford it
+                    }
+                }
+
             break;
 
             case MonopolyNodeType.Utility:

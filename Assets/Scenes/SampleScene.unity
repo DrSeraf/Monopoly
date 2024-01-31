@@ -4350,6 +4350,16 @@ MonoBehaviour:
     nodesInSetList:
     - {fileID: 1159545754}
     - {fileID: 868638863}
+  - setColor: {r: 1, g: 1, b: 1, a: 1}
+    nodesInSetList:
+    - {fileID: 3706097155504985117}
+    - {fileID: 1088557034}
+  - setColor: {r: 1, g: 1, b: 1, a: 1}
+    nodesInSetList:
+    - {fileID: 7981367776987956175}
+    - {fileID: 655021019}
+    - {fileID: 2104237604}
+    - {fileID: 1010886379}
 --- !u!4 &1221053998
 Transform:
   m_ObjectHideFlags: 0

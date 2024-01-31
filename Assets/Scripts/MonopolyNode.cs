@@ -6,6 +6,7 @@ using TMPro;
 using Unity.Properties;
 using System.Xml.Serialization;
 using UnityEngine.UI;
+using System.Collections.ObjectModel;
 
 // Перечисление для типов узлов в игре монополии
 public enum MonopolyNodeType
@@ -211,10 +212,11 @@ public class MonopolyNode : MonoBehaviour
                         //Calculate current rent
                         Debug.Log("Player might pay rent && owner is: " + owner.name);
                         int rentToPay = CalculatePropertyRent();
-
                         //Pay the rent to the owner
+                        currentPlayer.PayRent(rentToPay, owner);
 
                         //Show a message about what happend
+                        Debug.Log(currentPlayer.name + " pays rent of: " + rentToPay + " to " + owner.name);
 
                     }
                     else if (owner == null && currentPlayer.CanAffordNode(price))
@@ -258,12 +260,120 @@ public class MonopolyNode : MonoBehaviour
             break;
 
             case MonopolyNodeType.Utility:
+                if (!playerIsHuman)//AI
+                {
+                    //If it owned && if we are not owner && is not mortgaged
+                    if (owner != null && owner != currentPlayer && !isMortgaged)
+                    {
+                        //Pay rent to somebody
+
+                        //Calculate current rent
+                        int rentToPay = CalculateUtilityRent();
+                        //Pay the rent to the owner
+                        currentPlayer.PayRent(rentToPay, owner);
+
+                        //Show a message about what happend
+                        Debug.Log(currentPlayer.name + " pays rent of: " + rentToPay + " to " + owner.name);
+
+                    }
+                    else if (owner == null && currentPlayer.CanAffordNode(price))
+                    {
+                        //Buy the node
+                        Debug.Log("Player could buy");
+                        currentPlayer.BuyProperty(this);
+                        OnOwnerUpdated();
+                        //Show a message about what happend
+                    }
+                    else
+                    {
+                        //Is unowned and we cant afford it
+                    }
+                }
+                else //Human
+                {
+                    //If it owned && if we are not owner && is not mortgaged
+                    if (owner != null && owner != currentPlayer && !isMortgaged)
+                    {
+                        //Pay rent to somebody
+
+                        //Calculate current rent
+
+                        //Pay the rent to the owner
+
+                        //Show a message about what happend
+
+                    }
+                    else if (owner == null)
+                    {
+
+                        //Show buy interface for the property
+                    }
+                    else
+                    {
+                        //Is unowned and we cant afford it
+                    }
+                }
 
             break;
 
             case MonopolyNodeType.RailRoad:
 
-            break;
+                if (!playerIsHuman)//AI
+                {
+                    //If it owned && if we are not owner && is not mortgaged
+                    if (owner != null && owner != currentPlayer && !isMortgaged)
+                    {
+                        //Pay rent to somebody
+
+                        //Calculate current rent
+                        Debug.Log("Player might pay rent && owner is: " + owner.name);
+                        int rentToPay = CalculateRailRoadRent();
+                        //Pay the rent to the owner
+                        currentPlayer.PayRent(rentToPay, owner);
+
+                        //Show a message about what happend
+                        Debug.Log(currentPlayer.name + " pays rent of: " + rentToPay + " to " + owner.name);
+
+                    }
+                    else if (owner == null && currentPlayer.CanAffordNode(price))
+                    {
+                        //Buy the node
+                        Debug.Log("Player could buy");
+                        currentPlayer.BuyProperty(this);
+                        OnOwnerUpdated();
+                        //Show a message about what happend
+                    }
+                    else
+                    {
+                        //Is unowned and we cant afford it
+                    }
+                }
+                else //Human
+                {
+                    //If it owned && if we are not owner && is not mortgaged
+                    if (owner != null && owner != currentPlayer && !isMortgaged)
+                    {
+                        //Pay rent to somebody
+
+                        //Calculate current rent
+
+                        //Pay the rent to the owner
+
+                        //Show a message about what happend
+
+                    }
+                    else if (owner == null)
+                    {
+
+                        //Show buy interface for the property
+                    }
+                    else
+                    {
+                        //Is unowned and we cant afford it
+                    }
+                }
+
+                break;
 
             case MonopolyNodeType.Tax:
 
@@ -363,4 +473,38 @@ public class MonopolyNode : MonoBehaviour
         return currentRent;
     }
 
+    int CalculateUtilityRent()
+    {
+        int[] lastRolledDice = GameManager.instance.LastRolledDice;
+
+        int result = 0;
+        var (list, allSame) = MonopolyBoard.Instance.PlayerHasAllNodesOfSet(this);
+        if(allSame)
+        {
+            result = (lastRolledDice[0] + lastRolledDice[1]) * 10;
+        }
+        else
+        {
+            result += (lastRolledDice[0] + lastRolledDice[1]) * 4;
+        }
+
+        return result;
+    }
+
+    int CalculateRailRoadRent()
+    {
+        int result = 0;
+        var (list, allSame) = MonopolyBoard.Instance.PlayerHasAllNodesOfSet(this);
+
+        int amount = 0;
+        foreach(var item in list)
+        {
+                amount += (item.owner == this.owner) ? 1 : 0;
+        }
+
+        result = baseRent * (int)Mathf.Pow(2, amount - 1);
+
+
+        return result;
+    }
 }

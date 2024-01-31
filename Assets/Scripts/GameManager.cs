@@ -118,4 +118,6 @@ public class GameManager : MonoBehaviour
         //if human - show UI
 
     }
+
+    public int[] LastRolledDice => rolledDice;
 }

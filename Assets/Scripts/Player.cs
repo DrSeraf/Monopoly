@@ -34,6 +34,10 @@ public class Player
     public GameObject MyToken => myToken;
     public MonopolyNode MyCurrentMonopolyNode => currentNode;
 
+    //Message system
+    public delegate void UpdateMessage(string message);
+    public static UpdateMessage OnUpdateMessage;
+
     public void Inititialize(MonopolyNode startNode, int startingMoney, PlayerInfo info, GameObject token)
     {
         currentNode = startNode;
@@ -142,7 +146,7 @@ public class Player
     {
         isInJail = true;
         //Reposition player
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(GameManager.instance.SecondsBetwinTurns);
         myToken.transform.position = MonopolyBoard.Instance.route[10].transform.position;
         currentNode = MonopolyBoard.Instance.route[10];
     }
@@ -159,5 +163,21 @@ public class Player
     {
         numTurnsInJail++;
     }
+
+    //-------------------------------HANDLE INSUFFICIENT FUNDS-------------------------------
+
+    //-------------------------------BUNKRUPT-GAME-OVER--------------------------------------
+
+    //-------------------------------UNMORTGAGE PROPERTY-------------------------------------
+
+    //-------------------------------CHECK IF PLAYER HAS A PROPERTY SET----------------------
+
+    //-------------------------------BUILD HOUSES EVENLY ON NODE SETS------------------------
+
+    //-------------------------------TRADING SYSTEM------------------------------------------
+
+    //-------------------------------FIND MISSING PROPERTYS IN SET---------------------------
+
+    //-------------------------------HOUSES AND HOTELS - CAN AFFORT AND COUNT----------------
 
 }

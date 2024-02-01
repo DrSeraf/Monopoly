@@ -11,58 +11,55 @@ using System.Collections.ObjectModel;
 // Перечисление для типов узлов в игре монополии
 public enum MonopolyNodeType
 {
-    Property,
-    Utility,
-    RailRoad,
-    Tax,
-    Chance,
-    CommunityChest,
-    Go,
-    Jail,
-    FreeParking,
-    GoToJail
+    Property, 
+    Utility, 
+    RailRoad, 
+    Tax, 
+    Chance, 
+    CommunityChest, 
+    Go, 
+    Jail, 
+    FreeParking, 
+    GoToJail 
 }
 
-// Класс MonopolyNode, который представляет собой узел в игре монополии
 public class MonopolyNode : MonoBehaviour
 {
     // Тип узла
     public MonopolyNodeType monopolyNodeType;
+    public Image propertyColorField; // Цвет недвижимости
 
-    public Image propertyColorField;
-
-    // Имя узла
     [Header("Property Name")]
     [SerializeField] internal new string name;
-    [SerializeField] TMP_Text nameText;
+    [SerializeField] TMP_Text nameText; // Текстовое поля для отображения имени узла
 
-    // Цена узла
     [Header("Property Price")]
     public int price;
-    [SerializeField] TMP_Text priceText;
+    [SerializeField] TMP_Text priceText; // Текстовое поля для отображения цены узла
 
-    // Арендная плата узла
     [Header("Property Rent")]
     [SerializeField] bool calculateRentAuto;
     [SerializeField] int currentRent;
     [SerializeField] internal int baseRent;
-    [SerializeField] internal List<int> rentWithHouse = new List<int>();
-    int numberOfHouses;
+    [SerializeField] internal List<int> rentWithHouse = new List<int>(); // Список арендных плат с домами
+    int numberOfHouses; // Количество домов на узле
 
-    // Залог узла
     [Header("Property Mortgage")]
-    [SerializeField] GameObject mortgageImage;
-    [SerializeField] GameObject propertyImage;
+    [SerializeField] GameObject mortgageImage; // Изображение залога
+    [SerializeField] GameObject propertyImage; // Изображение недвижимости
     [SerializeField] bool isMortgaged;
     [SerializeField] int mortgageValue;
 
-    // Владелец узла
     [Header("Property Owner")]
     [SerializeField] GameObject ownerBar;
-    [SerializeField] TMP_Text ownerText;
+    [SerializeField] TMP_Text ownerText; // Текстовое поле для отображения владельца
     private Player owner;
 
-    public Player Owner => owner;
+    //Message system
+    public delegate void UpdateMessage(string message);
+    public static UpdateMessage OnUpdateMessage;
+
+    public Player Owner => owner; // Геттер для владельца узла
     public void SetOwner(Player newOwner)
     {
         owner = newOwner;
@@ -191,7 +188,6 @@ public class MonopolyNode : MonoBehaviour
         }
     }
 
-
     public void PlayerLandenOnNode(Player currentPlayer)
     {
         bool playerIsHuman = currentPlayer.playerType == Player.PlayerType.Human;
@@ -211,19 +207,20 @@ public class MonopolyNode : MonoBehaviour
                         //Pay rent to somebody
 
                         //Calculate current rent
-                        Debug.Log("Player might pay rent && owner is: " + owner.name);
+                        
                         int rentToPay = CalculatePropertyRent();
                         //Pay the rent to the owner
                         currentPlayer.PayRent(rentToPay, owner);
 
                         //Show a message about what happend
-                        Debug.Log(currentPlayer.name + " pays rent of: " + rentToPay + " to " + owner.name);
+                        OnUpdateMessage.Invoke(currentPlayer.name + " заплатил: " + rentToPay + " игроку: " + owner.name + " за аренду");
 
                     }
                     else if (owner == null && currentPlayer.CanAffordNode(price))
                     {
                         //Buy the node
-                        Debug.Log("Player could buy");
+                        //Debug.Log("Player could buy");
+                        OnUpdateMessage.Invoke(currentPlayer.name + " купил: " + this.name + " за: " + price);
                         currentPlayer.BuyProperty(this);
                         OnOwnerUpdated();
                         //Show a message about what happend
@@ -274,13 +271,14 @@ public class MonopolyNode : MonoBehaviour
                         currentPlayer.PayRent(rentToPay, owner);
 
                         //Show a message about what happend
-                        Debug.Log(currentPlayer.name + " pays rent of: " + rentToPay + " to " + owner.name);
+                        OnUpdateMessage.Invoke(currentPlayer.name + " заплатил: " + rentToPay + " игроку: " + owner.name + " за аренду");
 
                     }
                     else if (owner == null && currentPlayer.CanAffordNode(price))
                     {
                         //Buy the node
-                        Debug.Log("Player could buy");
+                        //Debug.Log("Player could buy")
+                        OnUpdateMessage.Invoke(currentPlayer.name + " купил: " + this.name + " за: " + price);
                         currentPlayer.BuyProperty(this);
                         OnOwnerUpdated();
                         //Show a message about what happend
@@ -327,19 +325,19 @@ public class MonopolyNode : MonoBehaviour
                         //Pay rent to somebody
 
                         //Calculate current rent
-                        Debug.Log("Player might pay rent && owner is: " + owner.name);
                         int rentToPay = CalculateRailRoadRent();
                         //Pay the rent to the owner
                         currentPlayer.PayRent(rentToPay, owner);
 
                         //Show a message about what happend
-                        Debug.Log(currentPlayer.name + " pays rent of: " + rentToPay + " to " + owner.name);
+                        OnUpdateMessage.Invoke(currentPlayer.name + " заплатил: " + rentToPay + " игроку: " + owner.name + " за аренду");
 
                     }
                     else if (owner == null && currentPlayer.CanAffordNode(price))
                     {
                         //Buy the node
-                        Debug.Log("Player could buy");
+                        //Debug.Log("Player could buy");
+                        OnUpdateMessage.Invoke(currentPlayer.name + " купил: " + this.name + " за: " + price);
                         currentPlayer.BuyProperty(this);
                         OnOwnerUpdated();
                         //Show a message about what happend
@@ -381,22 +379,25 @@ public class MonopolyNode : MonoBehaviour
                 GameManager.instance.AddTaxToPool(price);
                 currentPlayer.PayMoney(price);
                 //Show a message about what happend
+                OnUpdateMessage.Invoke(currentPlayer.name + " заплатил налог: " + price);
 
-            break;
+                break;
 
             case MonopolyNodeType.FreeParking:
 
                 int tax = GameManager.instance.GetTaxPool();
                 currentPlayer.CollectMoney(tax);
                 //Show a message about what happend
+                OnUpdateMessage.Invoke(currentPlayer.name + " получил возврат налогов: " + tax);
 
-            break;
+                break;
 
             case MonopolyNodeType.GoToJail:
 
                 //currentPlayer.GoToJail();
                 //StartCoroutine(currentPlayer.GoToJail());
                 currentPlayer.GoToJail();
+                OnUpdateMessage.Invoke(currentPlayer.name + " должен отправиться в тюрьму");
                 continueTurn = false;
 
             break;
@@ -422,7 +423,7 @@ public class MonopolyNode : MonoBehaviour
         //Continue
         if (!playerIsHuman) 
         {
-            Invoke("ContinueGame", 2f);
+            Invoke("ContinueGame", GameManager.instance.SecondsBetwinTurns);
         }
         else 
         {

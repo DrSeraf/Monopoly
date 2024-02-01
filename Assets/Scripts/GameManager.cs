@@ -16,6 +16,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] int maxTurnsInJail = 3; //Setting for how long in jail 
     [SerializeField] int startMoney = 1500;
     [SerializeField] int goMoney = 500;
+    [SerializeField] float secondsBetwinTurns = 3;
 
     [Header("Player Info")]
     [SerializeField] GameObject playerInfoPrefab;
@@ -32,6 +33,11 @@ public class GameManager : MonoBehaviour
 
     //Pass over goal to get money
     public int GetGoMoney => goMoney;
+    public float SecondsBetwinTurns => secondsBetwinTurns;
+
+    //Message system
+    public delegate void UpdateMessage(string message);
+    public static UpdateMessage OnUpdateMessage;
 
     //Debug
     public bool alwaysDoubleRoll = false;
@@ -104,6 +110,7 @@ public class GameManager : MonoBehaviour
             if(rolledADouble)
             {
                 playerList[currentPlayer].SetOutOfJail();
+                OnUpdateMessage.Invoke(playerList[currentPlayer].name + " <color=green>может выйти из тюрьмы</color>, потому что выпал дубль");
                 doubleRollCount++;
                 //Move the player
             }
@@ -111,6 +118,7 @@ public class GameManager : MonoBehaviour
             {
                 //We have been long enough here
                 playerList[currentPlayer].SetOutOfJail();
+                OnUpdateMessage.Invoke(playerList[currentPlayer].name + " <color=green>может выйти из тюрьмы</color>");
                 //Allowed to leave
             }
             else
@@ -135,6 +143,7 @@ public class GameManager : MonoBehaviour
                     playerList[currentPlayer].GoToJailVoid(indexOnBoard);
                     doubleRollCount = 0;
                     rolledADouble = false;
+                    OnUpdateMessage.Invoke(playerList[currentPlayer].name + " 3 раза выбросил дубль и попал в <color=red>тюрьму!</color>");
                     return;
                 }
             }
@@ -142,26 +151,33 @@ public class GameManager : MonoBehaviour
 
         //can we leave jail
 
-        //move anyhove if allowed
+        //move anyhow if allowed
         if(allowedToMove == true)
         {
+            OnUpdateMessage.Invoke(playerList[currentPlayer].name + " выпало " + rolledDice[0] + " и " + rolledDice[1]);
             StartCoroutine(DelayBeforeMove(rolledDice[0] + rolledDice[1]));
             //show or hide UI
         }
         else
         {
-            //Maybe switch player
-            Debug.Log("we cannot move - we are not allowed");
-            SwitchPlayer();
+            //Switch player
+            OnUpdateMessage.Invoke(playerList[currentPlayer].name + " должен оставаться в тюрьме. Ходов прошло: " + playerList[currentPlayer].NumberTurnsInJail);
+            StartCoroutine(DelayBetwinSwitchPlayer());
         }
     }
 
     IEnumerator DelayBeforeMove(int rolledDice)
     {
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(secondsBetwinTurns);
         //if we are allowed to move do so
         gameBoard.MovePlayerToken(rolledDice, playerList[currentPlayer]);
         //else we switch
+    }
+
+    IEnumerator DelayBetwinSwitchPlayer()
+    {
+        yield return new WaitForSeconds(secondsBetwinTurns);
+        SwitchPlayer();
     }
 
     public void SwitchPlayer()

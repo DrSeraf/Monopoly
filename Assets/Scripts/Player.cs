@@ -18,7 +18,7 @@ public class Player
     int money;
     MonopolyNode currentNode;
     bool isInJail;
-    int numTurnsInJail;
+    int numTurnsInJail = 0;
     [SerializeField] GameObject myToken;
     [SerializeField] List<MonopolyNode> myMonopolyNodes = new List<MonopolyNode>();
 
@@ -112,7 +112,7 @@ public class Player
         myInfo.SetCashName(money);
     }
 
-    //Jail
+    //----------------------------JAIL------------------------------------
     public void GoToJailVoid(int indexOnBoard)
     {
         isInJail = true;
@@ -149,6 +149,15 @@ public class Player
     public void SetOutOfJail()
     { 
         isInJail = false; 
+        //Reset Turns In Jail
+        numTurnsInJail = 0;
+    }
+
+    public int NumberTurnsInJail => numTurnsInJail;
+
+    public void IncreaseNumTurnInJail()
+    {
+        numTurnsInJail++;
     }
 
 }

@@ -33,6 +33,9 @@ public class GameManager : MonoBehaviour
     //Pass over goal to get money
     public int GetGoMoney => goMoney;
 
+    //Debug
+    public bool alwaysDoubleRoll = false;
+
 
     private void Awake()
     {
@@ -81,8 +84,12 @@ public class GameManager : MonoBehaviour
         Debug.Log("Rolled dice are: " + rolledDice[0] + " & " + rolledDice[1]);
 
         //Debug
-        rolledDice[0] = 2;
-        rolledDice[1] = 2;
+        if(alwaysDoubleRoll)
+        {
+            rolledDice[0] = 2;
+            rolledDice[1] = 2;
+        }
+
 
 
         //Check for double 
@@ -92,11 +99,19 @@ public class GameManager : MonoBehaviour
         //is in jail already 
         if (playerList[currentPlayer].IsInJail)
         {
+            playerList[currentPlayer].IncreaseNumTurnInJail();
+
             if(rolledADouble)
             {
                 playerList[currentPlayer].SetOutOfJail();
                 doubleRollCount++;
                 //Move the player
+            }
+            else if (playerList[currentPlayer].NumberTurnsInJail >= maxTurnsInJail)
+            {
+                //We have been long enough here
+                playerList[currentPlayer].SetOutOfJail();
+                //Allowed to leave
             }
             else
             {
@@ -136,6 +151,8 @@ public class GameManager : MonoBehaviour
         else
         {
             //Maybe switch player
+            Debug.Log("we cannot move - we are not allowed");
+            SwitchPlayer();
         }
     }
 

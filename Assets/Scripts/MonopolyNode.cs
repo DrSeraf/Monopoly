@@ -195,6 +195,7 @@ public class MonopolyNode : MonoBehaviour
     public void PlayerLandenOnNode(Player currentPlayer)
     {
         bool playerIsHuman = currentPlayer.playerType == Player.PlayerType.Human;
+        bool continueTurn = true;
 
         //Check for node type and act
 
@@ -377,13 +378,26 @@ public class MonopolyNode : MonoBehaviour
 
             case MonopolyNodeType.Tax:
 
+                GameManager.instance.AddTaxToPool(price);
+                currentPlayer.PayMoney(price);
+                //Show a message about what happend
+
             break;
 
             case MonopolyNodeType.FreeParking:
 
+                int tax = GameManager.instance.GetTaxPool();
+                currentPlayer.CollectMoney(tax);
+                //Show a message about what happend
+
             break;
 
             case MonopolyNodeType.GoToJail:
+
+                //currentPlayer.GoToJail();
+                //StartCoroutine(currentPlayer.GoToJail());
+                currentPlayer.GoToJail();
+                continueTurn = false;
 
             break;
 
@@ -396,7 +410,11 @@ public class MonopolyNode : MonoBehaviour
             break;
 
         }
-
+        //Stop hear if needed
+        if(!continueTurn)
+        {
+            return;
+        }
 
 
 
@@ -415,11 +433,17 @@ public class MonopolyNode : MonoBehaviour
     void ContinueGame()
     {
         //If the last roll was not a double 
-        //roll agaid
-
-        //not a double roll
-        //switch player
-        GameManager.instance.SwitchPlayer();
+        if(GameManager.instance.RolledADouble)
+        {
+            //roll agaid
+            GameManager.instance.RollDice();
+        }
+        else
+        {
+            //not a double roll
+            //switch player
+            GameManager.instance.SwitchPlayer();
+        }
     }
 
     int CalculatePropertyRent()

@@ -2,9 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
+using static UnityEngine.UI.GridLayoutGroup;
 
 [System.Serializable]
-public class Player 
+public class Player
 {
 
     public enum PlayerType
@@ -50,11 +51,11 @@ public class Player
 
         //if its AI player
 
-            //Check if can bild houses
+        //Check if can bild houses
 
-            //Check for anmortgage properties
+        //Check for anmortgage properties
 
-            //Check if he could trade for missing properties
+        //Check if he could trade for missing properties
     }
 
     public void CollectMoney(int amount)
@@ -63,7 +64,7 @@ public class Player
         myInfo.SetCashName(money);
     }
 
-    internal bool CanAffordNode(int price) 
+    internal bool CanAffordNode(int price)
     {
         return price <= money;
     }
@@ -89,7 +90,7 @@ public class Player
     internal void PayRent(int rentAmount, Player owner)
     {
         //Dpnt have enouth money
-        if(money < rentAmount)
+        if (money < rentAmount)
         {
             //Handle insufficent fund > AI
         }
@@ -99,4 +100,55 @@ public class Player
         //Update UI
         myInfo.SetCashName(money);
     }
+    internal void PayMoney(int amount)
+    {
+        //Dpnt have enouth money
+        if (money < amount)
+        {
+            //Handle insufficent fund > AI
+        }
+        money -= amount;
+        //Update UI
+        myInfo.SetCashName(money);
+    }
+
+    //Jail
+    public void GoToJailVoid(int indexOnBoard)
+    {
+        isInJail = true;
+        //Reposition player
+        MonopolyBoard.Instance.MovePlayerToken(CalculateDistanceFromJail(indexOnBoard), this);
+
+    }
+
+    int CalculateDistanceFromJail(int indexOnBoard)
+    {
+        int result = 0;
+        int indexOfJail = 10;
+
+        if (indexOnBoard > indexOfJail)
+        {
+            result = -(indexOnBoard - indexOfJail);
+        }
+        else
+        {
+            result = indexOfJail - indexOnBoard;
+        }
+
+        return result;
+    }
+
+    public IEnumerator GoToJail()
+    {
+        isInJail = true;
+        //Reposition player
+        yield return new WaitForSeconds(2f);
+        myToken.transform.position = MonopolyBoard.Instance.route[10].transform.position;
+        currentNode = MonopolyBoard.Instance.route[10];
+    }
+    public void SetOutOfJail()
+    { 
+        isInJail = false; 
+    }
+
 }

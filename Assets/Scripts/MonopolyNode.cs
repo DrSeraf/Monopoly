@@ -59,6 +59,14 @@ public class MonopolyNode : MonoBehaviour
     public delegate void UpdateMessage(string message);
     public static UpdateMessage OnUpdateMessage;
 
+    //Drag a community card
+    public delegate void DrawCommunityCard(Player player);
+    public static DrawCommunityCard OnDrawCommunityCard;
+
+    //Drag a chance card
+    public delegate void DrawChanceCard(Player player);
+    public static DrawChanceCard OnDrawChanceCard;
+
     public Player Owner => owner; // Геттер для владельца узла
     public void SetOwner(Player newOwner)
     {
@@ -407,6 +415,9 @@ public class MonopolyNode : MonoBehaviour
             break;
 
             case MonopolyNodeType.CommunityChest:
+
+                OnDrawCommunityCard.Invoke(currentPlayer);
+                continueTurn = false;
 
             break;
 

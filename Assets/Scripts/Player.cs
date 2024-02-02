@@ -33,6 +33,7 @@ public class Player
     public bool IsInJail => isInJail;
     public GameObject MyToken => myToken;
     public MonopolyNode MyCurrentMonopolyNode => currentNode;
+    public int ReadMoney => money;
 
     //Message system
     public delegate void UpdateMessage(string message);

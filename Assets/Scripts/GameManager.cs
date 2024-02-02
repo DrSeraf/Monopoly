@@ -34,6 +34,7 @@ public class GameManager : MonoBehaviour
     //Pass over goal to get money
     public int GetGoMoney => goMoney;
     public float SecondsBetwinTurns => secondsBetwinTurns;
+    public List<Player> GetPlayers => playerList;
 
     //Message system
     public delegate void UpdateMessage(string message);
@@ -92,8 +93,8 @@ public class GameManager : MonoBehaviour
         //Debug
         if(alwaysDoubleRoll)
         {
-            rolledDice[0] = 2;
-            rolledDice[1] = 2;
+            rolledDice[0] = 1;
+            rolledDice[1] = 1;
         }
 
 

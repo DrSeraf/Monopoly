@@ -27,6 +27,7 @@ public class GameManager : MonoBehaviour
     int[] rolledDice;
     bool rolledADouble;
     public bool RolledADouble => rolledADouble;
+    public void RestRolledADouble() => rolledADouble = false;
     int doubleRollCount;
     //Tax pool
     int taxPool = 0;

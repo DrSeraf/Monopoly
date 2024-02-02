@@ -123,6 +123,7 @@ public class Player
         isInJail = true;
         //Reposition player
         MonopolyBoard.Instance.MovePlayerToken(CalculateDistanceFromJail(indexOnBoard), this);
+        GameManager.instance.RestRolledADouble();
 
     }
 
@@ -150,6 +151,7 @@ public class Player
         yield return new WaitForSeconds(GameManager.instance.SecondsBetwinTurns);
         myToken.transform.position = MonopolyBoard.Instance.route[10].transform.position;
         currentNode = MonopolyBoard.Instance.route[10];
+        GameManager.instance.RestRolledADouble();
     }
     public void SetOutOfJail()
     { 

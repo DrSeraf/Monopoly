@@ -68,16 +68,18 @@ public class CommunityChest : MonoBehaviour
 
     public void ApplyCardEffect()//Close btn of the card
     {
-        if(pikedCard.rewardMoney !=0 && !pikedCard.collectFromPlayers)
+        bool isMoving = false;
+        if (pikedCard.rewardMoney != 0 && !pikedCard.collectFromPlayers)
         {
             currentPlayer.CollectMoney(pikedCard.rewardMoney);
         }
-        else if(pikedCard.penalityMoney != 0)
+        else if (pikedCard.penalityMoney != 0)
         {
             currentPlayer.PayMoney(pikedCard.penalityMoney);//Handle insuff sunds
         }
-        else if(pikedCard.moveToBoardIndex != -1)
+        else if (pikedCard.moveToBoardIndex != -1)
         {
+            isMoving = true;
             //Steps to goal
             int currentIndex = MonopolyBoard.Instance.route.IndexOf(currentPlayer.MyCurrentMonopolyNode);
             int lengthOfBoard = MonopolyBoard.Instance.route.Count;
@@ -86,14 +88,14 @@ public class CommunityChest : MonoBehaviour
             {
                 stepsToMove = pikedCard.moveToBoardIndex - currentIndex;
             }
-            else if(currentIndex > pikedCard.moveToBoardIndex)
+            else if (currentIndex > pikedCard.moveToBoardIndex)
             {
                 stepsToMove = lengthOfBoard - currentIndex + pikedCard.moveToBoardIndex;
             }
             //Start the move
             MonopolyBoard.Instance.MovePlayerToken(stepsToMove, currentPlayer);
         }
-        else if(pikedCard.collectFromPlayers)
+        else if (pikedCard.collectFromPlayers)
         {
             int totalCollected = 0;
             List<Player> allPlayers = GameManager.instance.GetPlayers;
@@ -112,15 +114,35 @@ public class CommunityChest : MonoBehaviour
         }
         else if (pikedCard.streetRepairs)
         {
-            
+
         }
-        else if (pikedCard.goToJail)
-        {
+        else if (pikedCard.goToJail)   
+        {   isMoving = true;
             currentPlayer.GoToJailVoid(MonopolyBoard.Instance.route.IndexOf(currentPlayer.MyCurrentMonopolyNode));
         }
         else if (pikedCard.jailFreeCard)
         {
             
+        }
+        ContinueGame(isMoving);
+    }
+
+    void ContinueGame(bool isMoving)
+    {
+        if(currentPlayer.playerType == Player.PlayerType.AI)
+        {
+            if(!isMoving && GameManager.instance.RolledADouble)
+            {
+                GameManager.instance.RollDice();
+            }
+            else if (!isMoving && !GameManager.instance.RolledADouble)
+            {
+                GameManager.instance.SwitchPlayer();
+            }
+        }
+        else
+        {
+
         }
     }
 

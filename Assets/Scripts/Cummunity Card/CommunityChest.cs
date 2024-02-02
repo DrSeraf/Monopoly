@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.UI;
 
 public class CommunityChest : MonoBehaviour
 {
@@ -10,9 +11,10 @@ public class CommunityChest : MonoBehaviour
     [SerializeField] TMP_Text cardText;
     [SerializeField] GameObject cardHolderBackground;
     [SerializeField] float showTime = 3; //Hide card auto after 3 seconds
-    [SerializeField] float moveDelay = 0.5f;//Maybe not used later
+    [SerializeField] Button closeCardButton;
 
     List<SCR_CummunityCard> cardPool = new List<SCR_CummunityCard>();
+    List<SCR_CummunityCard> usedCardPool = new List<SCR_CummunityCard>();
     //Current card and current player
     SCR_CummunityCard pikedCard;
     Player currentPlayer;
@@ -53,6 +55,17 @@ public class CommunityChest : MonoBehaviour
 
         //Draw an actual card
         pikedCard = cardPool[0];
+        cardPool.RemoveAt(0);
+        usedCardPool.Add(pikedCard);
+        if(cardPool.Count == 0)
+        {
+            //Put back all cards
+            cardPool.AddRange(usedCardPool);
+            usedCardPool.Clear();
+
+            //Shuffle all
+            ShuffleCards();
+        }
         //Who is current player
         currentPlayer = cardTaker;
 
@@ -62,7 +75,16 @@ public class CommunityChest : MonoBehaviour
         //Fill in the text
         cardText.text = pikedCard.textOnCard;
 
-        //Apply the effects based on the card we draw
+        //Deactivate button if we are an AI player
+        if(currentPlayer.playerType == Player.PlayerType.AI)
+        {
+            closeCardButton.interactable = false;
+            Invoke("ApplyCardEffect", showTime);
+        }
+        else
+        {
+            closeCardButton.interactable= true;
+        }
 
     }
 
@@ -114,16 +136,19 @@ public class CommunityChest : MonoBehaviour
         }
         else if (pikedCard.streetRepairs)
         {
-
+            int[] allBuildings = currentPlayer.CountHousesAndHotels();
+            int totalCosts = pikedCard.streetRepairsHousPrice * allBuildings[0] + pikedCard.streetRepairsHotelPrice * allBuildings[1];
+            currentPlayer.PayMoney(totalCosts);
         }
         else if (pikedCard.goToJail)   
         {   isMoving = true;
             currentPlayer.GoToJailVoid(MonopolyBoard.Instance.route.IndexOf(currentPlayer.MyCurrentMonopolyNode));
         }
-        else if (pikedCard.jailFreeCard)
+        else if (pikedCard.jailFreeCard)//Jail free card
         {
             
         }
+        cardHolderBackground.SetActive(false);
         ContinueGame(isMoving);
     }
 
@@ -140,7 +165,7 @@ public class CommunityChest : MonoBehaviour
                 GameManager.instance.SwitchPlayer();
             }
         }
-        else
+        else//Human inputs
         {
 
         }

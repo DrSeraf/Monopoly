@@ -716,26 +716,11 @@ MonoBehaviour:
   cards:
   - {fileID: 11400000, guid: 8c72f74eb4a279548b6f100cc8ff5c2d, type: 2}
   - {fileID: 11400000, guid: b664bc3dd3a00da40a2ce208ac610b30, type: 2}
-  - {fileID: 11400000, guid: 10862ce88251cc349ae02c1b9bb2bdfc, type: 2}
-  - {fileID: 11400000, guid: c3f25ea415a82574ba9a5e8ea064eaba, type: 2}
-  - {fileID: 11400000, guid: 2d1899c4a88724144ac1f20eecba83db, type: 2}
-  - {fileID: 11400000, guid: 7b9bae077b7b0be4eaa488bac6b11877, type: 2}
-  - {fileID: 11400000, guid: 368e9c025c21b5a4bbe87894f8ced037, type: 2}
-  - {fileID: 11400000, guid: dd7b29c4b69bbcc41a6d002edbc9e8f2, type: 2}
-  - {fileID: 11400000, guid: 059b38d160c5a664b9abd2c80479ddaf, type: 2}
-  - {fileID: 11400000, guid: 46f821ac806eeb84691925084d9211ad, type: 2}
-  - {fileID: 11400000, guid: bc41e05089778364b81cb94036bed1bf, type: 2}
-  - {fileID: 11400000, guid: d4dde2b3acb7d1e4398b19534b29faeb, type: 2}
-  - {fileID: 11400000, guid: e04472fa808929745a448d3955973042, type: 2}
-  - {fileID: 11400000, guid: d0dc3f2dd6dfffe40934d9430642ba2a, type: 2}
-  - {fileID: 11400000, guid: d2c9f4549d08250429c11c1f8853a178, type: 2}
-  - {fileID: 11400000, guid: 8542b6767000ebd40a5f95b61d455810, type: 2}
-  - {fileID: 11400000, guid: f862df6e909a43d44b664baca05cc571, type: 2}
-  - {fileID: 11400000, guid: 05e62ec2485724c4da517bb914080e71, type: 2}
   cardText: {fileID: 2014091583}
   cardHolderBackground: {fileID: 1976424730}
   showTime: 3
   moveDelay: 0.5
+  closeCardButton: {fileID: 531049712}
 --- !u!4 &169588113
 Transform:
   m_ObjectHideFlags: 0
@@ -1753,18 +1738,6 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1976424730}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
       - m_Target: {fileID: 169588112}
         m_TargetAssemblyTypeName: CommunityChest, Assembly-CSharp
         m_MethodName: ApplyCardEffect
@@ -7794,8 +7767,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 65.53098, y: -26.346802}
-  m_SizeDelta: {x: 450.1681, y: 174.1703}
+  m_AnchoredPosition: {x: 58.411964, y: -26.346802}
+  m_SizeDelta: {x: 464.4061, y: 174.1703}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2014091583
 MonoBehaviour:
@@ -7852,7 +7825,7 @@ MonoBehaviour:
   m_fontSizeMax: 40
   m_fontStyle: 1
   m_HorizontalAlignment: 2
-  m_VerticalAlignment: 256
+  m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0
   m_wordSpacing: 0

@@ -11,8 +11,12 @@ public class SCR_CummunityCard : ScriptableObject
     public int penalityMoney;// Pay money
     public int moveToBoardIndex = -1;
     public bool collectFromPlayers;
-    public bool streetRepairs;
+    [Header("Jail Content")]
     public bool goToJail;
     public bool jailFreeCard;
+    [Header("Street Repairs")]
+    public bool streetRepairs;
+    public int streetRepairsHousPrice = 40;
+    public int streetRepairsHotelPrice = 115;
 
 }

@@ -167,6 +167,29 @@ public class Player
         numTurnsInJail++;
     }
 
+    //-------------------------------STREET REPAIRS-----------------------------------------
+
+    public int[] CountHousesAndHotels()
+    {
+        int houses = 0;//Goes to index 0
+        int hotels = 0;//Goes to index 1
+
+        foreach (var node in myMonopolyNodes)
+        {
+            if(node.NumberOfHouses != 5)
+            {
+                houses += node.NumberOfHouses;
+            }
+            else
+            {
+                hotels += 1;
+            }
+        }
+
+        int[] allBuildings = new int[]{houses,hotels};
+        return allBuildings;
+    }
+
     //-------------------------------HANDLE INSUFFICIENT FUNDS-------------------------------
 
     //-------------------------------BUNKRUPT-GAME-OVER--------------------------------------

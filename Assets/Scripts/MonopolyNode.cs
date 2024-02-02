@@ -43,6 +43,7 @@ public class MonopolyNode : MonoBehaviour
     [SerializeField] internal int baseRent;
     [SerializeField] internal List<int> rentWithHouse = new List<int>(); // Список арендных плат с домами
     int numberOfHouses; // Количество домов на узле
+    public int NumberOfHouses => numberOfHouses;
 
     [Header("Property Mortgage")]
     [SerializeField] GameObject mortgageImage; // Изображение залога

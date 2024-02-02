@@ -97,6 +97,8 @@ public class GameManager : MonoBehaviour
             rolledDice[0] = 1;
             rolledDice[1] = 1;
         }
+        rolledDice[0] = 36;
+        rolledDice[1] = 0;
 
 
 

@@ -413,6 +413,9 @@ public class MonopolyNode : MonoBehaviour
 
             case MonopolyNodeType.Chance:
 
+                OnDrawChanceCard.Invoke(currentPlayer);
+                continueTurn = false;
+
             break;
 
             case MonopolyNodeType.CommunityChest:

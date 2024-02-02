@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
+using Unity.VisualScripting.Antlr3.Runtime.Misc;
 
 // Класс MonopolyBoard, который представляет собой игровое поле в игре монополии
 public class MonopolyBoard : MonoBehaviour
@@ -62,6 +63,31 @@ public class MonopolyBoard : MonoBehaviour
     public void MovePlayerToken(int steps, Player player)
     {
         StartCoroutine(MovePlayerInSteps(steps, player));
+    }
+
+    public void MovePlayerToken(MonopolyNodeType _type, Player player)
+    {
+        int indexOfNextNodeType = -1;//Index to find
+        int indexOnBoard = route.IndexOf(player.MyCurrentMonopolyNode);//Where is the player
+        int startSearchIndex = (indexOnBoard + 1) % route.Count;
+        int nodeSearch = 0;//Amount of field searched
+
+        while (indexOfNextNodeType == -1 && nodeSearch < route.Count)//Keep searching 
+        {
+            if (route[startSearchIndex].monopolyNodeType == _type)//Found the desired type 
+            {
+                indexOfNextNodeType = startSearchIndex;
+            }
+            startSearchIndex = (startSearchIndex + 1) % route.Count;
+            nodeSearch++;
+        }
+        if (indexOfNextNodeType == -1)//security exit
+        {
+            Debug.LogError("No node found");
+            return;
+        }
+
+        StartCoroutine(MovePlayerInSteps(nodeSearch, player));
     }
 
     IEnumerator MovePlayerInSteps(int steps, Player player) 
@@ -151,4 +177,8 @@ public class MonopolyBoard : MonoBehaviour
 
     }
 
+
+    //---------------------------REQUEST MISSING NODES-IN-SET----------------------------
+
+    //---------------------------CALCULATE DISTANCE BETWEEN NODES
 }

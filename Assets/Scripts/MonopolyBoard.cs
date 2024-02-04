@@ -160,17 +160,19 @@ public class MonopolyBoard : MonoBehaviour
 
     public (List<MonopolyNode> list, bool allSame) PlayerHasAllNodesOfSet(MonopolyNode node)
     {
-            bool allSame = false;
+        bool allSame = false;
 
         foreach (var nodeSet in nodeSetList)
         {
-            if(nodeSet.nodesInSetList.Contains(node)) 
+            if (nodeSet.nodesInSetList.Contains(node))
             {
-                    
+
                 //Linq
                 allSame = nodeSet.nodesInSetList.All(_node => _node.Owner == node.Owner);
-                return (nodeSet.nodesInSetList,  allSame);
+                return (nodeSet.nodesInSetList, allSame);
                 
+
+
             }
         }
         return (null, allSame);

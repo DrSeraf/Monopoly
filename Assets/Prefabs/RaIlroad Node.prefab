@@ -128,15 +128,18 @@ MonoBehaviour:
   name: RailRoad
   nameText: {fileID: 8502132468688812747}
   price: 200
+  houseCost: 0
   priceText: {fileID: 6528799767961257669}
-  calculateRentAuto: 0
+  calculateRentAuto: 1
   currentRent: 0
   baseRent: 25
   rentWithHouse: 
+  houses: []
+  hotel: {fileID: 0}
   mortgageImage: {fileID: 5362228639712985091}
   propertyImage: {fileID: 8608127113347071776}
   isMortgaged: 0
-  mortgageValue: 0
+  mortgageValue: 100
   ownerBar: {fileID: 6098321646913499523}
   ownerText: {fileID: 5961445828408750378}
 --- !u!1 &2603595406255027565

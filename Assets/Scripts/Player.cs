@@ -55,12 +55,15 @@ public class Player
         newNode.PlayerLandenOnNode(this);
 
         //if its AI player
+        if (playerType == PlayerType.AI)
+        {
+            //Check if can bild houses
+            CheckIfPlayerHasASet();
+            //Check for anmortgage properties
 
-        //Check if can bild houses
+            //Check if he could trade for missing properties
+        }
 
-        //Check for anmortgage properties
-
-        //Check if he could trade for missing properties
     }
 
     public void CollectMoney(int amount)
@@ -198,12 +201,82 @@ public class Player
 
     //-------------------------------CHECK IF PLAYER HAS A PROPERTY SET----------------------
 
+    void CheckIfPlayerHasASet()
+    {
+        foreach (var node in myMonopolyNodes)
+        {
+            var (list, allSame) = MonopolyBoard.Instance.PlayerHasAllNodesOfSet(node);
+            if (!allSame)
+            {
+                continue;
+            }
+
+            List<MonopolyNode> nodeSet = list;
+            if (nodeSet != null)
+            {
+                bool hasMordgadedNode = nodeSet.Any(node => node.IsMortgaged)?true:false;
+                if(!hasMordgadedNode)
+                {
+                    if (nodeSet[0].monopolyNodeType == MonopolyNodeType.Property)
+                    {
+                        //We could build a house on the set
+                        BuilsHouseOrHotelEvenly(nodeSet);
+                    }
+                }
+            }
+        }
+    }
+
     //-------------------------------BUILD HOUSES EVENLY ON NODE SETS------------------------
+
+    void BuilsHouseOrHotelEvenly(List<MonopolyNode> nodesToBuildOn)
+    {
+        int minHouses = int.MaxValue;
+        int maxHouses = int.MinValue;
+        //Get min and max numbers of houses currently on the property
+        foreach (var node in nodesToBuildOn)
+        {
+            int numOfHouses = node.NumberOfHouses;
+            if (numOfHouses < minHouses)
+            {
+                minHouses = numOfHouses;
+            }
+            if (numOfHouses > maxHouses && numOfHouses < 5)
+            {
+                maxHouses = numOfHouses;
+            }
+        }
+        //Buy houses on the properties for max allowed on the properties
+        foreach (var node in nodesToBuildOn)
+        {
+            if (node.NumberOfHouses == minHouses && node.NumberOfHouses < 5 && CanAffordHouse(node.houseCost))
+            {
+                node.BuildHouseOrHotel();
+                PayMoney(node.houseCost);
+            }
+        }
+
+    }
 
     //-------------------------------TRADING SYSTEM------------------------------------------
 
     //-------------------------------FIND MISSING PROPERTYS IN SET---------------------------
 
     //-------------------------------HOUSES AND HOTELS - CAN AFFORT AND COUNT----------------
+
+    bool CanAffordHouse(int price)
+    {
+        //Ai only
+        if (playerType == PlayerType.AI)
+        {
+            return (money - aiMoneySafaty) >= price;
+        }
+        //Human only
+        else
+        {
+            return (money) >= price;
+        }
+        
+    }
 
 }

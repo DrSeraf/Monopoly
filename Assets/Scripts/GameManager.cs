@@ -43,6 +43,8 @@ public class GameManager : MonoBehaviour
 
     //Debug
     public bool alwaysDoubleRoll = false;
+    public bool alwaysDoubleRoll2 = false;
+    public bool alwaysDoubleRoll3 = false;
 
 
     private void Awake()
@@ -94,11 +96,19 @@ public class GameManager : MonoBehaviour
         //Debug
         if(alwaysDoubleRoll)
         {
-            rolledDice[0] = 1;
+            rolledDice[0] = 5;
+            rolledDice[1] = 0;
+        }
+        if (alwaysDoubleRoll2)
+        {
+            rolledDice[0] = 10;
+            rolledDice[1] = 0;
+        }
+        if (alwaysDoubleRoll3)
+        {
+            rolledDice[0] = 0;
             rolledDice[1] = 1;
         }
-        rolledDice[0] = 36;
-        rolledDice[1] = 0;
 
 
 

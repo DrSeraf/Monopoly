@@ -1556,6 +1556,10 @@ PrefabInstance:
       value: 19
       objectReference: {fileID: 0}
     - target: {fileID: 4586474242295026172, guid: 538acca5f88a7234ba3cb7e0a956c163, type: 3}
+      propertyPath: houseCost
+      value: 200
+      objectReference: {fileID: 0}
+    - target: {fileID: 4586474242295026172, guid: 538acca5f88a7234ba3cb7e0a956c163, type: 3}
       propertyPath: currentRent
       value: 200
       objectReference: {fileID: 0}
@@ -2204,6 +2208,10 @@ PrefabInstance:
       value: 21
       objectReference: {fileID: 0}
     - target: {fileID: 4586474242295026172, guid: 538acca5f88a7234ba3cb7e0a956c163, type: 3}
+      propertyPath: houseCost
+      value: 200
+      objectReference: {fileID: 0}
+    - target: {fileID: 4586474242295026172, guid: 538acca5f88a7234ba3cb7e0a956c163, type: 3}
       propertyPath: currentRent
       value: 200
       objectReference: {fileID: 0}
@@ -2339,6 +2347,10 @@ PrefabInstance:
     - target: {fileID: 4586474242295026172, guid: 538acca5f88a7234ba3cb7e0a956c163, type: 3}
       propertyPath: baseRent
       value: 23
+      objectReference: {fileID: 0}
+    - target: {fileID: 4586474242295026172, guid: 538acca5f88a7234ba3cb7e0a956c163, type: 3}
+      propertyPath: houseCost
+      value: 200
       objectReference: {fileID: 0}
     - target: {fileID: 4586474242295026172, guid: 538acca5f88a7234ba3cb7e0a956c163, type: 3}
       propertyPath: currentRent
@@ -3981,6 +3993,10 @@ PrefabInstance:
       value: 40
       objectReference: {fileID: 0}
     - target: {fileID: 4586474242295026172, guid: 538acca5f88a7234ba3cb7e0a956c163, type: 3}
+      propertyPath: houseCost
+      value: 200
+      objectReference: {fileID: 0}
+    - target: {fileID: 4586474242295026172, guid: 538acca5f88a7234ba3cb7e0a956c163, type: 3}
       propertyPath: currentRent
       value: 200
       objectReference: {fileID: 0}
@@ -5413,7 +5429,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6287834800633162128, guid: ba6b1b110828b5740b3e5307da1abec0, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -5533,7 +5549,7 @@ MonoBehaviour:
   - {fileID: 8721684917491194573, guid: fc19d4a6cce7d95468481b58c2edf358, type: 3}
   - {fileID: 2446084947991022603, guid: b7b8b2ccc40e64c47b622d7860b5d24d, type: 3}
   - {fileID: 1310194298266213281, guid: 19b21bdf80446a14496f33d01d09d3eb, type: 3}
-  alwaysDoubleRoll: 1
+  alwaysDoubleRoll: 0
   alwaysDoubleRoll2: 0
   alwaysDoubleRoll3: 0
 --- !u!1001 &1159545753
@@ -5611,6 +5627,10 @@ PrefabInstance:
     - target: {fileID: 4586474242295026172, guid: 538acca5f88a7234ba3cb7e0a956c163, type: 3}
       propertyPath: baseRent
       value: 35
+      objectReference: {fileID: 0}
+    - target: {fileID: 4586474242295026172, guid: 538acca5f88a7234ba3cb7e0a956c163, type: 3}
+      propertyPath: houseCost
+      value: 200
       objectReference: {fileID: 0}
     - target: {fileID: 4586474242295026172, guid: 538acca5f88a7234ba3cb7e0a956c163, type: 3}
       propertyPath: currentRent
@@ -8129,6 +8149,10 @@ PrefabInstance:
       propertyPath: m_Color.r
       value: 0.6981132
       objectReference: {fileID: 0}
+    - target: {fileID: 3753128975848822130, guid: 538acca5f88a7234ba3cb7e0a956c163, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4586474242295026172, guid: 538acca5f88a7234ba3cb7e0a956c163, type: 3}
       propertyPath: price
       value: 90
@@ -8140,6 +8164,10 @@ PrefabInstance:
     - target: {fileID: 4586474242295026172, guid: 538acca5f88a7234ba3cb7e0a956c163, type: 3}
       propertyPath: houseCost
       value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 4586474242295026172, guid: 538acca5f88a7234ba3cb7e0a956c163, type: 3}
+      propertyPath: isMortgaged
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4586474242295026172, guid: 538acca5f88a7234ba3cb7e0a956c163, type: 3}
       propertyPath: mortgageValue
@@ -9687,7 +9715,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6287834800633162128, guid: ba6b1b110828b5740b3e5307da1abec0, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

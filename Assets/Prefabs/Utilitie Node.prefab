@@ -156,11 +156,14 @@ MonoBehaviour:
   name: Utilitie
   nameText: {fileID: 6652786189111093134}
   price: 150
+  houseCost: 0
   priceText: {fileID: 2101311911720216516}
   calculateRentAuto: 0
   currentRent: 0
   baseRent: 0
   rentWithHouse: 
+  houses: []
+  hotel: {fileID: 0}
   mortgageImage: {fileID: 8570647826763640151}
   propertyImage: {fileID: 8415793508537492226}
   isMortgaged: 0

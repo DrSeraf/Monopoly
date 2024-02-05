@@ -773,7 +773,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cards:
+  - {fileID: 11400000, guid: ac19b1d968fd86d4d829aff5f8c6c517, type: 2}
+  - {fileID: 11400000, guid: 72788f2496815a14985ee66c54fc66b8, type: 2}
+  - {fileID: 11400000, guid: 7eea61688c811c249bcfe33afe3f9acc, type: 2}
+  - {fileID: 11400000, guid: 9c148a4cba39b194086044d7562b5277, type: 2}
   - {fileID: 11400000, guid: 3f86fe7ba8af8ab4ab2e597b64cf46e8, type: 2}
+  - {fileID: 11400000, guid: e5ef34443c162134f94ae3242462d118, type: 2}
+  - {fileID: 11400000, guid: 1c1b182cbcddb1a458b2b871057e131c, type: 2}
+  - {fileID: 11400000, guid: 625d021086a523f428e513a3848ce7b2, type: 2}
+  - {fileID: 11400000, guid: 7a6df2b75f186094ab59f76fe59193de, type: 2}
+  - {fileID: 11400000, guid: 2712aab15e8981744856f1396f7eff84, type: 2}
+  - {fileID: 11400000, guid: 0842399c2191ea147843333b4be2e71f, type: 2}
+  - {fileID: 11400000, guid: 30c8ccbbcb623a4419d7b233d920a07e, type: 2}
+  - {fileID: 11400000, guid: a6b833a9e4f23ca42be1084af252a4e1, type: 2}
+  - {fileID: 11400000, guid: 2246fd114a0ba38448b589ed6c9dc015, type: 2}
+  - {fileID: 11400000, guid: ac1390b6000403040a82fc70896f317d, type: 2}
+  - {fileID: 11400000, guid: a36a3ff8ac39abf4f8c5c5d371c63e5e, type: 2}
   cardText: {fileID: 1501937163}
   cardHolderBackground: {fileID: 1237931294}
   showTime: 3
@@ -2641,7 +2656,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2888891405106912368, guid: ac8d412dec7b6b34e961376189339fe2, type: 3}
       propertyPath: baseRent
-      value: 50
+      value: 25
       objectReference: {fileID: 0}
     - target: {fileID: 2888891405106912368, guid: ac8d412dec7b6b34e961376189339fe2, type: 3}
       propertyPath: mortgageValue
@@ -2649,7 +2664,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2888891405106912368, guid: ac8d412dec7b6b34e961376189339fe2, type: 3}
       propertyPath: monopolyNodeType
-      value: 0
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 2888891405106912368, guid: ac8d412dec7b6b34e961376189339fe2, type: 3}
       propertyPath: calculateRentAuto
@@ -5398,7 +5413,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6287834800633162128, guid: ba6b1b110828b5740b3e5307da1abec0, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -5518,7 +5533,7 @@ MonoBehaviour:
   - {fileID: 8721684917491194573, guid: fc19d4a6cce7d95468481b58c2edf358, type: 3}
   - {fileID: 2446084947991022603, guid: b7b8b2ccc40e64c47b622d7860b5d24d, type: 3}
   - {fileID: 1310194298266213281, guid: 19b21bdf80446a14496f33d01d09d3eb, type: 3}
-  alwaysDoubleRoll: 0
+  alwaysDoubleRoll: 1
   alwaysDoubleRoll2: 0
   alwaysDoubleRoll3: 0
 --- !u!1001 &1159545753
@@ -9672,7 +9687,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6287834800633162128, guid: ba6b1b110828b5740b3e5307da1abec0, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

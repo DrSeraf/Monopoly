@@ -407,12 +407,10 @@ public class MonopolyNode : MonoBehaviour
             break;
 
             case MonopolyNodeType.GoToJail:
-                //currentPlayer.GoToJail();
-                //StartCoroutine(currentPlayer.GoToJail());
                 StartCoroutine(currentPlayer.GoToJail());
-                //currentPlayer.GoToJail();
+                //currentPlayer.GoToJailVoid();
                 OnUpdateMessage.Invoke(currentPlayer.name + " должен отправиться в тюрьму");
-                continueTurn = false;
+                //continueTurn = false;
 
             break;
 
@@ -616,13 +614,14 @@ public class MonopolyNode : MonoBehaviour
         }
     }
 
-    public void SellHouseOrHotel()
+    public int SellHouseOrHotel()
     {
         if (monopolyNodeType == MonopolyNodeType.Property)
         {
             numberOfHouses--;
             VisualizeHouses();
         }
+        return houseCost / 2;
     }
 
     public void ResetNode()
@@ -643,6 +642,7 @@ public class MonopolyNode : MonoBehaviour
         //Reset the owner
 
         //Remove property from owner
+        owner.RemoveProperty(this);
         owner.name = "";
         //Update UI
         OnOwnerUpdated();

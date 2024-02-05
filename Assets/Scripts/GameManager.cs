@@ -81,6 +81,7 @@ public class GameManager : MonoBehaviour
 
             playerList[i].Inititialize(gameBoard.route[0], startMoney, info, newToken);
         }
+        playerList[currentPlayer].ActivateSelector(true);
     }
 
     public void RollDice()//Press button from human - or auto from ai
@@ -96,13 +97,13 @@ public class GameManager : MonoBehaviour
         //Debug
         if(alwaysDoubleRoll)
         {
-            rolledDice[0] = 5;
-            rolledDice[1] = 0;
+            rolledDice[0] = 3;
+            rolledDice[1] = 3;
         }
         if (alwaysDoubleRoll2)
         {
-            rolledDice[0] = 10;
-            rolledDice[1] = 0;
+            rolledDice[0] = 1;
+            rolledDice[1] = 1;
         }
         if (alwaysDoubleRoll3)
         {
@@ -205,7 +206,8 @@ public class GameManager : MonoBehaviour
         {
             currentPlayer = 0;
         }
-
+        DeactivateArrow();
+        playerList[currentPlayer].ActivateSelector(true);
         //check if in jail
 
         //is player AI
@@ -235,5 +237,37 @@ public class GameManager : MonoBehaviour
         //Send temp tax
         return currentTaxCollected;
 
+    }
+
+    //----------------------------GAME OVER--------------------------------
+
+    public void RemovePlayer(Player player)
+    {
+        playerList.Remove(player);
+        //Check for game over
+        CheckForGameOver();
+
+    }
+
+    void CheckForGameOver()
+    {
+        if(playerList.Count == 1)
+        {
+            //We have a winner
+            Debug.Log(playerList[0].name + "Победитель!");
+            OnUpdateMessage.Invoke(playerList[0].name + "Победитель!");
+            //Stop the game loop anyhow
+
+            //Show UI
+        }
+    }
+
+    //----------------------------UI STUFF----------------------------------
+    void DeactivateArrow()
+    {
+        foreach (var player in playerList)
+        {
+            player.ActivateSelector(false);
+        }
     }
 }

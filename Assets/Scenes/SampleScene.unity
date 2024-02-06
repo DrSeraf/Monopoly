@@ -1207,7 +1207,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dc1b61b96f800ed47885cfe26259e22b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  humanPanel: {fileID: 0}
+  humanPanel: {fileID: 1855343954}
   rollDiseButton: {fileID: 1555156517}
   endTurnButton: {fileID: 1772773002}
 --- !u!4 &265279388
@@ -1442,8 +1442,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 169588112}
-        m_TargetAssemblyTypeName: CommunityChest, Assembly-CSharp
+      - m_Target: {fileID: 169588114}
+        m_TargetAssemblyTypeName: ChanceField, Assembly-CSharp
         m_MethodName: ApplyCardEffect
         m_Mode: 1
         m_Arguments:
@@ -8191,7 +8191,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1555156518}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1143232217}
+        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+        m_MethodName: RollDice
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1555156518
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8799,7 +8811,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1772773003}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1143232217}
+        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+        m_MethodName: SwitchPlayer
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1772773003
 MonoBehaviour:
   m_ObjectHideFlags: 0

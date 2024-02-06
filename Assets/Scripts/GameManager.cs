@@ -193,6 +193,12 @@ public class GameManager : MonoBehaviour
             OnUpdateMessage.Invoke(playerList[currentPlayer].name + " должен оставаться в тюрьме. Ходов прошло: " + playerList[currentPlayer].NumberTurnsInJail);
             StartCoroutine(DelayBetwinSwitchPlayer());
         }
+
+        //Show or hide UI
+        if (playerList[currentPlayer].playerType == Player.PlayerType.Human)
+        {
+            OnShowHumanPanel.Invoke(true, false, false);
+        }
     }
 
     IEnumerator DelayBeforeMove(int rolledDice)
@@ -228,6 +234,7 @@ public class GameManager : MonoBehaviour
         if (playerList[currentPlayer].playerType == Player.PlayerType.AI)
         {
             RollDice();
+            OnShowHumanPanel.Invoke(false, false, false);
         }
         else//if human - show UI
         {

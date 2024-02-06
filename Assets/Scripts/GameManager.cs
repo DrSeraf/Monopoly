@@ -41,6 +41,11 @@ public class GameManager : MonoBehaviour
     public delegate void UpdateMessage(string message);
     public static UpdateMessage OnUpdateMessage;
 
+    //Human input panel 
+    public delegate void ShowHumanPanel(bool activatePanel, bool activateRollDice, bool activateEndTurn);
+    public static ShowHumanPanel OnShowHumanPanel;
+
+
     //Debug
     public bool alwaysDoubleRoll = false;
     public bool alwaysDoubleRoll2 = false;
@@ -82,6 +87,15 @@ public class GameManager : MonoBehaviour
             playerList[i].Inititialize(gameBoard.route[0], startMoney, info, newToken);
         }
         playerList[currentPlayer].ActivateSelector(true);
+
+        if (playerList[currentPlayer].playerType == Player.PlayerType.Human)
+        {
+            OnShowHumanPanel.Invoke(true, true, false);
+        }
+        else
+        {
+            OnShowHumanPanel.Invoke(false, false, false);
+        }
     }
 
     public void RollDice()//Press button from human - or auto from ai
@@ -215,9 +229,10 @@ public class GameManager : MonoBehaviour
         {
             RollDice();
         }
-
-
-        //if human - show UI
+        else//if human - show UI
+        {
+            OnShowHumanPanel.Invoke(true, true, false);
+        }
 
     }
 

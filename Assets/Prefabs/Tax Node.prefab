@@ -327,7 +327,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0, b: 0, a: 0.09803922}
+  m_Color: {r: 0, g: 0, b: 0, a: 0}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -470,11 +470,14 @@ MonoBehaviour:
   name: Income Tax
   nameText: {fileID: 4962278344715535075}
   price: 200
+  houseCost: 0
   priceText: {fileID: 1223160575891981715}
   calculateRentAuto: 0
   currentRent: 0
   baseRent: 0
   rentWithHouse: 
+  houses: []
+  hotel: {fileID: 0}
   mortgageImage: {fileID: 0}
   propertyImage: {fileID: 0}
   isMortgaged: 0

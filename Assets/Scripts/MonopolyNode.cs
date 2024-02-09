@@ -93,7 +93,7 @@ public class MonopolyNode : MonoBehaviour
         // Обновление текста цены
         if (priceText != null)
         {
-            priceText.text = "$ " + price;
+            priceText.text = "М " + price;
         }
         // Расчет цены и арендной платы
         if (calculateRentAuto)

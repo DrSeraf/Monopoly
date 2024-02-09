@@ -15,11 +15,13 @@ MonoBehaviour:
   textOnCard: "\u041E\u0422\u041F\u0420\u0410\u0412\u041B\u042F\u0419\u0422\u0415\u0421\u042C
     \u0412 \u0422\u042E\u0420\u042C\u041C\u0423! \u0412\u042B \u041D\u0415 \u041F\u0420\u041E\u0425\u041E\u0414\u0418\u0422\u0415
     \u041F\u041E\u041B\u0415 \"\u0412\u041F\u0415\u0420\u0401\u0414\" \u0418 \u041D\u0415
-    \u041F\u041E\u041B\u0423\u0427\u0410\u0415\u0422\u0415 $500"
+    \u041F\u041E\u041B\u0423\u0427\u0410\u0415\u0422\u0415 500 \u041C."
   rewardMoney: 0
   penalityMoney: 0
   moveToBoardIndex: -1
   collectFromPlayers: 0
-  streetRepairs: 0
   goToJail: 1
   jailFreeCard: 0
+  streetRepairs: 0
+  streetRepairsHousPrice: 40
+  streetRepairsHotelPrice: 115

@@ -12,8 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6b45f1eacb68d8e4c89f57342d9830cb, type: 3}
   m_Name: 5 Advance token to nearest Railroad
   m_EditorClassIdentifier: 
-  textOnCard: Advance token to nearest <color=blue>Railroad</color>. If unowned,
-    you may buy it from the Bank.
+  textOnCard: "\u041E\u0422\u041F\u0420\u0410\u0412\u041B\u042F\u0419\u0422\u0415\u0421\u042C
+    \u041D\u0410 \u0411\u041B\u0418\u0416\u0410\u0419\u0428\u0423\u042E \u0416/\u0414
+    \u0421\u0422\u0410\u041D\u0426\u0418\u042E"
   rewardMoney: 0
   penalityMoney: 0
   moveToBoardIndex: -1

@@ -12,8 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6b45f1eacb68d8e4c89f57342d9830cb, type: 3}
   m_Name: 10 Go directly to jail
   m_EditorClassIdentifier: 
-  textOnCard: Go directly to jail.<br><br><color=red>Do not pass Go, do not collect
-    $500.</color>
+  textOnCard: "\u041E\u0422\u041F\u0420\u0410\u0412\u041B\u042F\u0419\u0422\u0415\u0421\u042C
+    \u0412 \u0422\u042E\u0420\u042C\u041C\u0423! \u0412\u042B \u041D\u0415 \u041F\u0420\u041E\u0425\u041E\u0414\u0418\u0422\u0415
+    \u041F\u041E\u041B\u0415 \"\u0412\u041F\u0415\u0420\u0401\u0414\" \u0418 \u041D\u0415
+    \u041F\u041E\u041B\u0423\u0427\u0410\u0415\u0422\u0415 500 \u041C."
   rewardMoney: 0
   penalityMoney: 0
   moveToBoardIndex: -1

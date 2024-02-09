@@ -12,7 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6b45f1eacb68d8e4c89f57342d9830cb, type: 3}
   m_Name: 2 Advance to Illinois Ave
   m_EditorClassIdentifier: 
-  textOnCard: Advance to Illinois Ave
+  textOnCard: "\u041E\u0422\u041F\u0420\u0410\u0412\u041B\u042F\u0419\u0422\u0415\u0421\u042C
+    \u041D\u0410 \u0423\u041B\u0418\u0426\u0423 \u041F\u0423\u041F\u041A\u0418\u041D\u0410-\u0417\u0410\u041B\u0423\u041F\u041A\u0418\u041D\u0410"
   rewardMoney: 0
   penalityMoney: 0
   moveToBoardIndex: 24

@@ -12,7 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6b45f1eacb68d8e4c89f57342d9830cb, type: 3}
   m_Name: 7 Take a walk on the Boardwalk.
   m_EditorClassIdentifier: 
-  textOnCard: Take a walk on the Boardwalk.
+  textOnCard: "\u041F\u0420\u041E\u0413\u0423\u041B\u042F\u0419\u0422\u0415\u0421\u042C
+    \u0414\u041E \u041F\u0423\u041F\u041A\u0418\u041D\u0410-\u0417\u0410\u041B\u0423\u041F\u041A\u0418\u041D\u04103"
   rewardMoney: 0
   penalityMoney: 0
   moveToBoardIndex: 49

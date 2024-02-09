@@ -13,11 +13,13 @@ MonoBehaviour:
   m_Name: 7 Holiday Fund matures
   m_EditorClassIdentifier: 
   textOnCard: "\u041F\u041E\u041B\u0423\u0427\u0418\u0422\u0415 \u041E\u0422\u041F\u0423\u0421\u041A\u041D\u042B\u0415
-    $100"
+    100 \u041C."
   rewardMoney: 100
   penalityMoney: 0
   moveToBoardIndex: -1
   collectFromPlayers: 0
-  streetRepairs: 0
   goToJail: 0
   jailFreeCard: 0
+  streetRepairs: 0
+  streetRepairsHousPrice: 40
+  streetRepairsHotelPrice: 115

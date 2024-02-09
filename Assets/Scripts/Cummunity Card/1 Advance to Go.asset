@@ -14,11 +14,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   textOnCard: "\u0418\u0414\u0418\u0422\u0415 \u041D\u0410 \u041F\u041E\u041B\u0415
     \"\u0412\u041F\u0415\u0420\u0401\u0414\" <br> <color=green>(\u041F\u041E\u041B\u0423\u0427\u0418\u0422\u0415
-    $500)</color>"
+    500 \u041C.)</color>"
   rewardMoney: 0
   penalityMoney: 0
   moveToBoardIndex: 0
   collectFromPlayers: 0
-  streetRepairs: 0
   goToJail: 0
   jailFreeCard: 0
+  streetRepairs: 0
+  streetRepairsHousPrice: 40
+  streetRepairsHotelPrice: 115

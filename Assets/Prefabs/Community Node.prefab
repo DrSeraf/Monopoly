@@ -375,7 +375,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 001992d90b5520346ac6df2ac7222b80, type: 2}
+  - {fileID: 2100000, guid: 459770e1d69045142ac6884b0d7b8703, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -510,8 +510,8 @@ RectTransform:
   m_GameObject: {fileID: 8863851584932884369}
   m_LocalRotation: {x: 0, y: 0, z: 0.7071068, w: 0.7071068}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 1.2, y: 1.2, z: 1.2}
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 5507558549842773462}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
@@ -541,14 +541,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 0.53215444, b: 0.18867922, a: 1}
+  m_Color: {r: 0, g: 0, b: 0, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 393000731, guid: 0f86046344dd95d43bb2fe371b4ad6aa, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 695dfd3e69671eb49aaaf9f9b7c0539a, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1

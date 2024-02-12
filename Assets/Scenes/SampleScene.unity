@@ -11975,7 +11975,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -3511227076386134290, guid: 8e3d40bdd624a0f49a1a0ac30b77e486, type: 3}
       propertyPath: monopolyNodeType
-      value: 4
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 1256411353680121124, guid: 8e3d40bdd624a0f49a1a0ac30b77e486, type: 3}
       propertyPath: m_text

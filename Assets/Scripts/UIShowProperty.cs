@@ -30,7 +30,13 @@ public class UIShowProperty : MonoBehaviour
     [SerializeField] TMP_Text playerMoneyText;
 
 
-
+    void ShowBuyPropertyUI(MonopolyNode node, Player currentPlayer)
+    {
+        nodeReference = node;
+        //Top panel content
+        propertyNameText.text = node.name;
+        colorField.color = node.propertyColorField.color;
+    }
 
 
 }

@@ -2559,7 +2559,7 @@ MonoBehaviour:
   propertyUIPanel: {fileID: 488962516}
   propertyNameText: {fileID: 1140991931}
   colorField: {fileID: 1665648897}
-  rentPriceTExt: {fileID: 886142358}
+  rentPriceText: {fileID: 886142358}
   oneHouseRentText: {fileID: 274988529}
   twoHouseRentText: {fileID: 1070540244}
   threeHouseRentText: {fileID: 1245602683}
@@ -11942,8 +11942,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -0.0014267, y: -0.00007534}
-  m_SizeDelta: {x: 467.57, y: 99.952}
+  m_AnchoredPosition: {x: 0.0009079, y: -0.00007534}
+  m_SizeDelta: {x: 676.72, y: 99.952}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1140991931
 MonoBehaviour:
@@ -15003,7 +15003,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1552818131}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 265279389}
+        m_TargetAssemblyTypeName: UIShowProperty, Assembly-CSharp
+        m_MethodName: ClosePropertyButton
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1552818131
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15513,7 +15525,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1587833984}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 265279389}
+        m_TargetAssemblyTypeName: UIShowProperty, Assembly-CSharp
+        m_MethodName: BuyPropertyButton
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1587833984
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16296,8 +16320,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -0.000019073, y: 0.00002861}
-  m_SizeDelta: {x: 467.5643, y: 70}
+  m_AnchoredPosition: {x: 1.0411, y: 0.3144}
+  m_SizeDelta: {x: 676.7206, y: 80.1397}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1665648897
 MonoBehaviour:
@@ -16319,8 +16343,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
-  m_Type: 0
+  m_Sprite: {fileID: 21300000, guid: c0b51d2cf96ea1c4b8cfe005a610763d, type: 3}
+  m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -16328,7 +16352,7 @@ MonoBehaviour:
   m_FillClockwise: 1
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
-  m_PixelsPerUnitMultiplier: 1
+  m_PixelsPerUnitMultiplier: 2.61
 --- !u!222 &1665648898
 CanvasRenderer:
   m_ObjectHideFlags: 0

@@ -75,10 +75,15 @@ public class MonopolyNode : MonoBehaviour
     public delegate void ShowHumanPanel(bool activatePanel, bool activateRollDice, bool activateEndTurn);
     public static ShowHumanPanel OnShowHumanPanel;
 
+    //Property buy panel
+    public delegate void ShowPropertyBuyPanel(MonopolyNode node, Player player);
+    public static ShowPropertyBuyPanel OnShowPropertyBuyPanel;
+
     public Player Owner => owner; // Геттер для владельца узла
     public void SetOwner(Player newOwner)
     {
         owner = newOwner;
+        OnOwnerUpdated();
     }
 
 
@@ -264,6 +269,7 @@ public class MonopolyNode : MonoBehaviour
                     {
 
                         //Show buy interface for the property
+                        OnShowPropertyBuyPanel.Invoke(this, currentPlayer);
                     }
                     else
                     {
@@ -297,7 +303,7 @@ public class MonopolyNode : MonoBehaviour
                         //Debug.Log("Player could buy")
                         OnUpdateMessage.Invoke(currentPlayer.name + " купил: " + this.name + " за: " + price);
                         currentPlayer.BuyProperty(this);
-                        OnOwnerUpdated();
+                        //OnOwnerUpdated();
                         //Show a message about what happend
                     }
                     else

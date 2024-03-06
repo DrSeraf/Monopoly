@@ -79,6 +79,10 @@ public class MonopolyNode : MonoBehaviour
     public delegate void ShowPropertyBuyPanel(MonopolyNode node, Player player);
     public static ShowPropertyBuyPanel OnShowPropertyBuyPanel;
 
+    //RailRoad buy panel
+    public delegate void ShowRailRoadBuyPanel(MonopolyNode node, Player player);
+    public static ShowRailRoadBuyPanel OnShowRailRoadBuyPanel;
+
     public Player Owner => owner; // Геттер для владельца узла
     public void SetOwner(Player newOwner)
     {
@@ -228,7 +232,6 @@ public class MonopolyNode : MonoBehaviour
                         //Pay rent to somebody
 
                         //Calculate current rent
-                        
                         int rentToPay = CalculatePropertyRent();
                         //Pay the rent to the owner
                         currentPlayer.PayRent(rentToPay, owner);
@@ -256,9 +259,10 @@ public class MonopolyNode : MonoBehaviour
                     //If it owned && if we are not owner && is not mortgaged
                     if (owner != null && owner != currentPlayer && !isMortgaged)
                     {
-                        //Pay rent to somebody
-
                         //Calculate current rent
+                        int rentToPay = CalculatePropertyRent();
+                        //Pay the rent to the owner
+                        currentPlayer.PayRent(rentToPay, owner);
 
                         //Pay the rent to the owner
 
@@ -316,9 +320,11 @@ public class MonopolyNode : MonoBehaviour
                     //If it owned && if we are not owner && is not mortgaged
                     if (owner != null && owner != currentPlayer && !isMortgaged)
                     {
-                        //Pay rent to somebody
-
                         //Calculate current rent
+                        int rentToPay = CalculateUtilityRent();
+                        currentRent = rentToPay;
+                        //Pay the rent to the owner
+                        currentPlayer.PayRent(rentToPay, owner);
 
                         //Pay the rent to the owner
 
@@ -377,10 +383,11 @@ public class MonopolyNode : MonoBehaviour
                     if (owner != null && owner != currentPlayer && !isMortgaged)
                     {
                         //Pay rent to somebody
-
                         //Calculate current rent
-
+                        int rentToPay = CalculateRailRoadRent();
+                        currentRent = rentToPay;
                         //Pay the rent to the owner
+                        currentPlayer.PayRent(rentToPay, owner);
 
                         //Show a message about what happend
 
@@ -388,7 +395,8 @@ public class MonopolyNode : MonoBehaviour
                     else if (owner == null)
                     {
 
-                        //Show buy interface for the property
+                        //Show buy interface for the railroad
+                        OnShowRailRoadBuyPanel.Invoke(this, currentPlayer);
                     }
                     else
                     {

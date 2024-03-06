@@ -2566,7 +2566,7 @@ MonoBehaviour:
   foutHouseRentText: {fileID: 1014895129}
   hotelRentText: {fileID: 129396070}
   housePriceText: {fileID: 2024496548}
-  hotelPriceText: {fileID: 1970383923}
+  mortgagePriceText: {fileID: 0}
   buyPropertyButton: {fileID: 1587833983}
   propertyPriceText: {fileID: 1808853615}
   playerMoneyText: {fileID: 1191976389}
@@ -5293,7 +5293,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 40, y: 40}
+  m_SizeDelta: {x: 76.419, y: 39.7615}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &538665675
 MonoBehaviour:
@@ -5378,7 +5378,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_margin: {x: 0, y: 0, z: 8.166538, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -5724,7 +5724,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &580872530
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6255,7 +6255,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7497bddbc258ffc4082b11b04d72e703, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  monopolyNodeType: 0
+  monopolyNodeType: 8
   propertyColorField: {fileID: 0}
   name: 
   nameText: {fileID: 0}
@@ -6558,7 +6558,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7497bddbc258ffc4082b11b04d72e703, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  monopolyNodeType: 0
+  monopolyNodeType: 7
   propertyColorField: {fileID: 0}
   name: 
   nameText: {fileID: 0}
@@ -6995,7 +6995,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 40, y: 40}
+  m_SizeDelta: {x: 80.4981, y: 40.3059}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &705429306
 MonoBehaviour:
@@ -8807,7 +8807,6 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 1281682757}
   - {fileID: 2110146054}
   - {fileID: 538665674}
   - {fileID: 1970383922}
@@ -9017,6 +9016,8 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 1281682757}
+  - {fileID: 1417218252}
   - {fileID: 1117828763}
   - {fileID: 1097742833}
   - {fileID: 705429305}
@@ -10359,7 +10360,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2888891405106912368, guid: ac8d412dec7b6b34e961376189339fe2, type: 3}
       propertyPath: monopolyNodeType
-      value: 0
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 2888891405106912368, guid: ac8d412dec7b6b34e961376189339fe2, type: 3}
       propertyPath: calculateRentAuto
@@ -10790,7 +10791,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7497bddbc258ffc4082b11b04d72e703, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  monopolyNodeType: 0
+  monopolyNodeType: 6
   propertyColorField: {fileID: 0}
   name: 
   nameText: {fileID: 0}
@@ -11541,7 +11542,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 317.8231, y: 75.719}
+  m_SizeDelta: {x: 198.3064, y: 75.719}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1097742834
 MonoBehaviour:
@@ -11626,7 +11627,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 5.8390007, z: 0, w: 0}
+  m_margin: {x: -53.215813, y: 5.8390007, z: -24.456764, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -13430,7 +13431,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7497bddbc258ffc4082b11b04d72e703, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  monopolyNodeType: 0
+  monopolyNodeType: 9
   propertyColorField: {fileID: 0}
   name: 
   nameText: {fileID: 0}
@@ -13567,13 +13568,13 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1281682756}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 873258961}
-  m_Father: {fileID: 923976492}
+  m_Father: {fileID: 925328330}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -13858,6 +13859,140 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!1 &1417218251
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1417218252}
+  - component: {fileID: 1417218254}
+  - component: {fileID: 1417218253}
+  m_Layer: 5
+  m_Name: AND
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1417218252
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1417218251}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 925328330}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 4.6131, y: 62.859}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1417218253
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1417218251}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_text: '&'
+  m_isRightToLeft: 0
+  m_fontAsset: {fileID: 11400000, guid: 4f1d1b488457d364b99c14cb397f7cfd, type: 2}
+  m_sharedMaterial: {fileID: -5501652817326374938, guid: 4f1d1b488457d364b99c14cb397f7cfd, type: 2}
+  m_fontSharedMaterials: []
+  m_fontMaterial: {fileID: 0}
+  m_fontMaterials: []
+  m_fontColor32:
+    serializedVersion: 2
+    rgba: 4294967295
+  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+  m_enableVertexGradient: 0
+  m_colorMode: 3
+  m_fontColorGradient:
+    topLeft: {r: 1, g: 1, b: 1, a: 1}
+    topRight: {r: 1, g: 1, b: 1, a: 1}
+    bottomLeft: {r: 1, g: 1, b: 1, a: 1}
+    bottomRight: {r: 1, g: 1, b: 1, a: 1}
+  m_fontColorGradientPreset: {fileID: 0}
+  m_spriteAsset: {fileID: 0}
+  m_tintAllSprites: 0
+  m_StyleSheet: {fileID: 0}
+  m_TextStyleHashCode: -1183493901
+  m_overrideHtmlColors: 0
+  m_faceColor:
+    serializedVersion: 2
+    rgba: 4294967295
+  m_fontSize: 37.9
+  m_fontSizeBase: 37.9
+  m_fontWeight: 400
+  m_enableAutoSizing: 0
+  m_fontSizeMin: 18
+  m_fontSizeMax: 72
+  m_fontStyle: 0
+  m_HorizontalAlignment: 2
+  m_VerticalAlignment: 512
+  m_textAlignment: 65535
+  m_characterSpacing: 0
+  m_wordSpacing: 0
+  m_lineSpacing: 0
+  m_lineSpacingMax: 0
+  m_paragraphSpacing: 0
+  m_charWidthMaxAdj: 0
+  m_enableWordWrapping: 1
+  m_wordWrappingRatios: 0.4
+  m_overflowMode: 0
+  m_linkedTextComponent: {fileID: 0}
+  parentLinkedComponent: {fileID: 0}
+  m_enableKerning: 1
+  m_enableExtraPadding: 0
+  checkPaddingRequired: 0
+  m_isRichText: 1
+  m_parseCtrlCharacters: 1
+  m_isOrthographic: 1
+  m_isCullingEnabled: 0
+  m_horizontalMapping: 0
+  m_verticalMapping: 0
+  m_uvLineOffset: 0
+  m_geometrySortingOrder: 0
+  m_IsTextObjectScaleStatic: 0
+  m_VertexBufferAutoSizeReduction: 0
+  m_useMaxVisibleDescender: 1
+  m_pageToDisplay: 1
+  m_margin: {x: -41.039127, y: 0, z: -42.646873, w: -0.51088333}
+  m_isUsingLegacyAnimationComponent: 0
+  m_isVolumetricText: 0
+  m_hasFontAssetChanged: 0
+  m_baseMaterial: {fileID: 0}
+  m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!222 &1417218254
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1417218251}
+  m_CullTransparentMesh: 1
 --- !u!1001 &1421540767
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -19318,7 +19453,7 @@ GameObject:
   - component: {fileID: 2110146056}
   - component: {fileID: 2110146055}
   m_Layer: 5
-  m_Name: Rent With
+  m_Name: Mortgage Value Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -19341,7 +19476,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 317.8231, y: 75.719}
+  m_SizeDelta: {x: 411.2007, y: 75.719}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2110146055
 MonoBehaviour:
@@ -19363,7 +19498,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: " \u0421\u0442\u043E\u0438\u043C\u043E\u0441\u0442\u044C"
+  m_text: "\u0421\u0442\u043E\u0438\u043C\u043E\u0441\u0442\u044C \u0437\u0430\u043B\u043E\u0433\u0430"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 748ff4ef8099125468e3b70ebdd09a14, type: 2}
   m_sharedMaterial: {fileID: 806888970562474018, guid: 748ff4ef8099125468e3b70ebdd09a14, type: 2}
@@ -19397,7 +19532,7 @@ MonoBehaviour:
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
-  m_HorizontalAlignment: 2
+  m_HorizontalAlignment: 1
   m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: -6.32
@@ -19426,7 +19561,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 5.8390007, z: 0, w: 0}
+  m_margin: {x: 6.6228943, y: 5.8390007, z: 0, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0

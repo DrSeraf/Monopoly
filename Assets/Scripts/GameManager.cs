@@ -48,9 +48,9 @@ public class GameManager : MonoBehaviour
 
     //Debug
     public bool alwaysDoubleRoll = false;
-    public bool alwaysDoubleRoll2 = false;
-    public bool alwaysDoubleRoll3 = false;
-
+    [SerializeField] bool forceDiceRills;
+    [SerializeField] int dice1;
+    [SerializeField] int dice2;
 
     private void Awake()
     {
@@ -114,15 +114,10 @@ public class GameManager : MonoBehaviour
             rolledDice[0] = 3;
             rolledDice[1] = 3;
         }
-        if (alwaysDoubleRoll2)
+        if (forceDiceRills)
         {
-            rolledDice[0] = 1;
-            rolledDice[1] = 1;
-        }
-        if (alwaysDoubleRoll3)
-        {
-            rolledDice[0] = 0;
-            rolledDice[1] = 1;
+            rolledDice[0] = dice1;
+            rolledDice[1] = dice2;
         }
 
 

@@ -16,6 +16,7 @@ public class UIShowPanel : MonoBehaviour
         MonopolyNode.OnShowHumanPanel += ShowPanel;
         CommunityChest.OnShowHumanPanel += ShowPanel;
         ChanceField.OnShowHumanPanel += ShowPanel;
+        Player.OnShowHumanPanel += ShowPanel;
     }
 
     private void OnDisable()
@@ -24,6 +25,7 @@ public class UIShowPanel : MonoBehaviour
         MonopolyNode.OnShowHumanPanel -= ShowPanel;
         CommunityChest.OnShowHumanPanel -= ShowPanel;
         ChanceField.OnShowHumanPanel -= ShowPanel;
+        Player.OnShowHumanPanel -= ShowPanel;
     }
 
     void ShowPanel(bool showPanel, bool enableRollDice, bool enableEndTurd)

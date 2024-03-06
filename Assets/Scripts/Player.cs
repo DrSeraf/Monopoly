@@ -38,6 +38,9 @@ public class Player
     //Message system
     public delegate void UpdateMessage(string message);
     public static UpdateMessage OnUpdateMessage;
+    //Human input panel
+    public delegate void ShowHumanPanel(bool activatePanel, bool activateRollDice, bool activateEndTurn);
+    public static ShowHumanPanel OnShowHumanPanel;
 
     public void Inititialize(MonopolyNode startNode, int startingMoney, PlayerInfo info, GameObject token)
     {
@@ -102,8 +105,16 @@ public class Player
         //Dpnt have enouth money
         if (money < rentAmount)
         {
-            //Handle insufficent fund > AI
-            HandleInsufficientFunds(rentAmount);
+            if (playerType == PlayerType.AI)
+            {
+                //Handle insufficent fund > AI
+                HandleInsufficientFunds(rentAmount);
+            }
+            else
+            {
+                //Disable human turn and roll dice
+                OnShowHumanPanel.Invoke(true, false, false);
+            }
         }
         money -= rentAmount;
         owner.CollectMoney(rentAmount);
@@ -116,8 +127,17 @@ public class Player
         //Dpnt have enouth money
         if (money < amount)
         {
-            //Handle insufficent fund > AI
-            HandleInsufficientFunds(amount);
+            if (playerType == PlayerType.AI)
+            {
+                //Handle insufficent fund > AI
+                HandleInsufficientFunds(amount);
+            }
+            else 
+            {
+                //Disable human turn and roll dice
+                OnShowHumanPanel.Invoke(true,false, false);
+            }
+
         }
         money -= amount;
         //Update UI

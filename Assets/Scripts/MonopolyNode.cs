@@ -83,6 +83,10 @@ public class MonopolyNode : MonoBehaviour
     public delegate void ShowRailRoadBuyPanel(MonopolyNode node, Player player);
     public static ShowRailRoadBuyPanel OnShowRailRoadBuyPanel;
 
+    //Utility buy panel
+    public delegate void ShowUtilityBuyPanel(MonopolyNode node, Player player);
+    public static ShowUtilityBuyPanel OnShowUtilityBuyPanel;
+
     public Player Owner => owner; // Геттер для владельца узла
     public void SetOwner(Player newOwner)
     {
@@ -335,6 +339,7 @@ public class MonopolyNode : MonoBehaviour
                     {
 
                         //Show buy interface for the property
+                        OnShowUtilityBuyPanel.Invoke(this, currentPlayer);
                     }
                     else
                     {

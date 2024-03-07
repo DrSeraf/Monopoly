@@ -397,7 +397,7 @@ public class Player
 
     //-------------------------------HOUSES AND HOTELS - CAN AFFORT AND COUNT----------------
 
-    bool CanAffordHouse(int price)
+    public bool CanAffordHouse(int price)
     {
         //Ai only
         if (playerType == PlayerType.AI)

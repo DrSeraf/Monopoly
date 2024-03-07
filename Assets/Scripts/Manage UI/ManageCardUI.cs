@@ -16,7 +16,7 @@ public class ManageCardUI : MonoBehaviour
     Player playerReference;
     MonopolyNode nodeReference;
     //Color setColor, int numberOFBuildings, bool isMortgage, int mortgageValue
-    public ManageCardUI(MonopolyNode node, Player owner)
+    public void SetCard(MonopolyNode node, Player owner)
     {
         nodeReference = node;
         playerReference = owner;

@@ -360,7 +360,7 @@ public class Player
 
     //-------------------------------BUILD HOUSES EVENLY ON NODE SETS------------------------
 
-    void BuilsHouseOrHotelEvenly(List<MonopolyNode> nodesToBuildOn)
+    internal void BuilsHouseOrHotelEvenly(List<MonopolyNode> nodesToBuildOn)
     {
         int minHouses = int.MaxValue;
         int maxHouses = int.MinValue;
@@ -391,13 +391,30 @@ public class Player
 
     }
 
+    internal void SellHouseEvenly(List<MonopolyNode> nodesToSellFrom)
+    {
+        int minHouses = int.MaxValue;
+        foreach (var node in nodesToSellFrom)
+        {
+            minHouses = Mathf.Min(minHouses, node.NumberOfHouses);
+        }
+        //Sell house
+        for (int i = nodesToSellFrom.Count - 1; i >= 0; i--)
+        {
+            if (nodesToSellFrom[i].NumberOfHouses > minHouses)
+            {
+                CollectMoney(nodesToSellFrom[i].SellHouseOrHotel());
+                break;
+            }
+        }
+    }
     //-------------------------------TRADING SYSTEM------------------------------------------
 
     //-------------------------------FIND MISSING PROPERTYS IN SET---------------------------
 
     //-------------------------------HOUSES AND HOTELS - CAN AFFORT AND COUNT----------------
 
-    public bool CanAffordHouse(int price)
+    internal bool CanAffordHouse(int price)
     {
         //Ai only
         if (playerType == PlayerType.AI)

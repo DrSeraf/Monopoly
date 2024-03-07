@@ -35,11 +35,17 @@ public class ManagePropertyUI : MonoBehaviour
     {
         if (playerReference.CanAffordHouse(nodesInSet[0].houseCost))
         {
-            
+            playerReference.BuilsHouseOrHotelEvenly(nodesInSet);
+            //Update money text
+        }
+        else
+        {
+            //Cant afford house - system message for player
         }
     }
     public void SellHouseButton()
-    {
-
+    {//Check of there is at list 1 house to sell
+        playerReference.SellHouseEvenly(nodesInSet);
+        //Update money text
     }
 }

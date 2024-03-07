@@ -21,6 +21,7 @@ public class Player
     int numTurnsInJail = 0;
     [SerializeField] GameObject myToken;
     [SerializeField] List<MonopolyNode> myMonopolyNodes = new List<MonopolyNode>();
+    public List<MonopolyNode> GetMonopolyNodes => myMonopolyNodes;
 
     //Player Info
     PlayerInfo myInfo;

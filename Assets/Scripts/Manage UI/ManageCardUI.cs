@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEditor.Experimental.GraphView;
 
 public class ManageCardUI : MonoBehaviour
 {
@@ -34,18 +35,7 @@ public class ManageCardUI : MonoBehaviour
         {
             colorField.color = Color.black;
         }
-        //Show buildings
-        if (node.NumberOfHouses < 4)
-        {
-            for (int i = 0; i < node.NumberOfHouses; i++)
-            {
-                buildings[i].SetActive(true);
-            }
-        }
-        else
-        {
-            buildings[4].SetActive(true);
-        }
+        ShowBuildings();
         //Show mortgage image
         mortgageImage.SetActive(node.IsMortgaged);
         //Text Update
@@ -80,10 +70,36 @@ public class ManageCardUI : MonoBehaviour
             //Error messagge or such
             return;
         }
+        if (playerReference.ReadMoney < nodeReference.MortgageValue)
+        {
+            //Error messagge or such
+            return;
+        }
         playerReference.PayMoney(nodeReference.MortgageValue);
         nodeReference.UnMortgageProperty();
         mortgageImage.SetActive(false);
         mortgageButton.interactable = true;
         unMortgageButton.interactable = false;
+    }
+
+    public void ShowBuildings()
+    {
+        //Hide all buildings first
+        foreach (var icon in buildings)
+        {
+            icon.SetActive(false);
+        }
+        //Show buildings
+        if (nodeReference.NumberOfHouses < 5)
+        {
+            for (int i = 0; i < nodeReference.NumberOfHouses; i++)
+            {
+                buildings[i].SetActive(true);
+            }
+        }
+        else
+        {
+            buildings[4].SetActive(true);
+        }
     }
 }

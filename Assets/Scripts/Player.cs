@@ -98,7 +98,7 @@ public class Player
 
     void SortPropertiesByPrice()
     {
-        myMonopolyNodes.OrderBy(_node => _node.price).ToList();
+        myMonopolyNodes = myMonopolyNodes.OrderBy(_node => _node.price).ToList();//myMonopolyNodes =
     }
 
     internal void PayRent(int rentAmount, Player owner)

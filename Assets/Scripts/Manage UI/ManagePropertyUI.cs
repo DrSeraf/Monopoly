@@ -47,6 +47,7 @@ public class ManagePropertyUI : MonoBehaviour
         {
             playerReference.BuilsHouseOrHotelEvenly(nodesInSet);
             //Update money text
+            UpdateHouseVisuals();
         }
         else
         {
@@ -58,6 +59,7 @@ public class ManagePropertyUI : MonoBehaviour
     {//Check of there is at list 1 house to sell
         playerReference.SellHouseEvenly(nodesInSet);
         //Update money text
+        UpdateHouseVisuals();
 
         sellHouseButton.interactable = CheckIfWeSellAllowed();
     }
@@ -93,6 +95,14 @@ public class ManagePropertyUI : MonoBehaviour
         else
         {
             return true;
+        }
+    }
+
+    void UpdateHouseVisuals()
+    {
+        foreach (var card in cardsInSet)
+        {
+            card.GetComponent<ManageCardUI>().ShowBuildings();
         }
     }
 }

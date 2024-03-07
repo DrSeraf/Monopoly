@@ -26,11 +26,12 @@ public class ManageUI : MonoBehaviour
         foreach (var node in playerReference.GetMonopolyNodes)
         {
             var (list, allSame) = MonopolyBoard.Instance.PlayerHasAllNodesOfSet(node);
-            List<MonopolyNode> nodeSet = list;
-            if (nodeSet != null && nodeSet != processedSet)
+            List<MonopolyNode> nodeSet = new List<MonopolyNode>();
+            nodeSet.AddRange(list);
+            if (nodeSet != null && list != processedSet)
             {
                 //Update processed first
-                processedSet = nodeSet;
+                processedSet = list;
                 nodeSet.RemoveAll(n => n.Owner != playerReference);
 
                 //Create prefabs witch all nodes owned by the player

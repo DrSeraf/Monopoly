@@ -29,6 +29,9 @@ public class ManagePropertyUI : MonoBehaviour
         var (list, allsame) = MonopolyBoard.Instance.PlayerHasAllNodesOfSet(nodesInSet[0]);
         buyHouseButton.interactable = allsame;
         sellHouseButton.interactable = allsame;
+
+        buyHousePriceText.text = "-" + nodesInSet[0].houseCost;
+        sellHousePriceText.text = "+" + nodesInSet[0].houseCost;
     }
 
     public void BuyHouseButton()

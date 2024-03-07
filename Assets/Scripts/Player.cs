@@ -395,6 +395,7 @@ public class Player
     internal void SellHouseEvenly(List<MonopolyNode> nodesToSellFrom)
     {
         int minHouses = int.MaxValue;
+        bool houseSold = false;
         foreach (var node in nodesToSellFrom)
         {
             minHouses = Mathf.Min(minHouses, node.NumberOfHouses);
@@ -405,8 +406,13 @@ public class Player
             if (nodesToSellFrom[i].NumberOfHouses > minHouses)
             {
                 CollectMoney(nodesToSellFrom[i].SellHouseOrHotel());
+                houseSold = true;
                 break;
             }
+        }
+        if (!houseSold)
+        {
+            CollectMoney(nodesToSellFrom[nodesToSellFrom.Count-1].SellHouseOrHotel());
         }
     }
     //-------------------------------TRADING SYSTEM------------------------------------------

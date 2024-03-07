@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 1368201257403542124}
   - component: {fileID: 6051840754178545669}
   - component: {fileID: 7106033169620447537}
+  - component: {fileID: 5936293211191292217}
   m_Layer: 5
   m_Name: Card Prefab
   m_TagString: Untagged
@@ -78,6 +79,29 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &5936293211191292217
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 42629151032425973}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c1e1c8805fb6b804780a575c0392b2e7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  colorField: {fileID: 3241933245195179766}
+  buildings:
+  - {fileID: 5549925640014291014}
+  - {fileID: 3150983638095520949}
+  - {fileID: 2631421011045897782}
+  - {fileID: 1815033856542966756}
+  - {fileID: 2456078390351199515}
+  mortgageImage: {fileID: 712373219706069009}
+  mortgageValueText: {fileID: 5259501209514633289}
+  mortgageButton: {fileID: 7792103752625376871}
+  unMortgageButton: {fileID: 7771552335767738129}
 --- !u!1 &412737034000395751
 GameObject:
   m_ObjectHideFlags: 0
@@ -397,9 +421,9 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 141921420175458580}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 188.88615, y: -21.23595}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 32, y: 32}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &765357964238760343
@@ -579,9 +603,9 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 141921420175458580}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 104.93675, y: -21.23595}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 32, y: 32}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5375897983046924118
@@ -654,9 +678,9 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 141921420175458580}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 146.91145, y: -21.23595}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 32, y: 32}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &9164638495864155538
@@ -729,9 +753,9 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 141921420175458580}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 62.96205, y: -21.23595}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 32, y: 32}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2617468358885126249
@@ -1161,7 +1185,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 4976135507524827722}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 5936293211191292217}
+        m_TargetAssemblyTypeName: ManageCardUI, Assembly-CSharp
+        m_MethodName: MortgageButton
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &5430234129378845093
 GameObject:
   m_ObjectHideFlags: 0
@@ -1282,7 +1318,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 3818535692764200530}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 5936293211191292217}
+        m_TargetAssemblyTypeName: ManageCardUI, Assembly-CSharp
+        m_MethodName: UnMortgageButton
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &5549925640014291014
 GameObject:
   m_ObjectHideFlags: 0
@@ -1315,9 +1363,9 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 141921420175458580}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 20.98735, y: -21.23595}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 32, y: 32}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &9050515857772665757

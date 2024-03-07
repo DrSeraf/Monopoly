@@ -8,6 +8,7 @@ public class ManageCardUI : MonoBehaviour
 {
 
     [SerializeField] Image colorField;
+    [SerializeField] TMP_Text propertyName;
     [SerializeField] GameObject[] buildings;
     [SerializeField] GameObject mortgageImage;
     [SerializeField] TMP_Text mortgageValueText;
@@ -24,6 +25,7 @@ public class ManageCardUI : MonoBehaviour
         if (node.propertyColorField != null)
         {
             colorField.color = node.propertyColorField.color;
+            propertyName.text = node.name;
         }
         else
         {
@@ -44,7 +46,7 @@ public class ManageCardUI : MonoBehaviour
         //Show mortgage image
         mortgageImage.SetActive(node.IsMortgaged);
         //Text Update
-        mortgageValueText.text = "Стоимость залога = М " + node.MortgageValue;
+        mortgageValueText.text = "Стоимость залога <br> М " + node.MortgageValue;
         //Buttons
         mortgageButton.interactable = !node.IsMortgaged;
         unMortgageButton.interactable = node.IsMortgaged;

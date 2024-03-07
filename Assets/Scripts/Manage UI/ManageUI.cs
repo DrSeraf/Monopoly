@@ -13,6 +13,11 @@ public class ManageUI : MonoBehaviour
     Player playerReference;
     List<GameObject> propertyPrefabs = new List<GameObject>();
 
+    private void Start()
+    {
+        managePanel.SetActive(false);
+    }
+
     public void OpenManager()//Call from manage button
     {
         playerReference = GameManager.instance.GetCurrentPlayer;
@@ -31,13 +36,21 @@ public class ManageUI : MonoBehaviour
                 //Create prefabs witch all nodes owned by the player
                 GameObject newPropertySet = Instantiate(propertySetPrefab, propertyGrid, false);
                 newPropertySet.GetComponent<ManagePropertyUI>().SetProperty(nodeSet, playerReference);
+
+                propertyPrefabs.Add(newPropertySet);
             }
         }
+        managePanel.SetActive(true);
     }
 
     public void CloseManager()
     {
-
+        managePanel.SetActive(false);
+        for (int i = propertyPrefabs.Count-1; i >= 0; i--)
+        {
+            Destroy(propertyPrefabs[i]);
+        }
+        propertyPrefabs.Clear();
     }
 
 }

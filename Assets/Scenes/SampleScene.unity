@@ -4207,6 +4207,7 @@ GameObject:
   - component: {fileID: 265279389}
   - component: {fileID: 265279390}
   - component: {fileID: 265279391}
+  - component: {fileID: 265279392}
   m_Layer: 0
   m_Name: UI Handler
   m_TagString: Untagged
@@ -4310,6 +4311,21 @@ MonoBehaviour:
   buyUtilityButton: {fileID: 1659163507}
   utilityPriceText: {fileID: 950354668}
   playerMoneyText: {fileID: 1309121141}
+--- !u!114 &265279392
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 265279386}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 067818b2b7571db46acbd2030a613fee, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  managePanel: {fileID: 1543895370}
+  propertyGrid: {fileID: 1572654252}
+  propertySetPrefab: {fileID: 3610955637365590085, guid: 0c27288942720824397980df6170f517, type: 3}
 --- !u!1 &271074755
 GameObject:
   m_ObjectHideFlags: 0
@@ -13031,7 +13047,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 852215742}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 265279392}
+        m_TargetAssemblyTypeName: ManageUI, Assembly-CSharp
+        m_MethodName: CloseManager
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &852215742
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14475,7 +14503,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 922634264}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 265279392}
+        m_TargetAssemblyTypeName: ManageUI, Assembly-CSharp
+        m_MethodName: OpenManager
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &922634264
 MonoBehaviour:
   m_ObjectHideFlags: 0

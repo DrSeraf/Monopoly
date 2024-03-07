@@ -76,6 +76,13 @@ public class Player
     {
         money += amount;
         myInfo.SetCashName(money);
+        if (playerType == PlayerType.Human && GameManager.instance.GetCurrentPlayer == this)
+        {
+            bool canEndTurn = !GameManager.instance.RolledADouble && ReadMoney >= 0;
+            bool canRollDice = GameManager.instance.RolledADouble && ReadMoney >= 0;
+            //show UI
+            OnShowHumanPanel.Invoke(true, canRollDice, canEndTurn);
+        }
     }
 
     internal bool CanAffordNode(int price)
@@ -133,16 +140,23 @@ public class Player
                 //Handle insufficent fund > AI
                 HandleInsufficientFunds(amount);
             }
-            else 
+            /*else 
             {
                 //Disable human turn and roll dice
                 OnShowHumanPanel.Invoke(true,false, false);
-            }
+            }*/
 
         }
         money -= amount;
         //Update UI
         myInfo.SetCashName(money);
+        if (playerType == PlayerType.Human && GameManager.instance.GetCurrentPlayer == this)
+        {
+            bool canEndTurn = !GameManager.instance.RolledADouble && ReadMoney >= 0;
+            bool canRollDice = GameManager.instance.RolledADouble && ReadMoney >= 0;
+            //show UI
+            OnShowHumanPanel.Invoke(true, canRollDice, canEndTurn);
+        }
     }
 
     //----------------------------JAIL------------------------------------

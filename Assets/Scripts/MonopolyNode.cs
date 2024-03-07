@@ -458,9 +458,6 @@ public class MonopolyNode : MonoBehaviour
             return;
         }
 
-
-
-
         //Continue
         if (!playerIsHuman) 
         {
@@ -468,8 +465,10 @@ public class MonopolyNode : MonoBehaviour
         }
         else 
         {
+            bool canEndTurn = !GameManager.instance.RolledADouble && currentPlayer.ReadMoney >= 0;
+            bool canRollDice = GameManager.instance.RolledADouble && currentPlayer.ReadMoney >= 0;
             //show UI
-            OnShowHumanPanel.Invoke(true, GameManager.instance.RolledADouble, !GameManager.instance.RolledADouble);
+            OnShowHumanPanel.Invoke(true, canRollDice, canEndTurn);
         }
     }
 

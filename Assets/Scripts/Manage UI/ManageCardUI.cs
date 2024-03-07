@@ -16,11 +16,14 @@ public class ManageCardUI : MonoBehaviour
 
     Player playerReference;
     MonopolyNode nodeReference;
+    ManagePropertyUI propertyReference;
+
     //Color setColor, int numberOFBuildings, bool isMortgage, int mortgageValue
-    public void SetCard(MonopolyNode node, Player owner)
+    public void SetCard(MonopolyNode node, Player owner, ManagePropertyUI propertySet)
     {
         nodeReference = node;
         playerReference = owner;
+        propertyReference = propertySet;
         //Set Color
         if (node.propertyColorField != null)
         {
@@ -54,6 +57,11 @@ public class ManageCardUI : MonoBehaviour
 
     public void MortgageButton()
     {
+        if (!propertyReference.CheckIfMortgageAllowed())
+        {
+            //Error messagge or such
+            return;
+        }
         if (nodeReference.IsMortgaged)
         {
             //Error messagge or such

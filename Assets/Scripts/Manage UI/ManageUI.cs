@@ -7,11 +7,19 @@ using TMPro;
 public class ManageUI : MonoBehaviour
 {
 
+    public static ManageUI instance;
+
     [SerializeField] GameObject managePanel;//To show and hide
     [SerializeField] Transform propertyGrid;//To parent property sets to it
     [SerializeField] GameObject propertySetPrefab;
     Player playerReference;
     List<GameObject> propertyPrefabs = new List<GameObject>();
+    [SerializeField] TMP_Text yourMoneyText;
+
+    private void Awake()
+    {
+        instance = this;
+    }
 
     private void Start()
     {
@@ -42,6 +50,7 @@ public class ManageUI : MonoBehaviour
             }
         }
         managePanel.SetActive(true);
+        UpdateMoneyText();
     }
 
     public void CloseManager()
@@ -53,5 +62,9 @@ public class ManageUI : MonoBehaviour
         }
         propertyPrefabs.Clear();
     }
-
+    public void UpdateMoneyText()
+    {
+        string showMoney = (playerReference.ReadMoney > 0) ? "<color=green>М" + playerReference.ReadMoney : "<color=red>М" + playerReference.ReadMoney;
+        yourMoneyText.text = "Ваши деньги: " + showMoney;
+    }
 }

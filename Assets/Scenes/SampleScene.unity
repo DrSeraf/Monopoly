@@ -4326,6 +4326,7 @@ MonoBehaviour:
   managePanel: {fileID: 1543895370}
   propertyGrid: {fileID: 1572654252}
   propertySetPrefab: {fileID: 3610955637365590085, guid: 0c27288942720824397980df6170f517, type: 3}
+  yourMoneyText: {fileID: 898910208}
 --- !u!1 &271074755
 GameObject:
   m_ObjectHideFlags: 0

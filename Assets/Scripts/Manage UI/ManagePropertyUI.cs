@@ -54,6 +54,7 @@ public class ManagePropertyUI : MonoBehaviour
             //Cant afford house - system message for player
         }
         sellHouseButton.interactable = CheckIfWeSellAllowed();
+        ManageUI.instance.UpdateMoneyText();
     }
     public void SellHouseButton()
     {//Check of there is at list 1 house to sell
@@ -62,6 +63,7 @@ public class ManagePropertyUI : MonoBehaviour
         UpdateHouseVisuals();
 
         sellHouseButton.interactable = CheckIfWeSellAllowed();
+        ManageUI.instance.UpdateMoneyText();
     }
     bool CheckIfWeSellAllowed()
     {

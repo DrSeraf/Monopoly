@@ -58,7 +58,7 @@ public class UIShowRailRoad : MonoBehaviour
         //Cost of buildings
         mortgagePriceText.text = "М " + node.MortgageValue;
         //Bottom bar
-        propertyPriceText.text = "Цена: М " + node.price;
+        propertyPriceText.text = "М " + node.price;
         playerMoneyText.text = "У вас: М " + currentPlayer.ReadMoney;
         //Buy property button
         if (currentPlayer.CanAffordNode(node.price))

@@ -63,7 +63,7 @@ public class UIShowProperty : MonoBehaviour
         housePriceText.text = "М " + node.houseCost;
         mortgagePriceText.text = "М " + node.MortgageValue;
         //Bottom bar
-        propertyPriceText.text = "Цена: М " + node.price;
+        propertyPriceText.text = "М " + node.price;
         playerMoneyText.text = "У вас: М " + currentPlayer.ReadMoney;
         //Buy property button
         if (currentPlayer.CanAffordNode(node.price))

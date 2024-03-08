@@ -47,7 +47,7 @@ public class UIShowUtility : MonoBehaviour
         //Cost of buildings
         mortgagePriceText.text = "М " + node.MortgageValue;
         //Bottom bar
-        utilityPriceText.text = "Цена: М " + node.price;
+        utilityPriceText.text = "М " + node.price;
         playerMoneyText.text = "У вас: М " + currentPlayer.ReadMoney;
         //Buy property button
         if (currentPlayer.CanAffordNode(node.price))

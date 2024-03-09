@@ -48,7 +48,7 @@ public class UIShowRailRoad : MonoBehaviour
         playerReference = currentPlayer;
         //Top panel content
         railroadText.text = node.name;
-        //colorField.color = node.propertyColorField.color;
+        //colorField.color = new Color(208f, 155f, 98f);
         //Center of the card
         //result = baseRent * (int)Mathf.Pow(2, amount - 1);
         oneRailroadRentText.text = "Ì " + node.baseRent * (int)Mathf.Pow(2, 1 - 1);

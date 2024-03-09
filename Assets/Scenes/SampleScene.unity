@@ -3865,8 +3865,8 @@ MonoBehaviour:
 
 '
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 3205eecf567371941ad2765a66292068, type: 2}
-  m_sharedMaterial: {fileID: 5774132042284299054, guid: 3205eecf567371941ad2765a66292068, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: d99c1b849dbe6ef4288a9118956c79f2, type: 2}
+  m_sharedMaterial: {fileID: -7833640925592425804, guid: d99c1b849dbe6ef4288a9118956c79f2, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -21149,7 +21149,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1751540350}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 265279392}
+        m_TargetAssemblyTypeName: ManageUI, Assembly-CSharp
+        m_MethodName: CloseManager
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1751540350
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -21641,7 +21653,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1846981059}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 265279392}
+        m_TargetAssemblyTypeName: ManageUI, Assembly-CSharp
+        m_MethodName: AutoHandleFunds
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1846981059
 MonoBehaviour:
   m_ObjectHideFlags: 0

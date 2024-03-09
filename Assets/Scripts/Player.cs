@@ -68,6 +68,7 @@ public class Player
             UnMortgageProperties();
 
             //Check if he could trade for missing properties
+            TradingSystem.instance.FindMissingProperty(this);
         }
 
     }

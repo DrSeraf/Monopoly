@@ -42,6 +42,7 @@ public class TradingSystem : MonoBehaviour
                 if (requestedNode != null)
                 {
                     //MAKE OFFER TO OWNER THE NODE
+                    MakeTradeDecision(currentPlayer, requestedNode.Owner, requestedNode);
                     break;
                 }
             }
@@ -51,6 +52,7 @@ public class TradingSystem : MonoBehaviour
                 if (hasMostOFSet >= 2)
                 {
                     requestedNode = list.Find(n => n.Owner != currentPlayer && n.Owner != null);
+                    MakeTradeDecision(currentPlayer, requestedNode.Owner, requestedNode);
                     break;
                 }
             }
@@ -110,7 +112,7 @@ public class TradingSystem : MonoBehaviour
         }
         else if (nodeOwner.playerType == Player.PlayerType.Human)
         {
-            //SHOW UI
+            //SHOW UI FOR HUMAN
         }
     }
 
@@ -118,9 +120,17 @@ public class TradingSystem : MonoBehaviour
     void ConsiderTradeOffer(Player currentPlayer, Player nodeOwner, MonopolyNode requestedNode, MonopolyNode offeredNode, int offeredMoney, int requestedMoney)
     {
         int valueOfTheTrade = CalculateValueOfNode(requestedNode) + offeredMoney - requestedMoney - CalculateValueOfNode(offeredNode);
+        //SEL NODE FOR MONEY ONLY
+        if (requestedNode == null && offeredNode != null && requestedMoney <= nodeOwner.ReadMoney/3)
+        {
+            Trade(currentPlayer, nodeOwner, requestedNode, offeredNode, offeredMoney, requestedMoney);
+            return;
+        }
+        //JUST NORMAL TRADE
         if (valueOfTheTrade >= 0)
         {
             //TRADE THE NODE IS VALID
+            Trade(currentPlayer, nodeOwner, requestedNode, offeredNode, offeredMoney, requestedMoney);
         }
         else
         {
@@ -164,9 +174,10 @@ public class TradingSystem : MonoBehaviour
                 offeredNode.ChangeOwner(nodeOwner);
             }
             //SHOW A MESSAGE FOR THE UI
-            OnUpdateMessage.Invoke(currentPlayer.name + " обменял " + requestedNode.name + " за " + offeredMoney + " & " + offeredNode.name + " игроку " + nodeOwner.name);
+            string offeredNodeName = (offeredNode != null) ? " & " + offeredNode.name : "";
+            OnUpdateMessage.Invoke(currentPlayer.name + " обменял " + requestedNode.name + " за " + offeredMoney +  offeredNodeName + " игроку " + nodeOwner.name);
         }
-        else if (offeredNode != null)
+        else if (offeredNode != null && requestedNode == null)
         {
             currentPlayer.CollectMoney(requestedMoney);
             nodeOwner.PayMoney(requestedMoney);

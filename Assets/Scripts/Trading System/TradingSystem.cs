@@ -86,9 +86,16 @@ public class TradingSystem : MonoBehaviour
             {
                 if (CalculateValueOfNode(node) + currentPlayer.ReadMoney >= requestedNode.price)
                 {
-                    int offeredMoney = CalculateValueOfNode(requestedNode) - CalculateValueOfNode(node);
+                    int difference = CalculateValueOfNode(requestedNode) - CalculateValueOfNode(node);
                     //VALID TRADE POSSIBLE
-                    MakeTradeOffer(currentPlayer, nodeOwner, requestedNode, node, offeredMoney, 0);
+                    if (difference > 0)
+                    {
+                        MakeTradeOffer(currentPlayer, nodeOwner, requestedNode, node, difference, 0);
+                    }
+                    else
+                    {
+                        MakeTradeOffer(currentPlayer, nodeOwner, requestedNode, node, 0, Mathf.Abs(difference));
+                    }
                     //MAKE TRADE OFFER
                     break;
                 }
@@ -119,7 +126,7 @@ public class TradingSystem : MonoBehaviour
     //-------------------------------CONCIDER TRADE OFFER----------------------------------AI
     void ConsiderTradeOffer(Player currentPlayer, Player nodeOwner, MonopolyNode requestedNode, MonopolyNode offeredNode, int offeredMoney, int requestedMoney)
     {
-        int valueOfTheTrade = CalculateValueOfNode(requestedNode) + offeredMoney - requestedMoney - CalculateValueOfNode(offeredNode);
+        int valueOfTheTrade = (CalculateValueOfNode(requestedNode) + requestedMoney) - (CalculateValueOfNode(offeredNode) + offeredMoney);
         //SEL NODE FOR MONEY ONLY
         if (requestedNode == null && offeredNode != null && requestedMoney <= nodeOwner.ReadMoney/3)
         {
@@ -127,7 +134,7 @@ public class TradingSystem : MonoBehaviour
             return;
         }
         //JUST NORMAL TRADE
-        if (valueOfTheTrade >= 0)
+        if (valueOfTheTrade <= 0)
         {
             //TRADE THE NODE IS VALID
             Trade(currentPlayer, nodeOwner, requestedNode, offeredNode, offeredMoney, requestedMoney);

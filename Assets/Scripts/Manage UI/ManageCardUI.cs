@@ -50,11 +50,15 @@ public class ManageCardUI : MonoBehaviour
         if (!propertyReference.CheckIfMortgageAllowed())
         {
             //Error messagge or such
+            string message = "У вас стоит зелье на имуществе! Вы не можете его заложить";
+            ManageUI.instance.UpdateSystemMessage(message);
             return;
         }
         if (nodeReference.IsMortgaged)
         {
             //Error messagge or such
+            string message = "Уже под залогом!";
+            ManageUI.instance.UpdateSystemMessage(message);
             return;
         }
         playerReference.CollectMoney(nodeReference.MortgageProperty());
@@ -69,11 +73,15 @@ public class ManageCardUI : MonoBehaviour
         if (!nodeReference.IsMortgaged)
         {
             //Error messagge or such
+            string message = "Уже под выкуплено!";
+            ManageUI.instance.UpdateSystemMessage(message);
             return;
         }
         if (playerReference.ReadMoney < nodeReference.MortgageValue)
         {
             //Error messagge or such
+            string message = "У вас недостоточно денег!";
+            ManageUI.instance.UpdateSystemMessage(message);
             return;
         }
         playerReference.PayMoney(nodeReference.MortgageValue);

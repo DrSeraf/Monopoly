@@ -41,17 +41,23 @@ public class ManagePropertyUI : MonoBehaviour
         if (!CheckIfBuyAllowed())
         {
             //Error message
+            string message = "ќдно или несколько имуществ наход€тс€ под залогом, вы не можете поставить зелье.";
+            ManageUI.instance.UpdateSystemMessage(message);
             return;
         }
         if (playerReference.CanAffordHouse(nodesInSet[0].houseCost))
         {
             playerReference.BuilsHouseOrHotelEvenly(nodesInSet);
             //Update money text
+            string message = "¬ы поставили зелье.";
+            ManageUI.instance.UpdateSystemMessage(message);
             UpdateHouseVisuals();
         }
         else
         {
             //Cant afford house - system message for player
+            string message = "” вас недостаточно денег!";
+            ManageUI.instance.UpdateSystemMessage(message);
         }
         sellHouseButton.interactable = CheckIfWeSellAllowed();
         ManageUI.instance.UpdateMoneyText();

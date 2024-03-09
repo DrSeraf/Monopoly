@@ -15,6 +15,7 @@ public class ManageUI : MonoBehaviour
     Player playerReference;
     List<GameObject> propertyPrefabs = new List<GameObject>();
     [SerializeField] TMP_Text yourMoneyText;
+    [SerializeField] TMP_Text systemMessageText;
 
     private void Awake()
     {
@@ -66,5 +67,16 @@ public class ManageUI : MonoBehaviour
     {
         string showMoney = (playerReference.ReadMoney > 0) ? "<color=green>М" + playerReference.ReadMoney : "<color=red>М" + playerReference.ReadMoney;
         yourMoneyText.text = "Ваши деньги: " + showMoney;
+    }
+
+    public void UpdateSystemMessage(string message)
+    {
+        systemMessageText.text = message;
+        StartCoroutine(RemoveMessageAfterDelay(3f));
+    }
+    IEnumerator RemoveMessageAfterDelay(float delay)
+    {
+        yield return new WaitForSeconds(delay); // Ждем указанное количество секунд
+        systemMessageText.text = ""; // Очищаем текст сообщения
     }
 }

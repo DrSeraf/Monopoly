@@ -675,4 +675,11 @@ public class MonopolyNode : MonoBehaviour
     //---------------------------TRADING SYSTEM---------------------------
 
     //---------------------------CHANGE NODE OWNER------------------------
+    public void ChangeOwner(Player newOwner)
+    {
+        owner.RemoveProperty(this);
+        newOwner.AddProperty(this);
+        SetOwner(newOwner);
+    }
+
 }

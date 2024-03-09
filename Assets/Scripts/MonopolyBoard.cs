@@ -178,9 +178,4 @@ public class MonopolyBoard : MonoBehaviour
         return (null, allSame);
 
     }
-
-
-    //---------------------------REQUEST MISSING NODES-IN-SET--------------------------AI
-
-    //---------------------------CALCULATE DISTANCE BETWEEN NODES------------------------
 }

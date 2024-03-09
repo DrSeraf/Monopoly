@@ -315,11 +315,6 @@ public class Player
         GameManager.instance.RemovePlayer(this);
     }
 
-    public void RemoveProperty(MonopolyNode node)
-    {
-        myMonopolyNodes.Remove(node);
-    }
-
     //-------------------------------UNMORTGAGE PROPERTY-------------------------------------
 
     void UnMortgageProperties()
@@ -455,14 +450,18 @@ public class Player
         myInfo.ActivateArrow(active);
     }
 
-    //-------------------------------MAKE TRADE OFFER----------------------------------------
-
-    //-------------------------------CONCIDER TRADE OFFER----------------------------------AI
-
-    //-------------------------------CALCULATE THE VALUE OF NODE---------------------------AI
-
-    //-------------------------------TRADE THE NODE------------------------------------------
-
     //-------------------------------REMOVE AND ADD NODES------------------------------------
 
+    public void AddProperty(MonopolyNode node)
+    {
+        myMonopolyNodes.Add(node);
+        //Sort all nodes by price
+        SortPropertiesByPrice();
+    }
+    public void RemoveProperty(MonopolyNode node)
+    {
+        myMonopolyNodes.Remove(node);
+        //Sort all nodes by price
+        SortPropertiesByPrice();
+    }
 }

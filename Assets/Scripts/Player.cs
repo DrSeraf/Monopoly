@@ -234,7 +234,7 @@ public class Player
 
     //-------------------------------HANDLE INSUFFICIENT FUNDS-------------------------------
 
-    void HandleInsufficientFunds(int amountToPay)
+    public void HandleInsufficientFunds(int amountToPay)
     {
         int housesToSell = 0;//Available houses to sell
         int allHouses = 0;
@@ -268,10 +268,10 @@ public class Player
         //Mortgage
         foreach (var node in myMonopolyNodes)
         {
-            allPropertiesToMortgage += (node.IsMortgaged) ? 0 : 1;
+            allPropertiesToMortgage += (!node.IsMortgaged) ? 0 : 1;
         }
         //Loop throght the properties and try to martgage as much as needed
-        while (money < amountToPay && propertiesToMortgage > 0)
+        while (money < amountToPay && allPropertiesToMortgage > 0)
         {
             foreach (var node in myMonopolyNodes)
             {

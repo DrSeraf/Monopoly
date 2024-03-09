@@ -31,6 +31,28 @@ public class ManageUI : MonoBehaviour
     {
         playerReference = GameManager.instance.GetCurrentPlayer;
         //Get all nodes as node sets
+        CreateProperties();
+        managePanel.SetActive(true);
+        UpdateMoneyText();
+    }
+
+    public void CloseManager()
+    {
+        managePanel.SetActive(false);
+        ClearProperty();
+    }
+
+    void ClearProperty()
+    {
+        for (int i = propertyPrefabs.Count - 1; i >= 0; i--)
+        {
+            Destroy(propertyPrefabs[i]);
+        }
+        propertyPrefabs.Clear();
+    }
+
+    void CreateProperties()
+    {
         List<MonopolyNode> processedSet = null;
         foreach (var node in playerReference.GetMonopolyNodes)
         {
@@ -50,19 +72,8 @@ public class ManageUI : MonoBehaviour
                 propertyPrefabs.Add(newPropertySet);
             }
         }
-        managePanel.SetActive(true);
-        UpdateMoneyText();
     }
 
-    public void CloseManager()
-    {
-        managePanel.SetActive(false);
-        for (int i = propertyPrefabs.Count-1; i >= 0; i--)
-        {
-            Destroy(propertyPrefabs[i]);
-        }
-        propertyPrefabs.Clear();
-    }
     public void UpdateMoneyText()
     {
         string showMoney = (playerReference.ReadMoney > 0) ? "<color=green>М" + playerReference.ReadMoney : "<color=red>М" + playerReference.ReadMoney;
@@ -78,5 +89,19 @@ public class ManageUI : MonoBehaviour
     {
         yield return new WaitForSeconds(delay); // Ждем указанное количество секунд
         systemMessageText.text = ""; // Очищаем текст сообщения
+    }
+
+    public void AutoHandleFunds()//Call from button
+    {
+        if (playerReference.ReadMoney > 0)
+        {
+            UpdateSystemMessage("У вас достаточно денег!");
+            return;
+        }
+        playerReference.HandleInsufficientFunds(Mathf.Abs(playerReference.ReadMoney));
+        //Update UI
+        ClearProperty();
+        CreateProperties();
+        UpdateMoneyText();
     }
 }

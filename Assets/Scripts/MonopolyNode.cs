@@ -671,4 +671,8 @@ public class MonopolyNode : MonoBehaviour
         //Update UI
         OnOwnerUpdated();
     }
+
+    //---------------------------TRADING SYSTEM---------------------------
+
+    //---------------------------CHANGE NODE OWNER------------------------
 }

@@ -180,7 +180,7 @@ public class MonopolyBoard : MonoBehaviour
     }
 
 
-    //---------------------------REQUEST MISSING NODES-IN-SET----------------------------
+    //---------------------------REQUEST MISSING NODES-IN-SET--------------------------AI
 
-    //---------------------------CALCULATE DISTANCE BETWEEN NODES
+    //---------------------------CALCULATE DISTANCE BETWEEN NODES------------------------
 }

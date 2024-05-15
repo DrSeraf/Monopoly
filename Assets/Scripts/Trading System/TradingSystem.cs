@@ -10,10 +10,11 @@ public class TradingSystem : MonoBehaviour
 {
     public static TradingSystem instance;
 
+    [SerializeField] GameObject cardPrefab;
+    [SerializeField] GameObject tradePanel;
     [Header("Left side")]
     [SerializeField]TMP_Text leftOffererNameText;
     [SerializeField] Transform leftCardGrid;
-    [SerializeField] GameObject leftCardPrefab;
     [SerializeField] ToggleGroup leftToggleGroup;
     [SerializeField] TMP_Text leftYourMoneyText;
     [SerializeField] TMP_Text leftOfferMoney;
@@ -26,11 +27,11 @@ public class TradingSystem : MonoBehaviour
     [Header("Middle side")]
     [SerializeField] Transform buttonGrid;
     [SerializeField] GameObject playerButtonPrefab;
+    List<GameObject> playerButtonList = new List<GameObject>();
 
     [Header("Right side")]
     [SerializeField] TMP_Text rightOffererNameText;
     [SerializeField] Transform rightCardGrid;
-    [SerializeField] GameObject rightCardPrefab;
     [SerializeField] ToggleGroup rightToggleGroup;
     [SerializeField] TMP_Text rightYourMoneyText;
     [SerializeField] TMP_Text rightOfferMoney;
@@ -48,6 +49,10 @@ public class TradingSystem : MonoBehaviour
     private void Awake()
     {
         instance = this;
+    }
+    private void Start()
+    {
+        tradePanel.SetActive(false);
     }
     //-------------------------------FIND MISSING PROPERTYS IN SET-------------------------AI
 
@@ -233,7 +238,63 @@ public class TradingSystem : MonoBehaviour
 
     //-------------------------------CURRENT PLAYER-------------------------------------HUMAN
 
+    void CreateLeftPanel()
+    {
+        leftOffererNameText.text = leftPlayerReference.name;
 
+        for (int i = 0; i < leftPlayerReference.GetMonopolyNodes.Count; i++) 
+        {
+            GameObject tradeCard = Instantiate(cardPrefab, leftCardGrid, false);
+            //SET UP TTHE ACTUAL CARD CONTENT
+
+            leftCardPrefabList.Add(tradeCard);
+        }
+        leftYourMoneyText.text = "Ваши деньги: " + leftPlayerReference.ReadMoney;
+        //SET UP MONEY SLIDER
+
+        leftMoneySlider.maxValue = leftPlayerReference.ReadMoney;
+        leftMoneySlider.value = 0;
+        UpdateLeftSlide(leftMoneySlider.value);
+
+        //RESET OLD CONTENT
+
+
+        tradePanel.SetActive(true);
+    }
+
+    public void UpdateLeftSlide(float value)
+    {
+        leftOfferMoney.text = "Деньги для сделки: " + leftMoneySlider.value.ToString();
+    }
+
+    public void CloseTradePanel()
+    {
+        tradePanel.SetActive(false);
+    }
+
+    public void OpenTradePanel()
+    {
+        leftPlayerReference = GameManager.instance.GetCurrentPlayer;
+
+        CreateLeftPanel();
+    }
     //-------------------------------SELECTED PLAYER------------------------------------HUMAN
+    public void ShowRightPlayer(Player player)
+    {
+        //RESET THE CURRENT CONTENT
 
+        //SHOW RIGHT PLAYER OF ABOVE PLAYER
+
+        //UPDATE THE MONEY AND THE SLIDER
+    }
+
+    //SET UP MIDDLE
+    void CreateMiddleButtons()
+    {
+        //CLEAR CONTENT
+
+        //LOOP THROGH ALL PLAYER
+
+        //AND THE BUTTONS FOR THEM
+    }
 }

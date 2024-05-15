@@ -3,14 +3,48 @@ using System.Collections.Generic;
 using UnityEngine;
 using static Player;
 using System.Linq;
+using TMPro;
+using UnityEngine.UI;
 
 public class TradingSystem : MonoBehaviour
 {
+    public static TradingSystem instance;
+
+    [Header("Left side")]
+    [SerializeField]TMP_Text leftOffererNameText;
+    [SerializeField] Transform leftCardGrid;
+    [SerializeField] GameObject leftCardPrefab;
+    [SerializeField] ToggleGroup leftToggleGroup;
+    [SerializeField] TMP_Text leftYourMoneyText;
+    [SerializeField] TMP_Text leftOfferMoney;
+    [SerializeField] Slider leftMoneySlider;
+    List<GameObject> leftCardPrefabList = new List<GameObject>();
+    int leftChoosenMoneyAmount;
+    MonopolyNode leftSelectedNode;
+    Player leftPlayerReference;
+
+    [Header("Middle side")]
+    [SerializeField] Transform buttonGrid;
+    [SerializeField] GameObject playerButtonPrefab;
+
+    [Header("Right side")]
+    [SerializeField] TMP_Text rightOffererNameText;
+    [SerializeField] Transform rightCardGrid;
+    [SerializeField] GameObject rightCardPrefab;
+    [SerializeField] ToggleGroup rightToggleGroup;
+    [SerializeField] TMP_Text rightYourMoneyText;
+    [SerializeField] TMP_Text rightOfferMoney;
+    [SerializeField] Slider rightMoneySlider;
+    List<GameObject> rightCardPrefabList = new List<GameObject>();
+    int rightChoosenMoneyAmount;
+    MonopolyNode rightSelectedNode;
+    Player rightPlayerReference;
+
     //Message system
     public delegate void UpdateMessage(string message);
     public static UpdateMessage OnUpdateMessage;
 
-    public static TradingSystem instance;
+    
     private void Awake()
     {
         instance = this;
@@ -193,5 +227,13 @@ public class TradingSystem : MonoBehaviour
             OnUpdateMessage.Invoke(currentPlayer.name + " продал " + offeredNode.name + " игроку " + nodeOwner.name + " за " + requestedMoney);
         }
     }
+
+    //-------------------------------USER INTERFACE CONTETN-----------------------------HUMAN
+
+
+    //-------------------------------CURRENT PLAYER-------------------------------------HUMAN
+
+
+    //-------------------------------SELECTED PLAYER------------------------------------HUMAN
 
 }

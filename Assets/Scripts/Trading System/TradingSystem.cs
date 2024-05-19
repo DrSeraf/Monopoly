@@ -241,12 +241,12 @@ public class TradingSystem : MonoBehaviour
     void CreateLeftPanel()
     {
         leftOffererNameText.text = leftPlayerReference.name;
-
-        for (int i = 0; i < leftPlayerReference.GetMonopolyNodes.Count; i++) 
+        List<MonopolyNode> referenceNodes = leftPlayerReference.GetMonopolyNodes;
+        for (int i = 0; i < referenceNodes.Count; i++) 
         {
             GameObject tradeCard = Instantiate(cardPrefab, leftCardGrid, false);
             //SET UP TTHE ACTUAL CARD CONTENT
-
+            tradeCard.GetComponent<TradePropertyCard>().SetTradeCard(referenceNodes[i], leftToggleGroup);
             leftCardPrefabList.Add(tradeCard);
         }
         leftYourMoneyText.text = "Ваши деньги: " + leftPlayerReference.ReadMoney;
@@ -294,12 +294,12 @@ public class TradingSystem : MonoBehaviour
         ClearRightPanel();
         //SHOW RIGHT PLAYER OF ABOVE PLAYER
         rightOffererNameText.text = rightPlayerReference.name;
-
-        for (int i = 0; i < rightPlayerReference.GetMonopolyNodes.Count; i++)
+        List<MonopolyNode> referenceNodes = rightPlayerReference.GetMonopolyNodes;
+        for (int i = 0; i < referenceNodes.Count; i++)
         {
             GameObject tradeCard = Instantiate(cardPrefab, rightCardGrid, false);
             //SET UP TTHE ACTUAL CARD CONTENT
-
+            tradeCard.GetComponent<TradePropertyCard>().SetTradeCard(referenceNodes[i], rightToggleGroup);
             rightCardPrefabList.Add(tradeCard);
         }
         rightYourMoneyText.text = "Деньги игрока: " + rightPlayerReference.ReadMoney;

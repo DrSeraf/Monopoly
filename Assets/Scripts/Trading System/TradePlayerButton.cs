@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
-public class PlayerTradeButton : MonoBehaviour
+public class TradePlayerButton : MonoBehaviour
 {
     Player playerReference;
     [SerializeField] TMP_Text playerNameText;
@@ -11,6 +11,7 @@ public class PlayerTradeButton : MonoBehaviour
     public void SetPlayer(Player player)
     {
         playerReference = player;
+        playerNameText.text = player.name;
     }
 
     public void SelectPlayer()

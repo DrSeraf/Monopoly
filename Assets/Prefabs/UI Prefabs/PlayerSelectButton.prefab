@@ -146,6 +146,7 @@ GameObject:
   - component: {fileID: 7375686297618481734}
   - component: {fileID: 610161806775718116}
   - component: {fileID: 1088748129412085552}
+  - component: {fileID: 5750602514589453668}
   m_Layer: 5
   m_Name: PlayerSelectButton
   m_TagString: Untagged
@@ -254,4 +255,29 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 610161806775718116}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 5750602514589453668}
+        m_TargetAssemblyTypeName: TradePlayerButton, Assembly-CSharp
+        m_MethodName: SelectPlayer
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &5750602514589453668
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2445530330980940997}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b115c75cf2a5ba348b7c6908c483eba4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerNameText: {fileID: 1559794103776258031}

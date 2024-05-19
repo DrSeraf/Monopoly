@@ -266,25 +266,48 @@ public class TradingSystem : MonoBehaviour
     {
         leftOfferMoney.text = "Деньги для сделки: " + leftMoneySlider.value.ToString();
     }
+    public void UpdateRightSlide(float value)
+    {
+        rightOfferMoney.text = "Деньги для сделки: " + rightMoneySlider.value.ToString();
+    }
 
     public void CloseTradePanel()
     {
         tradePanel.SetActive(false);
+        ClearAll();
     }
 
     public void OpenTradePanel()
     {
         leftPlayerReference = GameManager.instance.GetCurrentPlayer;
+        rightOffererNameText.text = "Выберите игрока";
 
         CreateLeftPanel();
+
+        CreateMiddleButtons();
     }
     //-------------------------------SELECTED PLAYER------------------------------------HUMAN
     public void ShowRightPlayer(Player player)
     {
+        rightPlayerReference = player;
         //RESET THE CURRENT CONTENT
-
+        ClearRightPanel();
         //SHOW RIGHT PLAYER OF ABOVE PLAYER
+        rightOffererNameText.text = rightPlayerReference.name;
 
+        for (int i = 0; i < rightPlayerReference.GetMonopolyNodes.Count; i++)
+        {
+            GameObject tradeCard = Instantiate(cardPrefab, rightCardGrid, false);
+            //SET UP TTHE ACTUAL CARD CONTENT
+
+            rightCardPrefabList.Add(tradeCard);
+        }
+        rightYourMoneyText.text = "Деньги игрока: " + rightPlayerReference.ReadMoney;
+        //SET UP MONEY SLIDER
+
+        rightMoneySlider.maxValue = rightPlayerReference.ReadMoney;
+        rightMoneySlider.value = 0;
+        UpdateLeftSlide(rightMoneySlider.value);
         //UPDATE THE MONEY AND THE SLIDER
     }
 
@@ -292,9 +315,69 @@ public class TradingSystem : MonoBehaviour
     void CreateMiddleButtons()
     {
         //CLEAR CONTENT
+        for(int i = playerButtonList.Count-1; i >= 0; i--)
+        {
+            Destroy(playerButtonList[i]);
+        }
+        playerButtonList.Clear();
 
         //LOOP THROGH ALL PLAYER
 
+        List<Player> allPlayer = new List<Player>();
+        allPlayer.AddRange(GameManager.instance.GetPlayers);
+        allPlayer.Remove(leftPlayerReference);
+
         //AND THE BUTTONS FOR THEM
+        foreach(var player in allPlayer)
+        {
+            GameObject newPlayerButton = Instantiate(playerButtonPrefab,buttonGrid,false);
+            newPlayerButton.GetComponent<TradePlayerButton>().SetPlayer(player);
+
+
+            playerButtonList.Add(newPlayerButton);
+        }
+    }
+
+
+    void ClearAll()//IF WE OPEN OR CLOSE TRADE SYSTEM
+    {
+        rightOffererNameText.text = "Выберите игрока";
+        rightYourMoneyText.text = "Деньги игрока: 0";
+        rightMoneySlider.maxValue = 0;
+        rightMoneySlider.value = 0;
+        UpdateRightSlide(rightMoneySlider.value);
+        //CLEAR MIDDEL BUTTONS
+        for (int i = playerButtonList.Count - 1; i >= 0; i--)
+        {
+            Destroy(playerButtonList[i]);
+        }
+        playerButtonList.Clear();
+
+        //CLEAR LEFT CARD CONTENT
+        for (int i = leftCardPrefabList.Count - 1; i >= 0; i--)
+        {
+            Destroy(leftCardPrefabList[i]);
+        }
+        leftCardPrefabList.Clear();
+
+        //CLEAR  RIGHT CARD CONTENT
+        for (int i = rightCardPrefabList.Count - 1; i >= 0; i--)
+        {
+            Destroy(rightCardPrefabList[i]);
+        }
+        rightCardPrefabList.Clear();
+    }
+
+    void ClearRightPanel()
+    {
+        for (int i = rightCardPrefabList.Count - 1; i >= 0; i--)
+        {
+            Destroy(rightCardPrefabList[i]);
+        }
+        rightCardPrefabList.Clear();
+        //RESET THE SLIDER
+        rightMoneySlider.maxValue = 0;
+        rightMoneySlider.value = 0;
+        UpdateRightSlide(rightMoneySlider.value);
     }
 }

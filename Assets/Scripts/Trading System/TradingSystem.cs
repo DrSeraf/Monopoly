@@ -173,7 +173,7 @@ public class TradingSystem : MonoBehaviour
             return;
         }
         //JUST NORMAL TRADE
-        if (valueOfTheTrade <= 0)
+        if (valueOfTheTrade <= 0 && MonopolyBoard.Instance.PlayerHasAllNodesOfSet(requestedNode).allSame)
         {
             //TRADE THE NODE IS VALID
             Trade(currentPlayer, nodeOwner, requestedNode, offeredNode, offeredMoney, requestedMoney);
@@ -231,6 +231,9 @@ public class TradingSystem : MonoBehaviour
             //SHOW A MESSAGE FOR THE UI
             OnUpdateMessage.Invoke(currentPlayer.name + " продал " + offeredNode.name + " игроку " + nodeOwner.name + " за " + requestedMoney);
         }
+
+        //HIDE UI FOR HUMAN
+        CloseTradePanel();
     }
 
     //-------------------------------USER INTERFACE CONTETN-----------------------------HUMAN
@@ -379,5 +382,32 @@ public class TradingSystem : MonoBehaviour
         rightMoneySlider.maxValue = 0;
         rightMoneySlider.value = 0;
         UpdateRightSlide(rightMoneySlider.value);
+    }
+
+    //-------------------------------MAKE OFFER-----------------------------------------HUMAN
+
+    public void MakeOfferButton()//HUMAN INPUT OFFER
+    {
+        MonopolyNode requestedNode = null;
+        MonopolyNode offeredNode = null;
+        if (rightPlayerReference == null)
+        {
+            //ERROR MESSAGE
+            return;
+        }
+        //LEFT SELECTED NODE
+        Toggle offeredToggle = leftToggleGroup.ActiveToggles().FirstOrDefault();
+        if(offeredToggle != null)
+        {
+            offeredNode = offeredToggle.GetComponentInParent<TradePropertyCard>().Node();
+        }
+        //RIGH SELECTED NODE
+        Toggle requestedToggle = rightToggleGroup.ActiveToggles().FirstOrDefault();
+        if (requestedToggle != null)
+        {
+            requestedNode = requestedToggle.GetComponentInParent<TradePropertyCard>().Node();
+        }
+
+        MakeTradeOffer(leftPlayerReference, rightPlayerReference, requestedNode, offeredNode, (int)leftMoneySlider.value, (int)rightMoneySlider.value);
     }
 }

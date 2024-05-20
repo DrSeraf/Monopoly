@@ -29,6 +29,9 @@ public class GameManager : MonoBehaviour
     public bool RolledADouble => rolledADouble;
     public void RestRolledADouble() => rolledADouble = false;
     int doubleRollCount;
+    bool hasRolledDice;
+    public bool HasRolledDice => hasRolledDice;
+
     //Tax pool
     int taxPool = 0;
 
@@ -102,6 +105,7 @@ public class GameManager : MonoBehaviour
     public void RollDice()//Press button from human - or auto from ai
     {
         bool allowedToMove = true;
+        hasRolledDice = true;
         //Reset last roll
         rolledDice = new int[2];
         //Any roll dice and store them
@@ -214,6 +218,7 @@ public class GameManager : MonoBehaviour
     public void SwitchPlayer()
     {
         currentPlayer++;
+        hasRolledDice = false;
         //Rolled double?
         doubleRollCount = 0;
 

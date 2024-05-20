@@ -79,8 +79,8 @@ public class Player
         myInfo.SetCashName(money);
         if (playerType == PlayerType.Human && GameManager.instance.GetCurrentPlayer == this)
         {
-            bool canEndTurn = !GameManager.instance.RolledADouble && ReadMoney >= 0;
-            bool canRollDice = GameManager.instance.RolledADouble && ReadMoney >= 0;
+            bool canEndTurn = !GameManager.instance.RolledADouble && ReadMoney >= 0 && GameManager.instance.HasRolledDice;
+            bool canRollDice = (GameManager.instance.RolledADouble && ReadMoney >= 0) || (!GameManager.instance.HasRolledDice && ReadMoney >= 0);
             //show UI
             OnShowHumanPanel.Invoke(true, canRollDice, canEndTurn);
         }
@@ -153,8 +153,8 @@ public class Player
         myInfo.SetCashName(money);
         if (playerType == PlayerType.Human && GameManager.instance.GetCurrentPlayer == this)
         {
-            bool canEndTurn = !GameManager.instance.RolledADouble && ReadMoney >= 0;
-            bool canRollDice = GameManager.instance.RolledADouble && ReadMoney >= 0;
+            bool canEndTurn = !GameManager.instance.RolledADouble && ReadMoney >= 0 && GameManager.instance.HasRolledDice;
+            bool canRollDice = (GameManager.instance.RolledADouble && ReadMoney >= 0) || (!GameManager.instance.HasRolledDice && ReadMoney >= 0);
             //show UI
             OnShowHumanPanel.Invoke(true, canRollDice, canEndTurn);
         }

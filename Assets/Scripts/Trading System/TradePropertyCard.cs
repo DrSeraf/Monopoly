@@ -36,4 +36,8 @@ public class TradePropertyCard : MonoBehaviour
         toggleButton.group = toggleGroup;
 
     }
+    public MonopolyNode Node()
+    {
+        return nodeReference;
+    }
 }

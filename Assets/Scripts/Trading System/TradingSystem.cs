@@ -12,6 +12,8 @@ public class TradingSystem : MonoBehaviour
 
     [SerializeField] GameObject cardPrefab;
     [SerializeField] GameObject tradePanel;
+    [SerializeField] GameObject resultPanel;
+    [SerializeField] TMP_Text resultMessage;
     [Header("Left side")]
     [SerializeField]TMP_Text leftOffererNameText;
     [SerializeField] Transform leftCardGrid;
@@ -53,6 +55,7 @@ public class TradingSystem : MonoBehaviour
     private void Start()
     {
         tradePanel.SetActive(false);
+        resultPanel.SetActive(false);
     }
     //-------------------------------FIND MISSING PROPERTYS IN SET-------------------------AI
 
@@ -170,16 +173,19 @@ public class TradingSystem : MonoBehaviour
         if (requestedNode == null && offeredNode != null && requestedMoney <= nodeOwner.ReadMoney/3)
         {
             Trade(currentPlayer, nodeOwner, requestedNode, offeredNode, offeredMoney, requestedMoney);
+            TradeResult(true);
             return;
         }
         //JUST NORMAL TRADE
-        if (valueOfTheTrade <= 0 && MonopolyBoard.Instance.PlayerHasAllNodesOfSet(requestedNode).allSame)
+        if (valueOfTheTrade <= 0 /*&& MonopolyBoard.Instance.PlayerHasAllNodesOfSet(requestedNode).allSame*/)
         {
             //TRADE THE NODE IS VALID
             Trade(currentPlayer, nodeOwner, requestedNode, offeredNode, offeredMoney, requestedMoney);
+            TradeResult(true);
         }
         else
         {
+            TradeResult(false);
             //DEBUG LINE OR TELL PLAYER THAT REJECTED
             Debug.Log("AI rejected trage offer");
         }
@@ -409,5 +415,21 @@ public class TradingSystem : MonoBehaviour
         }
 
         MakeTradeOffer(leftPlayerReference, rightPlayerReference, requestedNode, offeredNode, (int)leftMoneySlider.value, (int)rightMoneySlider.value);
+    }
+
+    //-------------------------------TRADE RESULT---------------------------------------HUMAN
+
+    void TradeResult(bool accepted)
+    {
+        if (accepted) 
+        {
+            resultMessage.text = rightPlayerReference.name + " <color=green>принял</color> " + "обмен.";
+        }
+        else 
+        {
+            resultMessage.text = rightPlayerReference.name + " <color=red>отказал</color> " + "в обмене.";
+        }
+
+        resultPanel.SetActive(true);
     }
 }

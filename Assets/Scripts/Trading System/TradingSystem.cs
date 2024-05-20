@@ -455,10 +455,11 @@ public class TradingSystem : MonoBehaviour
     void ShowTradeOfferPanel(Player currentPlayer, Player nodeOwner, MonopolyNode requestedNode, MonopolyNode offeredNode, int offeredMoney, int requestedMoney)
     {
         tradeOfferPanel.SetActive(true);
-        leftMessageText.text = currentPlayer.name + "предлагает:";
-        rightMessageText.text = "За " + nodeOwner.name + "имущество: ";
+        leftMessageText.text = currentPlayer.name + " предлагает: ";
+        rightMessageText.text = "За " + nodeOwner.name + " имущество: ";
         leftMoneyText.text = "+ М" + offeredMoney;
         rightMoneyText.text = "+ М" + requestedMoney;
+
         leftCard.SetActive(offeredNode != null ? true : false);
         rightCard.SetActive(requestedNode != null ? true : false);
 
@@ -469,7 +470,7 @@ public class TradingSystem : MonoBehaviour
 
         if (rightCard.activeInHierarchy)
         {
-            rightColorField.color = (requestedNode.propertyColorField != null) ? offeredNode.propertyColorField.color : Color.white;
+            rightColorField.color = (requestedNode.propertyColorField != null) ? requestedNode.propertyColorField.color : Color.white;
         }
     }
 

@@ -29,6 +29,14 @@ public class Player
     //AI
     int aiMoneySafaty = 200;
 
+    //AI STATES
+    public enum AiStates
+    {
+        IDLE,
+        TRADE
+    }
+
+    public AiStates aiState;
 
     //Return some infos
     public bool IsInJail => isInJail;
@@ -464,5 +472,30 @@ public class Player
         myMonopolyNodes.Remove(node);
         //Sort all nodes by price
         SortPropertiesByPrice();
+    }
+
+    //-------------------------------STATE MASCHINE------------------------------------------
+    public void ChangeState(AiStates state)
+    {
+        if (playerType == PlayerType.Human)
+        {
+            return;
+        }
+
+        aiState = state;
+        switch (aiState) 
+        {
+            case AiStates.IDLE:
+                {
+                   //CONTINUE THE GAME 
+                }
+            break;
+
+            case AiStates.TRADE:
+                {
+                    //HOLD THE GAME UNTIL CONTINUE
+                }
+            break;
+        }
     }
 }

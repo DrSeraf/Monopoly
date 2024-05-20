@@ -170,7 +170,7 @@ public class TradingSystem : MonoBehaviour
     {
         int valueOfTheTrade = (CalculateValueOfNode(requestedNode) + requestedMoney) - (CalculateValueOfNode(offeredNode) + offeredMoney);
         //SEL NODE FOR MONEY ONLY
-        if (requestedNode == null && offeredNode != null && requestedMoney <= nodeOwner.ReadMoney/3)
+        if (requestedNode == null && offeredNode != null && requestedMoney <= nodeOwner.ReadMoney/ 3 /*&& MonopolyBoard.Instance.PlayerHasAllNodesOfSet(requestedNode).allSame*/)
         {
             Trade(currentPlayer, nodeOwner, requestedNode, offeredNode, offeredMoney, requestedMoney);
             TradeResult(true);

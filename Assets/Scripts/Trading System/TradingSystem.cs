@@ -43,6 +43,21 @@ public class TradingSystem : MonoBehaviour
     MonopolyNode rightSelectedNode;
     Player rightPlayerReference;
 
+    [Header("Trade offer panel")]
+    [SerializeField] GameObject tradeOfferPanel;
+    [SerializeField] TMP_Text leftMessageText;
+    [SerializeField] TMP_Text rightMessageText;
+    [SerializeField] TMP_Text leftMoneyText;
+    [SerializeField] TMP_Text rightMoneyText;
+    [SerializeField] GameObject leftCard;
+    [SerializeField] GameObject rightCard;
+    [SerializeField] Image leftColorField;
+    [SerializeField] Image rightColorField;
+    //[SerializeField] Image leftPropertyImage;
+    //[SerializeField] Image rightPropertyImage;
+
+
+
     //Message system
     public delegate void UpdateMessage(string message);
     public static UpdateMessage OnUpdateMessage;
@@ -56,6 +71,7 @@ public class TradingSystem : MonoBehaviour
     {
         tradePanel.SetActive(false);
         resultPanel.SetActive(false);
+        tradeOfferPanel.SetActive(false);
     }
     //-------------------------------FIND MISSING PROPERTYS IN SET-------------------------AI
 
@@ -162,6 +178,7 @@ public class TradingSystem : MonoBehaviour
         else if (nodeOwner.playerType == Player.PlayerType.Human)
         {
             //SHOW UI FOR HUMAN
+            ShowTradeOfferPanel(currentPlayer, nodeOwner, requestedNode, offeredNode, offeredMoney, requestedMoney);
         }
     }
 
@@ -432,4 +449,39 @@ public class TradingSystem : MonoBehaviour
 
         resultPanel.SetActive(true);
     }
+
+    //-------------------------------TRADE OFFER PANEL----------------------------------HUMAN
+
+    void ShowTradeOfferPanel(Player currentPlayer, Player nodeOwner, MonopolyNode requestedNode, MonopolyNode offeredNode, int offeredMoney, int requestedMoney)
+    {
+        tradeOfferPanel.SetActive(true);
+        leftMessageText.text = currentPlayer.name + "предлагает:";
+        rightMessageText.text = "За " + nodeOwner.name + "имущество: ";
+        leftMoneyText.text = "+ М" + offeredMoney;
+        rightMoneyText.text = "+ М" + requestedMoney;
+        leftCard.SetActive(offeredNode != null ? true : false);
+        rightCard.SetActive(requestedNode != null ? true : false);
+
+        if (leftCard.activeInHierarchy)
+        {
+            leftColorField.color = (offeredNode.propertyColorField != null) ? offeredNode.propertyColorField.color : Color.white;
+        }
+
+        if (rightCard.activeInHierarchy)
+        {
+            rightColorField.color = (requestedNode.propertyColorField != null) ? offeredNode.propertyColorField.color : Color.white;
+        }
+    }
+
+    public void AcceptOffer()
+    {
+
+    }
+
+    public void RejectOffer()
+    {
+
+    }
+
+    //-------------------------------
 }

@@ -461,7 +461,8 @@ public class MonopolyNode : MonoBehaviour
         //Continue
         if (!playerIsHuman) 
         {
-            Invoke("ContinueGame", GameManager.instance.SecondsBetwinTurns);
+            //Invoke("ContinueGame", GameManager.instance.SecondsBetwinTurns);
+            currentPlayer.ChangeState(Player.AiStates.TRADE);
         }
         else 
         {
@@ -472,7 +473,7 @@ public class MonopolyNode : MonoBehaviour
         }
     }
 
-    void ContinueGame()
+    /*void ContinueGame()
     {
         //If the last roll was not a double 
         if(GameManager.instance.RolledADouble)
@@ -486,7 +487,7 @@ public class MonopolyNode : MonoBehaviour
             //switch player
             GameManager.instance.SwitchPlayer();
         }
-    }
+    }*/
 
     int CalculatePropertyRent()
     {

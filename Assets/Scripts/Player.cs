@@ -51,6 +51,7 @@ public class Player
     public delegate void ShowHumanPanel(bool activatePanel, bool activateRollDice, bool activateEndTurn);
     public static ShowHumanPanel OnShowHumanPanel;
 
+
     public void Inititialize(MonopolyNode startNode, int startingMoney, PlayerInfo info, GameObject token)
     {
         currentNode = startNode;
@@ -76,7 +77,7 @@ public class Player
             UnMortgageProperties();
 
             //Check if he could trade for missing properties
-            TradingSystem.instance.FindMissingProperty(this);
+            //TradingSystem.instance.FindMissingProperty(this);
         }
 
     }
@@ -487,15 +488,33 @@ public class Player
         {
             case AiStates.IDLE:
                 {
-                   //CONTINUE THE GAME 
+                    //CONTINUE THE GAME 
+                    ContinueGame();
                 }
             break;
 
             case AiStates.TRADE:
                 {
                     //HOLD THE GAME UNTIL CONTINUE
+                    TradingSystem.instance.FindMissingProperty(this);
                 }
             break;
+        }
+    }
+
+    void ContinueGame()
+    {
+        //If the last roll was not a double 
+        if (GameManager.instance.RolledADouble)
+        {
+            //roll agaid
+            GameManager.instance.RollDice();
+        }
+        else
+        {
+            //not a double roll
+            //switch player
+            GameManager.instance.SwitchPlayer();
         }
     }
 }

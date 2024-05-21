@@ -57,6 +57,10 @@ public class TradingSystem : MonoBehaviour
     //[SerializeField] Image rightPropertyImage;
 
 
+    //STORE THE OFFER FOR HUMAN
+    Player currentPlayer, nodeOwner;
+    MonopolyNode requestedNode, offeredNode;
+    int requestedMoney, offeredMoney;
 
     //Message system
     public delegate void UpdateMessage(string message);
@@ -114,6 +118,10 @@ public class TradingSystem : MonoBehaviour
                     break;
                 }
             }
+        }
+        if (requestedNode == null)
+        {
+            currentPlayer.ChangeState(Player.AiStates.IDLE);
         }
     }
 
@@ -190,7 +198,10 @@ public class TradingSystem : MonoBehaviour
         if (requestedNode == null && offeredNode != null && requestedMoney <= nodeOwner.ReadMoney/ 3 /*&& MonopolyBoard.Instance.PlayerHasAllNodesOfSet(requestedNode).allSame*/)
         {
             Trade(currentPlayer, nodeOwner, requestedNode, offeredNode, offeredMoney, requestedMoney);
-            TradeResult(true);
+            if (currentPlayer.playerType == Player.PlayerType.Human)
+            {
+                TradeResult(true);
+            }
             return;
         }
         //JUST NORMAL TRADE
@@ -198,11 +209,17 @@ public class TradingSystem : MonoBehaviour
         {
             //TRADE THE NODE IS VALID
             Trade(currentPlayer, nodeOwner, requestedNode, offeredNode, offeredMoney, requestedMoney);
-            TradeResult(true);
+            if (currentPlayer.playerType == Player.PlayerType.Human)
+            {
+                TradeResult(true);
+            }
         }
         else
         {
-            TradeResult(false);
+            if (currentPlayer.playerType == Player.PlayerType.Human)
+            {
+                TradeResult(false);
+            }
             //DEBUG LINE OR TELL PLAYER THAT REJECTED
             Debug.Log("AI rejected trage offer");
         }
@@ -257,6 +274,10 @@ public class TradingSystem : MonoBehaviour
 
         //HIDE UI FOR HUMAN
         CloseTradePanel();
+        if (currentPlayer.playerType == Player.PlayerType.AI)
+        {
+            currentPlayer.ChangeState(Player.AiStates.IDLE);
+        }
     }
 
     //-------------------------------USER INTERFACE CONTETN-----------------------------HUMAN
@@ -452,8 +473,16 @@ public class TradingSystem : MonoBehaviour
 
     //-------------------------------TRADE OFFER PANEL----------------------------------HUMAN
 
-    void ShowTradeOfferPanel(Player currentPlayer, Player nodeOwner, MonopolyNode requestedNode, MonopolyNode offeredNode, int offeredMoney, int requestedMoney)
+    void ShowTradeOfferPanel(Player _currentPlayer, Player _nodeOwner, MonopolyNode _requestedNode, MonopolyNode _offeredNode, int _offeredMoney, int _requestedMoney)
     {
+        //FILL THE ACTUAL OFFER CONTENT
+        currentPlayer = _currentPlayer;
+        nodeOwner = _nodeOwner;
+        requestedNode = _requestedNode;
+        offeredNode = _offeredNode;
+        requestedMoney = _requestedMoney;
+        offeredMoney = _offeredMoney;
+        //SHOW PANEL CONTENT
         tradeOfferPanel.SetActive(true);
         leftMessageText.text = currentPlayer.name + " предлагает: ";
         rightMessageText.text = "За " + nodeOwner.name + " имущество: ";
@@ -476,13 +505,25 @@ public class TradingSystem : MonoBehaviour
 
     public void AcceptOffer()
     {
-
+        Trade(currentPlayer, nodeOwner, requestedNode, offeredNode, offeredMoney, requestedMoney);
+        currentPlayer.ChangeState(Player.AiStates.IDLE);
+        ResetOffer();
     }
 
     public void RejectOffer()
     {
+        currentPlayer.ChangeState(Player.AiStates.IDLE);
 
+        ResetOffer();
     }
 
-    //-------------------------------
+    void ResetOffer()
+    {
+        currentPlayer = null;
+        nodeOwner = null;
+        requestedNode = null;
+        offeredNode = null;
+        requestedMoney = 0;
+        offeredMoney = 0;
+    }
 }

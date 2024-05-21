@@ -14,6 +14,7 @@ public class ChanceField : MonoBehaviour
 
     List<SCR_ChanceCard> cardPool = new List<SCR_ChanceCard>();
     List<SCR_ChanceCard> usedCardPool = new List<SCR_ChanceCard>();
+    SCR_ChanceCard jailFreeCard;
     //Current card and current player
     SCR_ChanceCard pikedCard;
     Player currentPlayer;
@@ -58,7 +59,16 @@ public class ChanceField : MonoBehaviour
         //Draw an actual card
         pikedCard = cardPool[0];
         cardPool.RemoveAt(0);
-        usedCardPool.Add(pikedCard);
+
+        if (pikedCard.jailFreeCard)
+        {
+            jailFreeCard = pikedCard;
+        }
+        else
+        {
+            usedCardPool.Add(pikedCard);
+        }
+
         if (cardPool.Count == 0)
         {
             //Put back all cards
@@ -188,6 +198,12 @@ public class ChanceField : MonoBehaviour
                 OnShowHumanPanel.Invoke(true, GameManager.instance.RolledADouble, !GameManager.instance.RolledADouble);
             }
         }
+    }
+
+    public void AddBackJailFreeCard()
+    {
+        usedCardPool.Add(jailFreeCard);
+        jailFreeCard = null;
     }
 
 }

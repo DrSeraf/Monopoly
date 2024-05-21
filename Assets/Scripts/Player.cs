@@ -23,6 +23,12 @@ public class Player
     [SerializeField] List<MonopolyNode> myMonopolyNodes = new List<MonopolyNode>();
     public List<MonopolyNode> GetMonopolyNodes => myMonopolyNodes;
 
+    bool hasChanceJailFreeCard, hasCommunityJailFreeCard;
+
+    public bool HasChanceJailFreeCard => hasChanceJailFreeCard;
+
+    public bool HasCommunityJailFreeCard => hasCommunityJailFreeCard;
+
     //Player Info
     PlayerInfo myInfo;
 
@@ -503,5 +509,23 @@ public class Player
         }
     }
 
+    public void AddChanceJailFreeCard()
+    {
 
+    }
+
+    public void AddCommunityJailFreeCard()
+    {
+
+    }
+
+    public void UseCommunityJailFreeCard()
+    {
+
+    }
+
+    public void UseChanceJailFreeCard()
+    {
+
+    }
 }

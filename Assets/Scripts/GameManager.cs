@@ -106,6 +106,19 @@ public class GameManager : MonoBehaviour
     {
         bool allowedToMove = true;
         hasRolledDice = true;
+        //Test free jail card
+        if (playerList[currentPlayer].IsInJail)
+        {
+            if (playerList[currentPlayer].HasChanceJailFreeCard)
+            {
+                playerList[currentPlayer].UseChanceJailFreeCard();
+
+            }
+            else if (playerList[currentPlayer].HasCommunityJailFreeCard)
+            {
+                playerList[currentPlayer].UseCommunityJailFreeCard();
+            }
+        }
         //Reset last roll
         rolledDice = new int[2];
         //Any roll dice and store them

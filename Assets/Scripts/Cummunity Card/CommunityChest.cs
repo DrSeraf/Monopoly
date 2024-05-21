@@ -16,6 +16,7 @@ public class CommunityChest : MonoBehaviour
     List<SCR_CummunityCard> cardPool = new List<SCR_CummunityCard>();
     List<SCR_CummunityCard> usedCardPool = new List<SCR_CummunityCard>();
     //Current card and current player
+    SCR_CummunityCard jailFreeCard;
     SCR_CummunityCard pikedCard;
     Player currentPlayer;
 
@@ -37,6 +38,8 @@ public class CommunityChest : MonoBehaviour
     {
         cardHolderBackground.SetActive(false);
         //Add all cards to the pool
+
+
         cardPool.AddRange(cards);
 
         //Shuffle the cards
@@ -60,8 +63,19 @@ public class CommunityChest : MonoBehaviour
         //Draw an actual card
         pikedCard = cardPool[0];
         cardPool.RemoveAt(0);
-        usedCardPool.Add(pikedCard);
-        if(cardPool.Count == 0)
+
+
+        if (pikedCard.jailFreeCard)
+        {
+            jailFreeCard = pikedCard;
+        }
+        else
+        {
+            usedCardPool.Add(pikedCard);
+        }
+
+
+        if (cardPool.Count == 0)
         {
             //Put back all cards
             cardPool.AddRange(usedCardPool);
@@ -172,6 +186,12 @@ public class CommunityChest : MonoBehaviour
                 OnShowHumanPanel.Invoke(true, GameManager.instance.RolledADouble, !GameManager.instance.RolledADouble);
             } 
         }
+    }
+
+    public void AddBackJailFreeCard()
+    {
+        usedCardPool.Add(jailFreeCard);
+        jailFreeCard = null;
     }
 
 }

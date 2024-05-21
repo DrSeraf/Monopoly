@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 public class CommunityChest : MonoBehaviour
 {
-
+    public static CommunityChest instance;
     [SerializeField] List<SCR_CummunityCard> cards = new List<SCR_CummunityCard>();
     [SerializeField] TMP_Text cardText;
     [SerializeField] GameObject cardHolderBackground;
@@ -21,7 +21,7 @@ public class CommunityChest : MonoBehaviour
     Player currentPlayer;
 
     //Human input panel 
-    public delegate void ShowHumanPanel(bool activatePanel, bool activateRollDice, bool activateEndTurn);
+    public delegate void ShowHumanPanel(bool activatePanel, bool activateRollDice, bool activateEndTurn, bool hasChanceJailCard, bool hasCommunityJailCard);
     public static ShowHumanPanel OnShowHumanPanel;
 
     private void OnEnable()
@@ -32,6 +32,11 @@ public class CommunityChest : MonoBehaviour
     private void OnDisable()
     {
         MonopolyNode.OnDrawCommunityCard -= DrawCard;
+    }
+
+    private void Awake()
+    {
+        instance = this;
     }
 
     private void Start()
@@ -164,7 +169,7 @@ public class CommunityChest : MonoBehaviour
         }
         else if (pikedCard.jailFreeCard)//Jail free card
         {
-            
+            currentPlayer.AddCommunityJailFreeCard();
         }
         cardHolderBackground.SetActive(false);
         ContinueGame(isMoving);
@@ -183,7 +188,9 @@ public class CommunityChest : MonoBehaviour
         {
             if (!isMoving)
             {
-                OnShowHumanPanel.Invoke(true, GameManager.instance.RolledADouble, !GameManager.instance.RolledADouble);
+                bool jail1 = currentPlayer.HasChanceJailFreeCard;
+                bool jail2 = currentPlayer.HasCommunityJailFreeCard;
+                OnShowHumanPanel.Invoke(true, GameManager.instance.RolledADouble, !GameManager.instance.RolledADouble, jail1, jail2);
             } 
         }
     }

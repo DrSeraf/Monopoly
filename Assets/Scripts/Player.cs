@@ -54,7 +54,7 @@ public class Player
     public delegate void UpdateMessage(string message);
     public static UpdateMessage OnUpdateMessage;
     //Human input panel
-    public delegate void ShowHumanPanel(bool activatePanel, bool activateRollDice, bool activateEndTurn);
+    public delegate void ShowHumanPanel(bool activatePanel, bool activateRollDice, bool activateEndTurn, bool hasChanceJailCard, bool hasCommunityJailCard);
     public static ShowHumanPanel OnShowHumanPanel;
 
 
@@ -97,7 +97,8 @@ public class Player
             bool canEndTurn = !GameManager.instance.RolledADouble && ReadMoney >= 0 && GameManager.instance.HasRolledDice;
             bool canRollDice = (GameManager.instance.RolledADouble && ReadMoney >= 0) || (!GameManager.instance.HasRolledDice && ReadMoney >= 0);
             //show UI
-            OnShowHumanPanel.Invoke(true, canRollDice, canEndTurn);
+
+            OnShowHumanPanel.Invoke(true, canRollDice, canEndTurn, hasChanceJailFreeCard, hasCommunityJailFreeCard);
         }
     }
 
@@ -137,7 +138,7 @@ public class Player
             else
             {
                 //Disable human turn and roll dice
-                OnShowHumanPanel.Invoke(true, false, false);
+                OnShowHumanPanel.Invoke(true, false, false, hasChanceJailFreeCard, hasCommunityJailFreeCard);
             }
         }
         money -= rentAmount;
@@ -171,7 +172,7 @@ public class Player
             bool canEndTurn = !GameManager.instance.RolledADouble && ReadMoney >= 0 && GameManager.instance.HasRolledDice;
             bool canRollDice = (GameManager.instance.RolledADouble && ReadMoney >= 0) || (!GameManager.instance.HasRolledDice && ReadMoney >= 0);
             //show UI
-            OnShowHumanPanel.Invoke(true, canRollDice, canEndTurn);
+            OnShowHumanPanel.Invoke(true, canRollDice, canEndTurn, hasChanceJailFreeCard, hasCommunityJailFreeCard);
         }
     }
 
@@ -511,21 +512,35 @@ public class Player
 
     public void AddChanceJailFreeCard()
     {
-
+        hasChanceJailFreeCard = true;
     }
 
     public void AddCommunityJailFreeCard()
     {
-
+        hasCommunityJailFreeCard = true;
     }
 
-    public void UseCommunityJailFreeCard()
+    public void UseCommunityJailFreeCard()//JAIL2
     {
-
+        if (!isInJail)
+        {
+            return;
+        }
+        hasCommunityJailFreeCard = false;
+        SetOutOfJail();
+        CommunityChest.instance.AddBackJailFreeCard();
+        OnUpdateMessage.Invoke(name + " גûרוכ טח ע‏נüלû.");
     }
 
-    public void UseChanceJailFreeCard()
+    public void UseChanceJailFreeCard()//JAIL1
     {
-
+        if (!isInJail)
+        {
+            return;
+        }
+        SetOutOfJail();
+        hasChanceJailFreeCard = false;
+        ChanceField.instance.AddBackJailFreeCard();
+        OnUpdateMessage.Invoke(name + " גûרוכ טח ע‏נüלû.");
     }
 }

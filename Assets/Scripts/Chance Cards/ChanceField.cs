@@ -6,6 +6,7 @@ using UnityEngine.UI;
 
 public class ChanceField : MonoBehaviour
 {
+    public static ChanceField instance;
     [SerializeField] List<SCR_ChanceCard> cards = new List<SCR_ChanceCard>();
     [SerializeField] TMP_Text cardText;
     [SerializeField] GameObject cardHolderBackground;
@@ -20,8 +21,13 @@ public class ChanceField : MonoBehaviour
     Player currentPlayer;
 
     //Human input panel 
-    public delegate void ShowHumanPanel(bool activatePanel, bool activateRollDice, bool activateEndTurn);
+    public delegate void ShowHumanPanel(bool activatePanel, bool activateRollDice, bool activateEndTurn, bool hasChanceJailCard, bool hasCommunityJailCard);
     public static ShowHumanPanel OnShowHumanPanel;
+
+    public void Awake()
+    {
+        instance = this;
+    }
 
     private void OnEnable()
     {
@@ -159,7 +165,7 @@ public class ChanceField : MonoBehaviour
         }
         else if (pikedCard.jailFreeCard)//Jail free card
         {
-
+            currentPlayer.AddChanceJailFreeCard();
         }
         else if(pikedCard.moveStepsBackwards != 0)
         {
@@ -195,7 +201,9 @@ public class ChanceField : MonoBehaviour
         {
             if (!isMoving)
             {
-                OnShowHumanPanel.Invoke(true, GameManager.instance.RolledADouble, !GameManager.instance.RolledADouble);
+                bool jail1 = currentPlayer.HasChanceJailFreeCard;
+                bool jail2 = currentPlayer.HasCommunityJailFreeCard;
+                OnShowHumanPanel.Invoke(true, GameManager.instance.RolledADouble, !GameManager.instance.RolledADouble, jail1, jail2);
             }
         }
     }

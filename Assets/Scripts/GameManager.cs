@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 
@@ -22,6 +23,10 @@ public class GameManager : MonoBehaviour
     [SerializeField] GameObject playerInfoPrefab;
     [SerializeField] Transform playerPanel;//For the palyer info prefabs to become parentet to
     [SerializeField] List<GameObject> playerTokenList = new List<GameObject>();
+
+    [Header("Game Over")]
+    [SerializeField] GameObject gameOverPanel;
+    [SerializeField] TMP_Text winnerName;
 
     //about the rolling dice
     int[] rolledDice;
@@ -63,6 +68,8 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
+        currentPlayer = Random.Range(0, playerList.Count);
+        gameOverPanel.SetActive(false);
         Initialize();
         if (playerList[currentPlayer].playerType == Player.PlayerType.AI)
         {
@@ -71,6 +78,7 @@ public class GameManager : MonoBehaviour
         else
         {
             //show UI for human inputs
+            OnShowHumanPanel.Invoke(true, true, false, false, false);
         }
         
     }
@@ -303,6 +311,8 @@ public class GameManager : MonoBehaviour
             //Stop the game loop anyhow
 
             //Show UI
+            gameOverPanel.SetActive(true);
+            winnerName.text = playerList[0].name;
         }
     }
 
@@ -332,9 +342,10 @@ public class GameManager : MonoBehaviour
         }
         else
         {
-            //not a double roll
-            //switch player
-            SwitchPlayer();
+            if (playerList.Count > 1)
+            {
+                SwitchPlayer();
+            }
         }
     }
 

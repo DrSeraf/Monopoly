@@ -138,6 +138,8 @@ public class TradingSystem : MonoBehaviour
             return;
         }
 
+        bool foundDecision = false;
+
         //FIND ALL INCOMPLETE SET AND EXCLUDE THE SET WITCH THE REQUESTED NODE
         foreach (var node in currentPlayer.GetMonopolyNodes)
         {
@@ -163,16 +165,15 @@ public class TradingSystem : MonoBehaviour
                         MakeTradeOffer(currentPlayer, nodeOwner, requestedNode, node, 0, Mathf.Abs(difference));
                     }
                     //MAKE TRADE OFFER
+                    foundDecision = true;
                     break;
                 }
             }
         }
-
-        //FIND OUT IF ONLY ONE NODE OF THE FOUND SET IS OWNED
-
-        //CALCULATE THE VALUE OF THAT NODE AND SEE IF WITH ENOUTH MONEY IT COULD BE AFFORDABLE
-
-        //IF SO... MAKE TRADE OFFER
+        if (!foundDecision)
+        {
+            currentPlayer.ChangeState(Player.AiStates.IDLE);
+        }
     }
 
     //-------------------------------MAKE TRADE OFFER----------------------------------------

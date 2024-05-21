@@ -316,4 +316,9 @@ public class GameManager : MonoBehaviour
             SwitchPlayer();
         }
     }
+
+    public void HumanBunckrupt()
+    {
+        playerList[currentPlayer].Bankrupt();
+    }
 }

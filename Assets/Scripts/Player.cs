@@ -304,7 +304,7 @@ public class Player
 
     //-------------------------------BUNKRUPT-GAME-OVER--------------------------------------
 
-    void Bankrupt()
+    internal void Bankrupt()
     {
         //Take out the playre of the game
 

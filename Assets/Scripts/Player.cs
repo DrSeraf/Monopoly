@@ -489,7 +489,8 @@ public class Player
             case AiStates.IDLE:
                 {
                     //CONTINUE THE GAME 
-                    ContinueGame();
+                    GameManager.instance.Continue();
+                    
                 }
             break;
 
@@ -502,19 +503,5 @@ public class Player
         }
     }
 
-    void ContinueGame()
-    {
-        //If the last roll was not a double 
-        if (GameManager.instance.RolledADouble)
-        {
-            //roll agaid
-            GameManager.instance.RollDice();
-        }
-        else
-        {
-            //not a double roll
-            //switch player
-            GameManager.instance.SwitchPlayer();
-        }
-    }
+
 }

@@ -293,4 +293,27 @@ public class GameManager : MonoBehaviour
             player.ActivateSelector(false);
         }
     }
+
+    //----------------------------CONTINUE GAME STUFF-----------------------
+
+    public void Continue()
+    {
+        Invoke("ContinueGame", SecondsBetwinTurns);
+    }
+
+    void ContinueGame()
+    {
+        //If the last roll was not a double 
+        if (RolledADouble)
+        {
+            //roll agaid
+            RollDice();
+        }
+        else
+        {
+            //not a double roll
+            //switch player
+            SwitchPlayer();
+        }
+    }
 }

@@ -506,7 +506,6 @@ public class TradingSystem : MonoBehaviour
     public void AcceptOffer()
     {
         Trade(currentPlayer, nodeOwner, requestedNode, offeredNode, offeredMoney, requestedMoney);
-        currentPlayer.ChangeState(Player.AiStates.IDLE);
         ResetOffer();
     }
 

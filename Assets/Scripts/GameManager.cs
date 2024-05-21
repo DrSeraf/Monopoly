@@ -329,6 +329,10 @@ public class GameManager : MonoBehaviour
 
     public void Continue()
     {
+        if (playerList.Count > 1)
+        {
+            
+        }
         Invoke("ContinueGame", SecondsBetwinTurns);
     }
 
@@ -342,10 +346,9 @@ public class GameManager : MonoBehaviour
         }
         else
         {
-            if (playerList.Count > 1)
-            {
-                SwitchPlayer();
-            }
+            
+            SwitchPlayer();
+            
         }
     }
 

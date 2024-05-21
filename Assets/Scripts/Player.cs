@@ -305,8 +305,10 @@ public class Player
                 }
             }
         }
-        //We go bancrupt if we reach this point
-        Bankrupt();
+        if (playerType == PlayerType.AI)
+        {
+            Bankrupt();
+        }
     }
 
     //-------------------------------BUNKRUPT-GAME-OVER--------------------------------------
@@ -329,6 +331,17 @@ public class Player
         }
 
         //Remove the player
+
+        if (hasChanceJailFreeCard)
+        {
+            ChanceField.instance.AddBackJailFreeCard();
+        }
+
+        if (hasCommunityJailFreeCard)
+        {
+            CommunityChest.instance.AddBackJailFreeCard();
+        }
+
         GameManager.instance.RemovePlayer(this);
     }
 

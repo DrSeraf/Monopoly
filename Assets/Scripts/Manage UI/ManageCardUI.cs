@@ -33,7 +33,8 @@ public class ManageCardUI : MonoBehaviour
         }
         else
         {
-            colorField.color = Color.black;
+            propertyName.text = node.name;
+            colorField.color = Color.white;
         }
         ShowBuildings();
         //Show mortgage image

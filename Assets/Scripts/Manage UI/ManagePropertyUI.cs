@@ -13,6 +13,8 @@ public class ManagePropertyUI : MonoBehaviour
     Player playerReference;
     List<MonopolyNode> nodesInSet = new List<MonopolyNode>();
     List<GameObject> cardsInSet = new List<GameObject>();
+    [SerializeField] GameObject byuButton;
+    [SerializeField] GameObject sellButton;
 
     //This property is only for 1 specific card set
     public void SetProperty(List<MonopolyNode> nodes, Player owner)
@@ -34,6 +36,11 @@ public class ManagePropertyUI : MonoBehaviour
 
         buyHousePriceText.text = "-" + nodesInSet[0].houseCost;
         sellHousePriceText.text = "+" + nodesInSet[0].houseCost / 2;
+        if (nodes[0].monopolyNodeType != MonopolyNodeType.Property)
+        {
+            byuButton.SetActive(false);
+            sellButton.SetActive(false);
+        }
     }
 
     public void BuyHouseButton()

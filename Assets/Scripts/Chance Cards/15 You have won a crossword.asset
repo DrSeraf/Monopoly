@@ -12,8 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6b45f1eacb68d8e4c89f57342d9830cb, type: 3}
   m_Name: 15 You have won a crossword
   m_EditorClassIdentifier: 
-  textOnCard: "\u0412\u042B \u0412\u042B\u0419\u0413\u0420\u0410\u041B\u0418 \u041C\u0410\u0420\u0410\u0424\u041E\u041D.
-    \u041F\u041E\u041B\u0423\u0427\u0418\u0422\u0415 100 \u041C."
+  textOnCard: "\u0412\u042B \u0412\u042B\u0419\u0413\u0420\u0410\u041B\u0418 \u0412
+    \u0414\u0423\u042D\u041B\u0418. \u041F\u041E\u041B\u0423\u0427\u0418\u0422\u0415
+    100 \u041C."
   rewardMoney: 100
   penalityMoney: 0
   moveToBoardIndex: -1

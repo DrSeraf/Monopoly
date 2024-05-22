@@ -1,6 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
-using UnityEditor.XR;
+//using UnityEditor.XR;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "New Chance Card", menuName = "Monopoly/Cards/Chance")]

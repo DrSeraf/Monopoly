@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 138691d12bf5ee2459c71e4270df7167, type: 3}
   m_Name: 8 Income Tax refund
   m_EditorClassIdentifier: 
-  textOnCard: "\u0412\u041E\u0417\u0412\u0420\u0410\u0422 \u041F\u041E\u0414\u041E\u0425\u041E\u0414\u041D\u041E\u0413\u041E
-    \u041D\u0410\u041B\u041E\u0413\u0410 \u041F\u041E\u041B\u0423\u0427\u0418\u0422\u0415
+  textOnCard: "\u0420\u041E\u0414\u0418\u0422\u0415\u041B\u0418 \u041E\u0422\u041F\u0420\u0410\u0412\u0418\u041B\u0418
+    \u0412\u0410\u041C \u041F\u041E\u0414\u0410\u0420\u041E\u041A \u041F\u041E\u041B\u0423\u0427\u0418\u0422\u0415
     20 \u041C."
   rewardMoney: 20
   penalityMoney: 0

@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 138691d12bf5ee2459c71e4270df7167, type: 3}
   m_Name: 13 Sale of bond
   m_EditorClassIdentifier: 
-  textOnCard: "\u041E\u0422 \u041F\u0420\u041E\u0414\u0410\u0416\u0418 \u041E\u0411\u041B\u0418\u0413\u0410\u0426\u0418\u0419
+  textOnCard: "\u041E\u0422 \u041F\u0420\u041E\u0414\u0410\u0416\u0418 \u0420\u0410\u0421\u0422\u0415\u041D\u0418\u0419
     \u0412\u042B \u041F\u041E\u041B\u0423\u0427\u0410\u0415\u0422\u0415 100 \u041C."
   rewardMoney: 100
   penalityMoney: 0

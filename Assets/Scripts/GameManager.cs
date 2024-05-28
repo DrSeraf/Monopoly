@@ -93,8 +93,26 @@ public class GameManager : MonoBehaviour
 
     void Initialize()
     {
+        if (GameSettings.settingsList.Count == 0)
+        {
+            Debug.LogError("Start the game from Main Menu!");
+            return;
+        }
+        foreach (var setting in GameSettings.settingsList)
+        {
+            Player p1 = new Player();
+            p1.name = setting.playerName;
+            p1.playerType = (Player.PlayerType)setting.selectedType;
+
+            GameObject infoObject = Instantiate(playerInfoPrefab, playerPanel, false);
+            PlayerInfo info = infoObject.GetComponent<PlayerInfo>();
+
+            GameObject newToken = Instantiate(playerTokenList[setting.selectedColor], gameBoard.route[0].transform.position, Quaternion.identity);
+
+            p1.Inititialize(gameBoard.route[0], startMoney, info, newToken);
+        }
         //Create all players
-        for (int i = 0; i < playerList.Count; i++)
+        /*for (int i = 0; i < playerList.Count; i++)
         {
             GameObject infoObject = Instantiate(playerInfoPrefab, playerPanel, false);
             PlayerInfo info = infoObject.GetComponent<PlayerInfo>();
@@ -105,7 +123,10 @@ public class GameManager : MonoBehaviour
             GameObject newToken = Instantiate(playerTokenList[randomIndex], gameBoard.route[0].transform.position, Quaternion.identity);
 
             playerList[i].Inititialize(gameBoard.route[0], startMoney, info, newToken);
-        }
+        }*/
+
+
+
         playerList[currentPlayer].ActivateSelector(true);
 
         if (playerList[currentPlayer].playerType == Player.PlayerType.Human)

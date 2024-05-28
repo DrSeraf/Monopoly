@@ -5,18 +5,19 @@ using UnityEngine;
 public static class GameSettings
 {
 
-   public static List<Setting> settingsList = new List<Setting> ();
+    public static List<Setting> settingsList = new List<Setting>();
 
     public static void AddSetting(Setting setting)
     {
         settingsList.Add(setting);
+        Debug.Log(setting.playerName + "+" + setting.selectedType + "+" + setting.selectedColor);
     }
 }
 public class Setting
 {
-    public static string playerName;
-    public static int selectedType;
-    public static int selectedColor;
+    public  string playerName;
+    public  int selectedType;
+    public  int selectedColor;
 
     public Setting(string _name, int type, int color)
     {

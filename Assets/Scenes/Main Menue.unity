@@ -3762,7 +3762,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 496700165}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 640855171}
+        m_TargetAssemblyTypeName: MainMenu, Assembly-CSharp
+        m_MethodName: StartButton
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &496700165
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5072,6 +5084,67 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_IsOn: 1
+--- !u!1 &640855170
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 640855172}
+  - component: {fileID: 640855171}
+  m_Layer: 0
+  m_Name: Settings
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &640855171
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 640855170}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f54433802d2b59248be625b7b6db1f83, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerSelection:
+  - nameInput: {fileID: 819712129}
+    typeDropdown: {fileID: 977152065}
+    colorDropdown: {fileID: 1296908319}
+    toggle: {fileID: 631326532}
+  - nameInput: {fileID: 401585526}
+    typeDropdown: {fileID: 263618963}
+    colorDropdown: {fileID: 1050343952}
+    toggle: {fileID: 1455198625}
+  - nameInput: {fileID: 710696454}
+    typeDropdown: {fileID: 1119366449}
+    colorDropdown: {fileID: 1453725924}
+    toggle: {fileID: 33485329}
+  - nameInput: {fileID: 577156069}
+    typeDropdown: {fileID: 1583093543}
+    colorDropdown: {fileID: 52947095}
+    toggle: {fileID: 30586126}
+--- !u!4 &640855172
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 640855170}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 498.6082, y: 377.12637, z: -9.394501}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &688836447
 GameObject:
   m_ObjectHideFlags: 0
@@ -13802,3 +13875,4 @@ SceneRoots:
   - {fileID: 898314744}
   - {fileID: 275874089}
   - {fileID: 1571706528}
+  - {fileID: 640855172}

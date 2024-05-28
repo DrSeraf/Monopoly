@@ -4,6 +4,8 @@ using UnityEngine;
 using TMPro;
 using System;
 using UnityEngine.UI;
+using UnityEditor;
+using UnityEngine.SceneManagement;
 
 public class MainMenu : MonoBehaviour
 {
@@ -27,6 +29,7 @@ public class MainMenu : MonoBehaviour
                 GameSettings.AddSetting(newSet);
             }
         }
+        SceneManager.LoadScene("Game");
     }
 
 }

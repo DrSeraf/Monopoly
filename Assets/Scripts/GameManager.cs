@@ -78,6 +78,14 @@ public class GameManager : MonoBehaviour
         gameOverPanel.SetActive(false);
         Initialize();
         CameraSwitcher.instance.SwitchToTopDowd();
+        StartCoroutine(StartGame());
+        OnUpdateMessage.Invoke("Добро пожаловать в монополию!");
+        
+    }
+
+    IEnumerator StartGame()
+    {
+        yield return new WaitForSeconds(3f);
         if (playerList[currentPlayer].playerType == Player.PlayerType.AI)
         {
             //RollDice();
@@ -88,7 +96,6 @@ public class GameManager : MonoBehaviour
             //show UI for human inputs
             OnShowHumanPanel.Invoke(true, true, false, false, false);
         }
-        
     }
 
     void Initialize()
@@ -103,6 +110,8 @@ public class GameManager : MonoBehaviour
             Player p1 = new Player();
             p1.name = setting.playerName;
             p1.playerType = (Player.PlayerType)setting.selectedType;
+
+            playerList.Add(p1);
 
             GameObject infoObject = Instantiate(playerInfoPrefab, playerPanel, false);
             PlayerInfo info = infoObject.GetComponent<PlayerInfo>();
